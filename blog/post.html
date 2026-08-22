@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/icon-180.png">
+  <title>Loading... — Hollywood Clinic</title>
+  <meta name="theme-color" content="#0B1D3A">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- SEO -->
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Hollywood Clinic Egypt">
+  <link rel="canonical" href="https://www.hollywoodclinics.net/blog/post"><link rel="alternate" hreflang="x-default" href="https://www.hollywoodclinics.net/blog/post"><link rel="alternate" hreflang="ar-EG" href="https://www.hollywoodclinics.net/ar/blog/post"><link rel="alternate" hreflang="en" href="https://www.hollywoodclinics.net/blog/post">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hollywood Clinic Egypt">
+  <meta property="og:title" content="Loading... — Hollywood Clinic">
+  <meta property="og:description" content="Hollywood Clinic — Cairo's premier aesthetic center.">
+  <meta property="og:url" content="https://www.hollywoodclinics.net/blog/post">
+  <meta property="og:image" content="https://www.hollywoodclinics.net/assets/images/hero-bg.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ar_EG">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Loading... — Hollywood Clinic">
+  <meta name="twitter:description" content="Hollywood Clinic — Cairo's premier aesthetic center.">
+  <meta name="twitter:image" content="https://www.hollywoodclinics.net/assets/images/hero-bg.jpg">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <!-- Analytics: GTM / GA4 / Google Ads — configure IDs in assets/js/analytics.js -->
+  <script src="../assets/js/analytics.js" defer=""></script>
+</head>
+<body>
+
+ <!--NAV-->
+
+
+ <section class="section" style="padding-top:7rem">
+ <div class="article" id="article">
+ <p style="text-align:center;color:var(--muted);padding:3rem 0" data-i18n="blogpost.loading">Loading post...</p>
+ </div>
+ </section>
+
+ <section class="section bg-cream" style="padding-top:1rem">
+ <div class="container text-center">
+ <a href="../blog" class="btn btn-outline" data-i18n="blogpost.back">← Back to all posts</a>
+ </div>
+ </section>
+
+ <section class="section cta-banner">
+ <div class="container">
+ <div class="cta-icon">
+ <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+ </div>
+ <h2 data-i18n="blogpost.cta.title">Ready to Get Started?</h2>
+ <p data-i18n="blogpost.cta.sub">Book a free consultation with our specialists.</p>
+ <div class="hero-cta" style="justify-content:center">
+ <a href="../booking" class="btn btn-primary" data-i18n="nav.book">Book Now</a>
+ </div>
+ </div>
+ </section>
+
+ <!--FOOTER-->
+
+
+ <script src="../assets/js/i18n-core.js"></script>
+ <script src="../assets/js/main.js"></script>
+ <script src="../assets/js/dynamic-content.js"></script>
+ <script src="../assets/js/markdown.js"></script>
+ <script src="../assets/js/supabase-config.js"></script>
+ <script>
+    (async function() {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+      const article = document.getElementById('article');
+
+      if (!slug) {
+        article.innerHTML = '<p style="text-align:center;color:var(--muted);padding:3rem 0">No post specified. <a href="../blog" style="color:var(--gold)">Back to blog →</a></p>';
+        return;
+      }
+
+      function getLang() { return (window.I18N && window.I18N.current()) || 'en'; }
+
+      // Resolve which markdown file to load for the current language.
+      // Supports:
+      //   "file": "post.md"                          → same file for both langs
+      //   "file": { "en": "post.md", "ar": "post-ar.md" }  → per-language
+      function resolveFile(post, lang) {
+        if (!post.file) return null;
+        if (typeof post.file === 'string') return post.file;
+        if (typeof post.file === 'object') {
+          return post.file[lang] || post.file.en || post.file.ar;
+        }
+        return null;
+      }
+
+      function formatDate(d) {
+        const date = new Date(d);
+        const locale = getLang() === 'ar' ? 'ar-EG' : 'en-US';
+        return date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+
+      // Translation map for category names — same set used on blog.html
+      const CATEGORY_TRANSLATIONS = {
+        'Treatments':         { ar: 'العلاجات' },
+        'Skincare':           { ar: 'العناية بالبشرة' },
+        'Hair':               { ar: 'الشعر' },
+        'Body':               { ar: 'الجسم' },
+        'Client Stories':     { ar: 'قصص العملاء' },
+        'Behind The Scenes':  { ar: 'خلف الكواليس' }
+      };
+      function translateCategory(cat) {
+        const lang = getLang();
+        if (lang === 'ar' && CATEGORY_TRANSLATIONS[cat] && CATEGORY_TRANSLATIONS[cat].ar) {
+          return CATEGORY_TRANSLATIONS[cat].ar;
+        }
+        return cat;
+      }
+      function minLabel() { return getLang() === 'ar' ? 'دقيقة' : 'min'; }
+
+      let postData = null; // remember for re-render on lang toggle
+
+      // ---- Photo gallery lightbox (used by posts that define a "gallery" array) ----
+      function ensureLightbox() {
+        let lb = document.getElementById('bts-lightbox');
+        if (lb) return lb;
+        lb = document.createElement('div');
+        lb.id = 'bts-lightbox';
+        lb.className = 'bts-lightbox';
+        lb.innerHTML =
+          '<button class="bts-lb-close" aria-label="Close">&times;</button>' +
+          '<div class="bts-lb-counter"></div>' +
+          '<button class="bts-lb-nav bts-lb-prev" aria-label="Previous">&#10094;</button>' +
+          '<figure class="bts-lb-figure"><img class="bts-lb-img" src="" alt=""><figcaption class="bts-lb-cap"></figcaption></figure>' +
+          '<button class="bts-lb-nav bts-lb-next" aria-label="Next">&#10095;</button>';
+        document.body.appendChild(lb);
+        const imgEl = lb.querySelector('.bts-lb-img');
+        const capEl = lb.querySelector('.bts-lb-cap');
+        const cntEl = lb.querySelector('.bts-lb-counter');
+        const figEl = lb.querySelector('.bts-lb-figure');
+        const hide = () => { lb.classList.remove('open'); document.body.style.overflow = ''; figEl.innerHTML = ''; };
+        function render() {
+          const list = window.__btsGallery || [];
+          if (!list.length) return;
+          const i = window.__btsIndex;
+          const item = list[i];
+          const capAttr = (item.alt || '').replace(/"/g, '&quot;');
+          if (item.video) {
+            figEl.innerHTML =
+              '<div class="bts-lb-video"><iframe src="' + item.video + '?autoplay=1&rel=0&playsinline=1" title="' + capAttr +
+              '" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>';
+            // No caption under videos. The text still rides along on the iframe
+            // title attribute for accessibility, it is just not printed below.
+
+          } else {
+            figEl.innerHTML =
+              '<img class="bts-lb-img" src="' + item.full + '" alt="' + capAttr + '" style="opacity:1">' +
+              '<figcaption class="bts-lb-cap">' + (item.alt || '') + '</figcaption>';
+          }
+          cntEl.textContent = (i + 1) + ' / ' + list.length;
+        }
+        const go = (delta) => {
+          const list = window.__btsGallery || [];
+          if (!list.length) return;
+          window.__btsIndex = (window.__btsIndex + delta + list.length) % list.length;
+          render();
+        };
+        lb.querySelector('.bts-lb-close').addEventListener('click', hide);
+        lb.querySelector('.bts-lb-prev').addEventListener('click', (e) => { e.stopPropagation(); go(-1); });
+        lb.querySelector('.bts-lb-next').addEventListener('click', (e) => { e.stopPropagation(); go(1); });
+        lb.addEventListener('click', (e) => { if (e.target === lb) hide(); });
+        document.addEventListener('keydown', (e) => {
+          if (!lb.classList.contains('open')) return;
+          if (e.key === 'Escape') hide();
+          else if (e.key === 'ArrowRight') go(1);
+          else if (e.key === 'ArrowLeft') go(-1);
+        });
+        // Swipe navigation on touch devices
+        let sx = 0, sy = 0;
+        lb.addEventListener('touchstart', (e) => { const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+        lb.addEventListener('touchend', (e) => {
+          const t = e.changedTouches[0];
+          const dx = t.clientX - sx, dy = t.clientY - sy;
+          if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) { (dx < 0) ? go(1) : go(-1); }
+        }, { passive: true });
+        lb._render = render;
+        lb._show = () => { render(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; };
+        return lb;
+      }
+
+      function wireGallery() {
+        const items = Array.prototype.slice.call(document.querySelectorAll('.bts-gallery-item'));
+        if (!items.length) return;
+        window.__btsGallery = items.map((it) => ({ full: it.getAttribute('data-full'), video: it.getAttribute('data-video') || null, alt: it.querySelector('img').alt }));
+        const lb = ensureLightbox();
+        items.forEach((it, idx) => {
+          it.addEventListener('click', () => {
+            window.__btsIndex = idx;
+            lb._show();
+          });
+        });
+
+        const moreBtn = document.querySelector('.bts-gallery-more');
+        if (moreBtn) {
+          moreBtn.addEventListener('click', () => {
+            const grid = document.querySelector('.bts-gallery');
+            const stillCollapsed = grid.classList.toggle('is-collapsed');
+            const label = moreBtn.querySelector('.bts-more-label');
+            label.textContent = stillCollapsed ? moreBtn.dataset.more : moreBtn.dataset.less;
+            moreBtn.setAttribute('aria-expanded', stillCollapsed ? 'false' : 'true');
+            moreBtn.classList.toggle('is-open', !stillCollapsed);
+          });
+        }
+      }
+
+      async function renderPost() {
+        const post = postData;
+        if (!post) return;
+        const lang = getLang();
+        const title = post.title[lang] || post.title.en;
+        document.title = title + ' — Hollywood Clinic';
+
+        let mediaHtml = '';
+        // post.html lives in /blog/, covers are root-relative (e.g. "assets/...") —
+        // prefix ../ so they resolve, unless already absolute.
+        const coverSrc = post.cover ? (/^(https?:|\/)/.test(post.cover) ? post.cover : '/' + post.cover) : '';
+        if (post.type === 'video' && post.videoUrl) {
+          mediaHtml = `<div class="article-video-wrap" id="postVideo" data-yt="${post.videoUrl}">`
+            + `<button class="bts-frame" type="button" aria-label="Play video" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none">`
+            + (coverSrc ? `<img src="${coverSrc}" alt="" style="width:100%;height:100%;object-fit:cover">` : '')
+            + `<span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>`
+            + `</button></div>`;
+        } else if (coverSrc) {
+          mediaHtml = `<div class="article-cover"><img src="${coverSrc}" alt=""></div>`;
+        }
+
+        const meta = post.type === 'video'
+          ? `${post.author} · ${formatDate(post.date)} · ${post.duration}`
+          : `${post.author} · ${formatDate(post.date)} · ${post.readMinutes} ${minLabel()}`;
+
+        const fileName = resolveFile(post, lang);
+        let bodyHtml = '';
+        if (post._dbBody) {
+          const md = post._dbBody[lang] || post._dbBody.en || '';
+          bodyHtml = `<div class="article-body">${window.parseMarkdown(md).html}</div>`;
+        } else if (fileName) {
+          try {
+            const mdRes = await fetch('/posts/' + fileName);
+            if (!mdRes.ok) throw new Error('not found');
+            const md = await mdRes.text();
+            const parsed = window.parseMarkdown(md);
+            bodyHtml = `<div class="article-body">${parsed.html}</div>`;
+          } catch (e) {
+            // Fallback: try English version if a localized one was missing
+            if (typeof post.file === 'object' && lang !== 'en' && post.file.en) {
+              try {
+                const fb = await fetch('/posts/' + post.file.en);
+                const md = await fb.text();
+                const parsed = window.parseMarkdown(md);
+                bodyHtml = `<div class="article-body">${parsed.html}</div>`;
+              } catch (e2) {
+                bodyHtml = `<div class="article-body"><p>${post.excerpt[lang] || post.excerpt.en}</p></div>`;
+              }
+            } else {
+              bodyHtml = `<div class="article-body"><p>${post.excerpt[lang] || post.excerpt.en}</p></div>`;
+            }
+          }
+        }
+
+        let galleryHtml = '';
+        if (Array.isArray(post.gallery) && post.gallery.length) {
+          const gTitle = lang === 'ar' ? 'من داخل عيادتنا' : 'Inside Our Clinic';
+          const gSub = lang === 'ar'
+            ? 'جولة مصوّرة في عيادتنا في مصر الجديدة'
+            : 'A photo walk through our Heliopolis home';
+          const items = post.gallery.map((g, idx) => {
+            const alt = (g.alt || '').replace(/"/g, '&quot;');
+            if (g.youtube) {
+              const thumb = 'https://img.youtube.com/vi/' + g.youtube + '/hqdefault.jpg';
+              const embed = 'https://www.youtube.com/embed/' + g.youtube;
+              return '<button type="button" class="bts-gallery-item bts-gallery-video" data-full="' + thumb + '" data-video="' + embed + '" data-i="' + idx +
+                     '" aria-label="' + (alt || 'Play video') + '"><img src="' + thumb + '" alt="' + alt + '" loading="lazy">' +
+                     '<span class="bts-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button>';
+            }
+            const src = /^(https?:|\/)/.test(g.src) ? g.src : '/' + g.src;
+            return '<button type="button" class="bts-gallery-item" data-full="' + src + '" data-i="' + idx +
+                   '" aria-label="' + (alt || 'Open image') + '"><img src="' + src + '" alt="' + alt + '" loading="lazy"></button>';
+          }).join('');
+          const INITIAL = 6;
+          const collapsed = post.gallery.length > INITIAL;
+          const remaining = post.gallery.length - INITIAL;
+          const moreLabel = lang === 'ar' ? ('عرض ' + remaining + ' صورة إضافية') : ('Show ' + remaining + ' more photos');
+          const lessLabel = lang === 'ar' ? 'عرض أقل' : 'Show less';
+          const moreBtn = collapsed
+            ? '<div class="bts-gallery-more-wrap">' +
+                '<button type="button" class="bts-gallery-more" aria-expanded="false" data-more="' + moreLabel + '" data-less="' + lessLabel + '">' +
+                  '<span class="bts-more-label">' + moreLabel + '</span>' +
+                  '<svg class="bts-more-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>' +
+                '</button>' +
+              '</div>'
+            : '';
+          galleryHtml =
+            '<section class="bts-gallery-section">' +
+              '<div class="bts-gallery-head">' +
+                '<span class="lux-line"></span>' +
+                '<h2 class="bts-gallery-title">' + gTitle + '</h2>' +
+                '<p class="bts-gallery-sub">' + gSub + '</p>' +
+              '</div>' +
+              '<div class="bts-gallery bts-bento' + (collapsed ? ' is-collapsed' : '') + '">' + items + '</div>' +
+              moreBtn +
+            '</section>';
+        }
+
+        article.innerHTML = `
+          <header class="article-header">
+            <p class="article-meta">${translateCategory(post.category)}</p>
+            <h1>${title}</h1>
+            <p class="article-author">${meta}</p>
+          </header>
+          ${mediaHtml}
+          ${bodyHtml}
+          ${galleryHtml}
+        `;
+
+        if (window.I18N) window.I18N.apply();
+        wireGallery();
+        wireVideo();
+      }
+
+      /* Post video: plays inline on the page.
+         Auto-starts (muted) the moment it crosses the vertical centre of the viewport;
+         a click plays it with sound (counts as a user gesture). Never leaves the site. */
+      function wireVideo() {
+        const wrap = document.getElementById('postVideo');
+        if (!wrap || wrap.dataset.bound) return;
+        wrap.dataset.bound = '1';
+        let loaded = false;
+        function load(muted) {
+          if (loaded) return;
+          const base = wrap.getAttribute('data-yt');
+          if (!base) return;
+          loaded = true;
+          const sep = base.indexOf('?') > -1 ? '&' : '?';
+          const ifr = document.createElement('iframe');
+          ifr.src = base + sep + 'autoplay=1&rel=0&playsinline=1' + (muted ? '&mute=1' : '');
+          ifr.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+          ifr.setAttribute('allowfullscreen', '');
+          ifr.title = document.querySelector('.article h1') ? document.querySelector('.article h1').textContent : 'Video';
+          wrap.innerHTML = '';
+          wrap.appendChild(ifr);
+        }
+        wrap.addEventListener('click', function () { load(false); });
+      }
+
+      async function loadDbPost(slug){
+        try{
+          await new Promise(function(res){ if(window.HC&&window.HC.db) return res();
+            document.addEventListener('hc:db-ready',res,{once:true}); setTimeout(res,3000); });
+          if(!(window.HC&&window.HC.db)) return null;
+          const r=await window.HC.db.from('blog_posts').select('*').eq('slug',slug).eq('is_published',true).limit(1);
+          if(r.error||!r.data||!r.data.length) return null;
+          const d=r.data[0];
+          return { slug:d.slug, type:'article', author:'Hollywood Clinic',
+            title:{en:d.title_en, ar:d.title_ar||d.title_en},
+            excerpt:{en:d.excerpt_en||'', ar:d.excerpt_ar||d.excerpt_en||''},
+            cover:d.cover_image_url||'', date:d.published_at||'', readMinutes:3,
+            _dbBody:{en:d.body_en||'', ar:d.body_ar||d.body_en||''} };
+        }catch(e){ return null; }
+      }
+
+      try {
+        const res = await fetch('/posts/posts.json');
+        const data = await res.json();
+        const jsonPost = (data.posts || []).find(p => p.slug === slug);
+        const dbPost = await loadDbPost(slug);
+        postData = dbPost || jsonPost;
+
+        if (!postData) {
+          article.innerHTML = '<p style="text-align:center;color:var(--muted);padding:3rem 0">Post not found. <a href="../blog" style="color:var(--gold)">Back to blog →</a></p>';
+          return;
+        }
+
+        await renderPost();
+
+        // Re-render whenever the user toggles language
+        const langBtn = document.querySelector('[data-lang-toggle]');
+        if (langBtn) {
+          langBtn.addEventListener('click', () => setTimeout(renderPost, 50));
+        }
+      } catch (err) {
+        console.error(err);
+        article.innerHTML = '<p style="text-align:center;color:var(--muted);padding:3rem 0">Could not load post. Please run on a web server. <a href="../blog" style="color:var(--gold)">Back to blog →</a></p>';
+      }
+    })();
+  </script>
+
+
+</body></html>

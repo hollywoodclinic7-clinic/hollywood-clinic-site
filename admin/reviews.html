@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/icon-180.png">
+  <title>Reviews Admin — Hollywood Clinic</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    body { background: var(--cream); min-height: 100vh; font-family: var(--font-body); }
+    .admin-wrap { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+    .admin-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--sky-dark);
+    }
+    .admin-header h1 { margin: 0; font-size: 1.5rem; color: var(--navy); font-family: var(--font-heading); }
+    .admin-user { font-size: 0.875rem; color: var(--muted); }
+    .admin-card {
+      background: var(--white); border-radius: 0.75rem; padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 1rem;
+    }
+    .pending-review {
+      background: var(--white); border-radius: 0.75rem; padding: 1.5rem;
+      margin-bottom: 1rem; border-left: 4px solid var(--gold);
+    }
+    .pending-review-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 1rem; margin-bottom: 0.75rem;
+    }
+    .pending-review-stars { color: var(--gold); font-size: 1rem; letter-spacing: 0.1em; }
+    .pending-review-meta { font-size: 0.8125rem; color: var(--muted); }
+    .pending-review-meta strong { color: var(--heading); font-size: 0.9375rem; display:block; }
+    .pending-review-body { color: var(--body); line-height: 1.6; margin: 0.75rem 0; white-space: pre-wrap; }
+    .pending-review-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+    .pending-review-actions button {
+      padding: 0.625rem 1.25rem; border: none; border-radius: 0.5rem;
+      cursor: pointer; font-size: 0.875rem; font-weight: 600; transition: opacity 0.2s;
+    }
+    .btn-approve { background: #16a34a; color: white; }
+    .btn-reject  { background: #dc2626; color: white; }
+    .pending-review-actions button:hover { opacity: 0.85; }
+    .pending-review-actions button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .empty-state {
+      text-align: center; padding: 4rem 1rem; color: var(--muted);
+    }
+    .login-form { max-width: 400px; margin: 4rem auto; }
+    .login-form input { display: block; width: 100%; margin-bottom: 0.75rem; }
+    .login-form .form-input { padding: 0.75rem 1rem; border: 1px solid var(--sky-dark); border-radius: 0.5rem; }
+    .login-error { color: #dc2626; font-size: 0.875rem; margin-top: 0.5rem; }
+    .lang-tag {
+      display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px;
+      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em;
+      background: var(--sky); color: var(--navy); text-transform: uppercase;
+    }
+    .config-warning {
+      background: #fef3c7; border: 1px solid #f59e0b; padding: 1rem;
+      border-radius: 0.5rem; margin-bottom: 2rem; color: #92400e;
+    }
+    .config-warning a { color: #b45309; font-weight: 600; }
+  </style>
+</head>
+<body>
+ <div class="admin-wrap">
+ <div class="admin-header">
+ <h1>Reviews Moderation</h1>
+ <div class="admin-user" id="adminUser"></div>
+ </div>
+
+ <div id="configWarning" class="config-warning" hidden>
+ ⚠️ Supabase is not configured yet. See
+ <a href="SUPABASE_SETUP.md">SUPABASE_SETUP.md</a> for setup instructions.
+ </div>
+
+ <!-- LOGIN -->
+ <div class="login-form" id="loginForm">
+ <div class="admin-card">
+ <h2 style="margin-top:0; font-size:1.25rem;">Admin Login</h2>
+ <p style="color:var(--muted); font-size:0.875rem; margin-bottom:1.5rem;">
+ Sign in with the email/password you created in Supabase Authentication.
+ </p>
+ <form id="signinForm">
+ <input type="email" name="email" placeholder="admin@hollywoodclinics.net" class="form-input" required>
+ <input type="password" name="password" placeholder="Password" class="form-input" required>
+ <button type="submit" class="btn btn-primary" style="width:100%; padding:0.75rem; margin-top:0.5rem;">Sign In</button>
+ <p class="login-error" id="loginError"></p>
+ </form>
+ </div>
+ </div>
+
+ <!-- MODERATION VIEW -->
+ <div id="moderationView" hidden>
+ <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem;">
+ <button type="button" class="btn btn-outline" id="refreshBtn" style="font-size:0.8125rem; padding:0.5rem 1rem;">↻ Refresh</button>
+ <button type="button" class="btn btn-outline" id="signoutBtn" style="font-size:0.8125rem; padding:0.5rem 1rem;">Sign Out</button>
+ </div>
+
+ <div id="pendingList">
+ <p class="empty-state">Loading…</p>
+ </div>
+ </div>
+ </div>
+
+ <script src="../assets/js/reviews.js"></script>
+ <script>
+    (async function () {
+      const loginForm = document.getElementById('loginForm');
+      const signinForm = document.getElementById('signinForm');
+      const loginError = document.getElementById('loginError');
+      const moderationView = document.getElementById('moderationView');
+      const pendingList = document.getElementById('pendingList');
+      const adminUser = document.getElementById('adminUser');
+      const refreshBtn = document.getElementById('refreshBtn');
+      const signoutBtn = document.getElementById('signoutBtn');
+      const configWarning = document.getElementById('configWarning');
+
+      if (!window.HCReviews.isConfigured()) {
+        configWarning.hidden = false;
+        loginForm.hidden = true;
+        return;
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      }
+      function formatDate(iso) {
+        return new Date(iso).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+      }
+
+      async function checkAuth() {
+        const user = await window.HCReviews.getCurrentUser();
+        if (user) {
+          adminUser.innerHTML = `Signed in as <strong>${escapeHtml(user.email)}</strong>`;
+          loginForm.hidden = true;
+          moderationView.hidden = false;
+          loadPending();
+        } else {
+          loginForm.hidden = false;
+          moderationView.hidden = true;
+        }
+      }
+
+      async function loadPending() {
+        pendingList.innerHTML = '<p class="empty-state">Loading…</p>';
+        const reviews = await window.HCReviews.fetchPending();
+        if (!reviews.length) {
+          pendingList.innerHTML = '<p class="empty-state">✓ No pending reviews. Inbox zero!</p>';
+          return;
+        }
+        pendingList.innerHTML = reviews.map(r => `
+          <div class="pending-review" data-review-id="${r.id}">
+            <div class="pending-review-head">
+              <div>
+                <div class="pending-review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+                <div class="pending-review-meta">
+                  <strong>${escapeHtml(r.name)}</strong>
+                  ${escapeHtml(r.treatment)} · ${formatDate(r.created_at)}
+                  <span class="lang-tag">${r.language || 'en'}</span>
+                </div>
+              </div>
+            </div>
+            <p class="pending-review-body">${escapeHtml(r.comment)}</p>
+            ${r.email ? `<p style="font-size:0.8125rem; color:var(--muted); margin:0;"><em>Reply to: ${escapeHtml(r.email)}</em></p>` : ''}
+            <div class="pending-review-actions">
+              <button class="btn-approve" data-approve="${r.id}">Approve</button>
+              <button class="btn-reject"  data-reject="${r.id}">Reject</button>
+            </div>
+          </div>
+        `).join('');
+
+        // Attach action handlers
+        pendingList.querySelectorAll('[data-approve]').forEach(b => {
+          b.addEventListener('click', () => moderate(b.dataset.approve, 'approved', b));
+        });
+        pendingList.querySelectorAll('[data-reject]').forEach(b => {
+          b.addEventListener('click', () => moderate(b.dataset.reject, 'rejected', b));
+        });
+      }
+
+      async function moderate(id, status, btn) {
+        const card = btn.closest('.pending-review');
+        const buttons = card.querySelectorAll('button');
+        buttons.forEach(b => b.disabled = true);
+        const r = await window.HCReviews.setReviewStatus(id, status);
+        if (r.success) {
+          card.style.transition = 'opacity 0.3s, transform 0.3s';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            card.remove();
+            if (!pendingList.querySelectorAll('.pending-review').length) {
+              pendingList.innerHTML = '<p class="empty-state">✓ No pending reviews. Inbox zero!</p>';
+            }
+          }, 300);
+        } else {
+          buttons.forEach(b => b.disabled = false);
+          alert('Error: ' + (r.error || 'Unknown'));
+        }
+      }
+
+      signinForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        loginError.textContent = '';
+        const data = Object.fromEntries(new FormData(signinForm).entries());
+        const result = await window.HCReviews.adminSignIn(data.email, data.password);
+        if (result.success) {
+          checkAuth();
+        } else {
+          loginError.textContent = result.error || 'Sign-in failed';
+        }
+      });
+
+      signoutBtn.addEventListener('click', async () => {
+        await window.HCReviews.adminSignOut();
+        checkAuth();
+      });
+
+      refreshBtn.addEventListener('click', loadPending);
+
+      checkAuth();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/icon-180.png">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Dashboard — Hollywood Clinic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0B1D3A; --navy-2:#11264b; --gold:#C9A84C;
+      --cream:#FAFBFD; --ink:#1c2433; --muted:#6b7488; --line:#e6e9f0; --rail:#0c1f3e;
+      --green:#1f8a52; --green-bg:#e7f4ec; --amber:#9a6a06; --amber-bg:#fbf1dc;
+      --red:#b3261e; --red-bg:#fbe9e7; --blue:#1d4be8; --blue-bg:#e9eefb;
+      --rail-w:230px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream)}
+    a{color:inherit;text-decoration:none}
+
+    .rail{position:fixed;top:0;left:0;bottom:0;width:var(--rail-w);background:var(--rail);
+      color:#cdd6e6;display:flex;flex-direction:column;padding:1.3rem 0;z-index:20;overflow-y:auto;scroll-behavior:smooth}
+    .rail .brand{display:flex;align-items:center;gap:.6rem;padding:0 1.3rem 1.3rem;
+      border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:.8rem}
+    .rail .dot{width:32px;height:32px;border-radius:50%;flex:none;
+      background:linear-gradient(145deg,var(--gold),#a9863a);color:var(--navy);
+      display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;overflow:hidden}
+    .rail .dot img{width:72%;height:72%;object-fit:contain;display:block}
+    .rail .brand b{font-family:'Playfair Display',serif;font-weight:600;color:#fff;font-size:.98rem;line-height:1.05}
+    .rail .brand span{display:block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8a97b0;margin-top:2px}
+    .nav-group{padding:.4rem 0}
+    .nav-label{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#6c7894;padding:.6rem 1.3rem .3rem}
+    .nav-item{display:flex;align-items:center;gap:.65rem;padding:.6rem 1.3rem;font-size:.9rem;cursor:pointer;
+      border-left:3px solid transparent;color:#cdd6e6;transition:background .12s,color .12s}
+    .nav-item:hover{background:rgba(255,255,255,.05);color:#fff}
+    .nav-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold);color:#fff;font-weight:600}
+    .nav-item.soon{opacity:.45;cursor:not-allowed}
+    .nav-item .badge{margin-left:auto;background:var(--gold);color:var(--navy);font-size:.68rem;font-weight:700;
+      border-radius:20px;padding:1px 7px;min-width:18px;text-align:center}
+    .nav-item.soon .tag{margin-left:auto;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:#8a97b0}
+    .rail .spacer{flex:1;min-height:1rem}
+    .signout{margin:.5rem 1.3rem 0;padding:.6rem .8rem;border:1px solid rgba(255,255,255,.14);border-radius:9px;
+      color:#cdd6e6;font-size:.85rem;text-align:center;cursor:pointer;transition:background .12s}
+    .signout:hover{background:rgba(255,255,255,.07);color:#fff}
+
+    .main{margin-left:var(--rail-w);min-height:100vh}
+    .topbar{position:sticky;top:0;background:rgba(250,251,253,.86);backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);padding:1.1rem 1.8rem;display:flex;align-items:center;gap:1rem;z-index:10}
+    .topbar h1{font-family:'Playfair Display',serif;font-weight:600;font-size:1.4rem;color:var(--navy)}
+    .topbar .who{margin-left:auto;font-size:.82rem;color:var(--muted)}
+    .topbar .who b{color:var(--navy);font-weight:600}
+    .wrap{padding:1.6rem 1.8rem 3rem}
+
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.6rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem}
+    .kpi .n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:600;color:var(--navy);line-height:1}
+    .kpi .l{font-size:.78rem;color:var(--muted);margin-top:.4rem;letter-spacing:.02em}
+
+    .panel{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+    .panel-head{display:flex;align-items:center;gap:.8rem;padding:1rem 1.3rem;border-bottom:1px solid var(--line)}
+    .panel-head h2{font-family:'Playfair Display',serif;font-weight:600;font-size:1.1rem;color:var(--navy)}
+    .head-right{margin-left:auto;display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+    .chip{font-size:.78rem;padding:.32rem .7rem;border-radius:20px;border:1px solid var(--line);
+      background:#fff;color:var(--muted);cursor:pointer;transition:all .12s}
+    .chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .refresh{font-size:.78rem;padding:.32rem .7rem;border-radius:20px;border:1px solid var(--line);
+      background:#fff;color:var(--navy);cursor:pointer}
+    .add-btn{font-size:.82rem;font-weight:600;padding:.4rem .9rem;border-radius:9px;border:none;cursor:pointer;
+      background:linear-gradient(145deg,var(--gold),#b8923c);color:var(--navy)}
+    .add-btn:hover{box-shadow:0 6px 16px rgba(201,168,76,.32)}
+
+    table{width:100%;border-collapse:collapse}
+    th{text-align:left;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+      font-weight:600;padding:.7rem 1.3rem;border-bottom:1px solid var(--line);background:#fcfdff}
+    td{padding:.85rem 1.3rem;border-bottom:1px solid var(--line);font-size:.88rem;vertical-align:top}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:#fcfdff}
+    .name{font-weight:600;color:var(--navy)}
+    .sub{font-size:.78rem;color:var(--muted);margin-top:2px}
+    .excerpt{max-width:340px;color:#39424f;line-height:1.45;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .stars{color:var(--gold);letter-spacing:1px;font-size:.95rem}
+    .thumb{width:40px;height:40px;border-radius:8px;object-fit:cover;background:#eef0f4;border:1px solid var(--line)}
+
+    .pill{display:inline-block;font-size:.72rem;font-weight:600;padding:.22rem .6rem;border-radius:20px;white-space:nowrap}
+    .p-new{background:var(--blue-bg);color:#1d4be8}
+    .p-confirmed{background:var(--amber-bg);color:var(--amber)}
+    .p-done,.p-yes{background:var(--green-bg);color:var(--green)}
+    .p-cancelled,.p-rejected,.p-archived,.p-read,.p-no{background:#eef0f4;color:#6b7488}
+    .p-pending{background:var(--amber-bg);color:var(--amber)}
+    .p-approved{background:var(--green-bg);color:var(--green)}
+
+    .acts{display:flex;gap:.35rem;flex-wrap:wrap}
+    .btn{font-size:.74rem;padding:.3rem .6rem;border-radius:7px;border:1px solid var(--line);
+      background:#fff;color:var(--navy);cursor:pointer;transition:all .12s;white-space:nowrap}
+    .btn:hover{border-color:var(--navy)}
+    .btn.good{color:var(--green);border-color:#bfe0cc}.btn.good:hover{background:var(--green-bg)}
+    .btn.warn{color:var(--amber);border-color:#ecdcb4}.btn.warn:hover{background:var(--amber-bg)}
+    .btn.bad{color:var(--red);border-color:#f0cfca}.btn.bad:hover{background:var(--red-bg)}
+    .btn.star{color:var(--gold);border-color:#ecdcb4}.btn.star.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+    .btn.edit{color:var(--navy);border-color:#cfd6e2}.btn.edit:hover{background:#eef2f8}
+    /* up/down reorder control (Doctors > Order column) */
+    .ord{display:inline-flex;align-items:center;gap:.3rem}
+    .ordbtn{width:24px;height:24px;line-height:1;display:inline-flex;align-items:center;justify-content:center;
+      font-size:.72rem;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--navy);cursor:pointer;
+      transition:all .12s}
+    .ordbtn:hover:not(:disabled){background:var(--navy);color:#fff;border-color:var(--navy)}
+    .ordbtn:disabled{opacity:.32;cursor:default}
+    .ordn{min-width:1.1rem;text-align:center;color:var(--ink);font-variant-numeric:tabular-nums}
+
+    .state{padding:3rem 1.3rem;text-align:center;color:var(--muted)}
+    .state .big{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:.3rem}
+    .err{padding:1rem 1.3rem;background:var(--red-bg);color:var(--red);font-size:.85rem}
+    .gate{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+      background:var(--navy);color:#cdd6e6;font-size:.9rem;z-index:50;text-align:center;padding:2rem}
+
+    /* Editor modal */
+    .overlay{position:fixed;inset:0;background:rgba(7,18,38,.55);backdrop-filter:blur(3px);
+      display:none;align-items:flex-start;justify-content:center;padding:3rem 1rem;z-index:40;overflow-y:auto}
+    .overlay.open{display:flex}
+    .modal{background:#fff;width:100%;max-width:640px;border-radius:16px;overflow:hidden;
+      box-shadow:0 30px 80px rgba(3,10,25,.4);border:1px solid rgba(201,168,76,.25)}
+    .modal-head{display:flex;align-items:center;padding:1.1rem 1.4rem;border-bottom:1px solid var(--line)}
+    .modal-head h3{font-family:'Playfair Display',serif;font-weight:600;color:var(--navy);font-size:1.15rem}
+    .modal-head .x{margin-left:auto;cursor:pointer;color:var(--muted);font-size:1.3rem;line-height:1;border:none;background:none}
+    .modal-body{padding:1.3rem 1.4rem;max-height:62vh;overflow-y:auto;scroll-behavior:smooth}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1rem;margin-bottom:.2rem}
+    .fld{margin-bottom:1rem}
+    .fld.full{grid-column:1 / -1}
+    .fld label{display:block;font-size:.76rem;font-weight:600;color:var(--navy);margin-bottom:.35rem}
+    .fld .hint{font-weight:400;color:var(--muted);font-size:.72rem}
+    .fld input[type=text],.fld input[type=number],.fld input[type=date],.fld textarea,.fld select{
+      width:100%;padding:.6rem .7rem;border:1px solid var(--line);border-radius:9px;font-size:.9rem;
+      font-family:inherit;background:var(--cream);color:var(--ink)}
+    .fld textarea{min-height:90px;resize:vertical}
+    .fld input:focus,.fld textarea:focus,.fld select:focus{outline:none;border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(201,168,76,.16);background:#fff}
+    .fld.check{display:flex;align-items:center;gap:.5rem}
+    .fld.check input{width:18px;height:18px;accent-color:var(--gold)}
+    .fld.check label{margin:0}
+    .ar{direction:rtl;text-align:right}
+    .img-field{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .img-prev{width:74px;height:74px;border-radius:10px;object-fit:cover;background:#eef0f4;border:1px solid var(--line);flex:none}
+    .img-field input[type=file]{font-size:.82rem}
+    .img-status{font-size:.78rem;color:var(--muted)}
+    .img-status.ok{color:var(--green)} .img-status.bad{color:var(--red)}
+    .import-panel{background:#f4f7fb;border:1px dashed var(--gold);border-radius:10px;padding:.85rem 1rem;margin-bottom:1.2rem}
+    .import-panel .ip-row{display:flex;gap:1.6rem;flex-wrap:wrap;align-items:flex-end;margin-top:.55rem}
+    .imp-lbl{font-size:.82rem;color:var(--ink);display:flex;flex-direction:column;gap:.3rem;font-weight:600}
+    .imp-lbl input[type=file]{font-weight:400;font-size:.8rem}
+    .imp-status{font-size:.8rem;color:var(--green);align-self:center;min-height:1em}
+    .modal-foot{display:flex;gap:.6rem;padding:1rem 1.4rem;border-top:1px solid var(--line);background:#fcfdff}
+    .modal-foot .save{margin-left:auto;background:linear-gradient(145deg,var(--gold),#b8923c);color:var(--navy);
+      border:none;padding:.6rem 1.3rem;border-radius:9px;font-weight:600;font-size:.9rem;cursor:pointer}
+    .modal-foot .cancel{background:#fff;border:1px solid var(--line);padding:.6rem 1.1rem;border-radius:9px;
+      font-size:.9rem;cursor:pointer;color:var(--muted)}
+    .modal-foot .save:disabled{opacity:.6;cursor:wait}
+    .form-err{color:var(--red);font-size:.82rem;align-self:center}
+
+    @media(max-width:820px){
+      :root{--rail-w:0px}
+      .rail{transform:translateX(-100%)} .main{margin-left:0}
+      .excerpt{max-width:160px} .frow{grid-template-columns:1fr}
+    }
+    /* ===== Services / Add Service form ===== */
+    .svc-wrap{padding:1.1rem 1.4rem 3rem}
+    .svc-list{width:100%;border-collapse:collapse}
+    .svc-list th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:.6rem .7rem;border-bottom:1px solid var(--line)}
+    .svc-list td{padding:.7rem .7rem;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--ink)}
+    .svc-list tr:hover td{background:#faf7ef}
+    .svc-badge{display:inline-block;font-size:.7rem;padding:.12rem .5rem;border-radius:99px;background:#eef2f8;color:#3a4a66}
+    .svc-badge.off{background:#fbeaea;color:#a23}
+    .svc-form h4{font-family:'Playfair Display',serif;color:var(--navy);font-size:1rem;margin:1.6rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid var(--line)}
+    .svc-form h4:first-child{margin-top:.4rem}
+    .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem .9rem}
+    .svc-grid.three{grid-template-columns:1fr 1fr 1fr}
+    .svc-fld{display:flex;flex-direction:column;gap:.25rem;margin-bottom:.2rem}
+    .svc-fld label{font-size:.74rem;color:var(--muted);font-weight:600}
+    .svc-fld input,.svc-fld textarea,.svc-fld select{font:inherit;font-size:.86rem;padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);width:100%}
+    .svc-fld textarea{min-height:64px;resize:vertical}
+    .svc-fld input[dir=rtl],.svc-fld textarea[dir=rtl]{font-family:'Tajawal',sans-serif}
+    .svc-rows{display:flex;flex-direction:column;gap:.55rem}
+    .svc-row{display:grid;gap:.5rem;align-items:start;padding:.6rem;border:1px solid var(--line);border-radius:10px;background:#fcfbf7;position:relative}
+    .svc-row .rm{position:absolute;top:.35rem;right:.4rem;cursor:pointer;border:none;background:none;color:#a23;font-size:1.05rem;line-height:1}
+    .svc-row.pair{grid-template-columns:1fr 1fr}
+    .svc-addrow{align-self:flex-start;margin-top:.5rem;background:#fff;border:1px dashed var(--gold);color:var(--navy);font-weight:600;font-size:.8rem;padding:.45rem .9rem;border-radius:8px;cursor:pointer}
+    .svc-addrow:hover{background:#fbf6e8}
+    .svc-imgrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem}
+    .svc-img{border:1px dashed var(--line);border-radius:10px;padding:.7rem;text-align:center;background:#fcfbf7}
+    .svc-img img{max-width:100%;max-height:120px;border-radius:6px;margin-top:.5rem;display:none}
+    .svc-img .st{font-size:.72rem;color:var(--muted);margin-top:.3rem;min-height:1em}
+    .svc-img .st.ok{color:#1a7a3a}.svc-img .st.bad{color:#a23}
+    .svc-actions{display:flex;gap:.7rem;margin-top:1.8rem;position:sticky;bottom:0;background:linear-gradient(180deg,transparent,#fff 30%);padding:1rem 0 .3rem}
+    .svc-actions .add-btn{font-size:.92rem}
+    .svc-cancel{background:#fff;border:1px solid var(--line);color:var(--muted);font-weight:600;padding:.6rem 1.2rem;border-radius:8px;cursor:pointer}
+    .svc-msg{font-size:.85rem;align-self:center}
+    .svc-msg.ok{color:#1a7a3a}.svc-msg.bad{color:#a23}
+    @media(max-width:720px){.svc-grid,.svc-grid.three,.svc-imgrow{grid-template-columns:1fr}}
+    .svc-sec-h{display:flex;align-items:center;gap:.6rem;margin:.2rem 0 .7rem}
+    .svc-sec-h h4{font-size:.9rem;font-weight:700;color:var(--navy);margin:0;display:flex;align-items:center;gap:.5rem}
+    .svc-count{background:var(--sky,#eef3fb);color:var(--navy);font-size:.72rem;font-weight:700;border-radius:999px;padding:.08rem .5rem}
+  </style>
+</head>
+<body>
+ <div class="gate" id="gate">Checking access…</div>
+
+ <aside class="rail" id="rail" style="display:none">
+ <div class="brand"><div class="dot"><img src="../assets/images/logo.png" alt="Hollywood Clinic" width="32" height="32"></div><div><b>Hollywood Clinic</b><span>Staff Console</span></div></div>
+ <div class="nav-group">
+ <div class="nav-label">Inbox</div>
+ <div class="nav-item active" data-section="bookings">Bookings <span class="badge" id="b-bookings" style="display:none">0</span></div>
+ <div class="nav-item" data-section="messages">Messages <span class="badge" id="b-messages" style="display:none">0</span></div>
+ <div class="nav-item" data-section="reviews">Reviews <span class="badge" id="b-reviews" style="display:none">0</span></div>
+ </div>
+ <div class="nav-group">
+ <div class="nav-label">Content</div>
+ <div class="nav-item" data-section="doctors">Doctors</div>
+ <div class="nav-item" data-section="blog">Blog</div>
+ <div class="nav-item" data-section="departments">Departments</div>
+ <div class="nav-item" data-section="services">Services <span class="badge" style="background:var(--gold);color:var(--navy)">+</span></div>
+ <div class="nav-item" data-section="sitecopy">Site Copy</div>
+ </div>
+ <div class="nav-group">
+ <div class="nav-label">Records</div>
+ <div class="nav-item" data-section="patients">Patients</div>
+ </div>
+ <div class="spacer"></div>
+ <a href="report.html" class="signout" style="text-decoration:none;display:block;margin-bottom:8px">Nightly report</a>
+ <div class="signout" id="signout">Sign out</div>
+ </aside>
+
+ <div class="main" id="main" style="display:none">
+ <div class="topbar">
+ <h1 id="title">Bookings</h1>
+ <div class="who">Signed in as <b id="whoEmail">—</b></div>
+ </div>
+ <div class="wrap">
+ <div class="kpis" id="kpis"></div>
+ <div class="panel">
+ <div class="panel-head">
+ <h2 id="panelTitle">Bookings</h2>
+ <div class="head-right" id="headRight"></div>
+ </div>
+ <div id="content"><div class="state">Loading…</div></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Editor modal -->
+ <div class="overlay" id="overlay">
+ <div class="modal">
+ <div class="modal-head"><h3 id="modalTitle">Edit</h3><button class="x" id="modalClose">×</button></div>
+ <div class="modal-body" id="modalBody"></div>
+ <div class="modal-foot">
+ <span class="form-err" id="formErr"></span>
+ <button class="cancel" id="modalCancel">Cancel</button>
+ <button class="save" id="modalSave">Save</button>
+ </div>
+ </div>
+ </div>
+
+ <script src="../assets/js/supabase-config.js"></script>
+ <script>
+  (function () {
+    'use strict';
+    var db=null, currentUser=null;
+    var state={ section:'bookings', filter:'all', rows:[] };
+    var editing=null; // record being edited (or null for new)
+
+    function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function fmtDate(s){ if(!s) return '—'; var d=new Date(s);
+      return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}); }
+    function fmtDT(s){ if(!s) return '—'; var d=new Date(s);
+      return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short'})+' · '+
+             d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }
+    function pill(s){ return '<span class="pill p-'+esc(s)+'">'+esc(s)+'</span>'; }
+    function yn(b){ return b?'<span class="pill p-yes">yes</span>':'<span class="pill p-no">no</span>'; }
+    function stars(n){ n=Math.max(0,Math.min(5,n||0));
+      return '<span class="stars">'+'★'.repeat(n)+'<span style="color:#dfe3ea">'+'★'.repeat(5-n)+'</span></span>'; }
+    function thumb(u){ if(u && !/^https?:|^\//.test(u)) u='../'+u;
+      if(!u) return '<div class="thumb"></div>';
+      // some rows store .png/.webp URLs for files that are actually .jpg on disk —
+      // keep the stored URL, but remember a fallback to try if it 404s
+      var alt=u.replace(/\.(png|webp)$/i,'.jpg');
+      return '<img class="thumb" src="'+esc(u)+'" alt=""'+(alt!==u?' data-altsrc="'+esc(alt)+'"':'')+'>'; }
+    // image errors don't bubble, so this listens in the capture phase
+    document.addEventListener('error', function(e){
+      var img=e.target;
+      if(!img || img.tagName!=='IMG' || img.className!=='thumb') return;
+      var alt=img.getAttribute('data-altsrc');
+      if(alt && !img.hasAttribute('data-tried')){ img.setAttribute('data-tried','1'); img.src=alt; return; }
+      img.style.visibility='hidden';
+    }, true);
+    // up/down reorder cell — used by every sortable list (Doctors, Treatments, Blog)
+    function orderCell(r){
+      var idx=state.rows.indexOf(r), last=state.rows.length-1;
+      var up='<button class="ordbtn" data-act="moveup" title="Move up"'+(idx<=0?' disabled':'')+'>&#9650;</button>';
+      var dn='<button class="ordbtn" data-act="movedown" title="Move down"'+(idx>=last?' disabled':'')+'>&#9660;</button>';
+      return '<td><div class="ord">'+up+'<span class="ordn">'+esc(r.sort_order)+'</span>'+dn+'</div></td>';
+    }
+    function waitForDB(){ return new Promise(function(r){
+      if(window.HC&&window.HC.db) return r();
+      document.addEventListener('hc:db-ready', r, {once:true}); setTimeout(r,4000); }); }
+
+    // field helper
+    function F(n,l,t,o){ o=o||{}; return {n:n,l:l,t:t||'text',req:o.req,opts:o.opts,hint:o.hint,ar:o.ar,pk:o.pk,full:o.full}; }
+
+    var SECTIONS={
+      // ── INBOX ──
+      bookings:{ type:'inbox', table:'bookings', title:'Bookings', order:'created_at', asc:false,
+        filters:[['all','All'],['new','New'],['confirmed','Confirmed'],['done','Done'],['cancelled','Cancelled']],
+        cols:['Client','Treatment','Preferred','Received','Status','Actions'],
+        row:function(r){ return '<td><div class="name">'+esc(r.full_name)+'</div><div class="sub">'+esc(r.phone)+
+            (r.email?' · '+esc(r.email):'')+'</div></td>'+
+            '<td>'+esc(r.treatment||'—')+(r.message?'<div class="sub">'+esc(r.message).replace(/\n/g,' · ')+'</div>':'')+'</td>'+
+            '<td>'+fmtDate(r.preferred_date)+(r.preferred_time?'<div class="sub">'+esc(r.preferred_time)+'</div>':'')+'</td>'+
+            '<td>'+fmtDT(r.created_at)+'</td><td>'+pill(r.status)+'</td>'+
+            '<td><div class="acts">'+
+              '<button class="btn warn" data-act="status" data-v="confirmed">Confirm</button>'+
+              '<button class="btn good" data-act="status" data-v="done">Done</button>'+
+              '<button class="btn" data-act="status" data-v="cancelled">Cancel</button>'+
+              '<button class="btn edit" data-act="edit">Edit</button>'+
+              '<button class="btn bad" data-act="delete">Delete</button></div></td>'; },
+        fields:[ F('full_name','Client name','text',{req:true}), F('phone','Phone','text',{req:true}),
+          F('email','Email','text'), F('treatment','Treatment','text'),
+          F('preferred_date','Preferred date','date'), F('preferred_time','Preferred time','text'),
+          F('message','Message','textarea',{full:true}),
+          F('status','Status','select',{opts:['new','confirmed','done','cancelled']}) ] },
+      messages:{ type:'inbox', table:'contact_messages', title:'Messages', order:'created_at', asc:false,
+        filters:[['all','All'],['new','New'],['read','Read'],['archived','Archived']],
+        cols:['From','Message','Received','Status','Actions'],
+        row:function(r){ return '<td><div class="name">'+esc(r.full_name)+'</div><div class="sub">'+esc(r.email||r.phone||'')+'</div></td>'+
+            '<td><div class="excerpt">'+esc(r.message)+'</div></td>'+
+            '<td>'+fmtDT(r.created_at)+'</td><td>'+pill(r.status)+'</td>'+
+            '<td><div class="acts">'+
+              '<button class="btn" data-act="status" data-v="read">Mark read</button>'+
+              '<button class="btn" data-act="status" data-v="archived">Archive</button>'+
+              '<button class="btn edit" data-act="edit">Edit</button>'+
+              '<button class="btn bad" data-act="delete">Delete</button></div></td>'; },
+        fields:[ F('full_name','From (name)','text',{req:true}), F('email','Email','text'),
+          F('phone','Phone','text'), F('subject','Subject','text'),
+          F('message','Message','textarea',{full:true,req:true}),
+          F('status','Status','select',{opts:['new','read','archived']}) ] },
+      reviews:{ type:'inbox', table:'reviews', title:'Reviews', order:'created_at', asc:false,
+        filters:[['all','All'],['pending','Pending'],['approved','Approved'],['rejected','Rejected']],
+        cols:['Client','Rating','Review','Status','Actions'],
+        row:function(r){ return '<td><div class="name">'+esc(r.name)+'</div><div class="sub">'+esc(r.treatment||'')+'</div></td>'+
+            '<td>'+stars(r.rating)+'</td><td><div class="excerpt">'+esc(r.comment)+'</div></td>'+
+            '<td>'+pill(r.status)+(r.is_featured?' <span class="pill p-approved">featured</span>':'')+'</td>'+
+            '<td><div class="acts">'+
+              '<button class="btn good" data-act="status" data-v="approved">Approve</button>'+
+              '<button class="btn warn" data-act="status" data-v="rejected">Reject</button>'+
+              '<button class="btn star '+(r.is_featured?'on':'')+'" data-act="feature">★ Feature</button>'+
+              '<button class="btn edit" data-act="edit">Edit</button>'+
+              '<button class="btn bad" data-act="delete">Delete</button></div></td>'; },
+        fields:[ F('name','Client name','text',{req:true}), F('treatment','Treatment','text'),
+          F('rating','Rating (1-5)','number'), F('comment','Review','textarea',{full:true,req:true}),
+          F('email','Email','text'), F('language','Language','select',{opts:['en','ar']}),
+          F('status','Status','select',{opts:['pending','approved','rejected']}),
+          F('is_featured','Featured','checkbox') ] },
+
+      // ── CONTENT (full CRUD) ──
+      doctors:{ type:'collection', table:'doctors', title:'Doctors', order:'sort_order', asc:true, pk:'id',
+        cols:['','Doctor','Department','Order','Active','Actions'],
+        row:function(r){
+            return '<td>'+thumb(r.image_url)+'</td>'+
+            '<td><div class="name">'+esc(r.name_en)+'</div><div class="sub">'+esc(r.specialty_en||'')+
+            (r.name_ar?' · '+esc(r.name_ar):'')+'</div></td>'+
+            '<td>'+esc(Array.isArray(r.department)?(r.department.join(', ')||'—'):(r.department||'—'))+'</td>'+
+            orderCell(r)+
+            '<td>'+yn(r.is_active)+'</td>'; },
+        fields:[ F('name_en','Name (EN)','text',{req:true,hint:'shown as the page heading'}),
+          F('name_ar','Name (AR)','text',{ar:true,hint:'heading on the Arabic page'}),
+          F('slug','Slug','text',{req:true,hint:'url id — lowercase, no spaces, e.g. dr-mira-mounir'}),
+          F('specialty_en','Specialty (EN)','text',{hint:'small gold line above the name'}),
+          F('specialty_ar','Specialty (AR)','text',{ar:true,hint:'same line, Arabic'}),
+          F('department','Departments','multiselect',{opts:['body','skin','hair','surgical'],hint:'choose one or more'}),
+          F('image_url','Photo','image',{full:true,hint:'upload the doctor\u2019s photo — appears large on the page and on the cards'}),
+          F('tagline_en','Tagline (EN)','textarea',{full:true,hint:'one line under the name'}),
+          F('tagline_ar','Tagline (AR)','textarea',{full:true,ar:true,hint:'one line under the name, Arabic'}),
+          F('credentials_en','Credentials (EN)','textarea',{full:true,hint:'one per line — each becomes a gold star bullet'}),
+          F('credentials_ar','Credentials (AR)','textarea',{full:true,ar:true,hint:'one per line, Arabic'}),
+          F('bio_en','About / Bio (EN)','textarea',{full:true,hint:'leave a blank line between paragraphs'}),
+          F('bio_ar','About / Bio (AR)','textarea',{full:true,ar:true,hint:'leave a blank line between paragraphs'}),
+          F('why_en','Why patients trust them (EN)','textarea',{full:true,hint:'one per line — badge | label | text, e.g.  12+ | Experience | Years in body contouring.'}),
+          F('why_ar','Why patients trust them (AR)','textarea',{full:true,ar:true,hint:'سطر لكل واحدة — الرقم | العنوان | الوصف'}),
+          F('services_en','Areas of expertise (EN)','textarea',{full:true,hint:'one service per line — becomes the gold star list'}),
+          F('services_ar','Areas of expertise (AR)','textarea',{full:true,ar:true,hint:'خدمة في كل سطر'}),
+          F('tech_en','Technologies used (EN)','textarea',{full:true,hint:'one per line — device | what it does, e.g.  EMTONE | Cellulite treatment and skin firming.'}),
+          F('tech_ar','Technologies used (AR)','textarea',{full:true,ar:true,hint:'سطر لكل جهاز — الجهاز | بيعمل إيه'}),
+          F('faq_en','FAQ (EN)','textarea',{full:true,hint:'one per line — question | answer'}),
+          F('faq_ar','FAQ (AR)','textarea',{full:true,ar:true,hint:'سطر لكل سؤال — السؤال | الإجابة'}),
+          F('page_url','Custom page URL','text',{full:true,hint:'optional — only if the doctor has their own .html page, e.g. doctors/dr-sara-abdelhameed.html. Leave blank to use the built-in profile page.'}),
+          F('sort_order','Sort order','number',{hint:'position on the Doctors page'}),
+          F('is_active','Active (show on site)','checkbox') ] },
+      blog:{ type:'collection', table:'blog_posts', title:'Blog', order:'sort_order', asc:true, pk:'id',
+        cols:['','Title','Published','Date','Order','Actions'],
+        row:function(r){ return '<td>'+thumb(r.cover_image_url)+'</td>'+
+            '<td><div class="name">'+esc(r.title_en)+'</div><div class="sub">'+esc(r.excerpt_en||'').slice(0,70)+'</div></td>'+
+            '<td>'+yn(r.is_published)+'</td><td>'+fmtDate(r.published_at)+'</td>'+orderCell(r); },
+        fields:[ F('title_en','Title (EN)','text',{req:true,full:true}), F('title_ar','Title (AR)','text',{full:true,ar:true}),
+          F('slug','Slug','text',{req:true,hint:'url id'}), F('published_at','Publish date','date'),
+          F('excerpt_en','Excerpt (EN)','textarea',{full:true}), F('excerpt_ar','Excerpt (AR)','textarea',{full:true,ar:true}),
+          F('body_en','Body (EN, markdown)','textarea',{full:true}), F('body_ar','Body (AR, markdown)','textarea',{full:true,ar:true}),
+          F('cover_image_url','Cover image','image',{full:true,hint:'upload a cover'}),
+          F('sort_order','Sort order','number'), F('is_published','Published','checkbox') ] },
+      treatments:{ type:'collection', table:'treatments', title:'Treatments', order:'sort_order', asc:true, pk:'id',
+        cols:['','Treatment','Category','Type','Order','Active','Actions'],
+        row:function(r){ return '<td>'+thumb(r.image_url)+'</td>'+
+            '<td><div class="name">'+esc(r.name_en)+'</div><div class="sub">'+esc(r.tagline_en||'')+'</div></td>'+
+            '<td>'+esc(r.category||'—')+'</td><td>'+(r.parent_slug?'sub-treatment':'umbrella')+'</td>'+orderCell(r)+'<td>'+yn(r.is_active)+'</td>'; },
+        fields:[ F('name_en','Name (EN)','text',{req:true}), F('name_ar','Name (AR)','text',{ar:true}),
+          F('slug','Slug','text',{req:true,hint:'url id'}),
+          F('category','Category','select',{opts:['body-shaping','skin-rejuvenation','hair-restoration','surgery'],hint:'which department of the website this belongs to'}),
+          F('parent_slug','Parent slug','text',{hint:'blank = umbrella page; set = sub-treatment'}),
+          F('tagline_en','Tagline (EN)','text'), F('tagline_ar','Tagline (AR)','text',{ar:true}),
+          F('description_en','Description (EN)','textarea',{full:true}), F('description_ar','Description (AR)','textarea',{full:true,ar:true}),
+          F('image_url','Image','image',{full:true,hint:'upload an image'}),
+          F('sort_order','Sort order','number'), F('is_active','Active','checkbox') ] },
+      departments:{ type:'collection', table:'departments', title:'Departments', order:'sort_order', asc:true, pk:'id',
+        cols:['','Department','Slug','Order','Status','Actions'],
+        row:function(r){ return '<td>'+thumb(r.image_url)+'</td>'+
+            '<td><div class="name">'+esc(r.name_en)+'</div><div class="sub" dir="rtl">'+esc(r.name_ar||'')+'</div></td>'+
+            '<td><code style="font-size:.82rem">'+esc(r.slug||'')+'</code></td>'+
+            orderCell(r)+'<td>'+svcBadge(r.is_active)+'</td>'; },
+        extraActions:function(r){
+          return (r.page_url?'<a class="btn edit" href="../'+esc(r.page_url)+'" target="_blank" rel="noopener">View \u2197</a>':'')+
+            '<button class="btn edit" data-act="togglevis">'+(r.is_active?'Hide':'Show')+'</button>'; },
+        fields:[ F('name_en','Name (EN)','text',{req:true}), F('name_ar','Name (AR)','text',{ar:true}),
+          F('slug','Slug','text',{req:true,pk:true,hint:'url id, e.g. body-shaping'}),
+          F('description_en','Description (EN)','textarea',{full:true}), F('description_ar','Description (AR)','textarea',{full:true,ar:true}),
+          F('image_url','Image','image',{full:true,hint:'upload an image'}),
+          F('page_url','Page URL','text',{hint:'e.g. treatments/body-shaping.html'}),
+          F('sort_order','Sort order','number'), F('is_active','Active','checkbox') ] },
+      sitecopy:{ type:'collection', table:'site_content', title:'Site Copy', order:'key', asc:true, pk:'key',
+        cols:['Key','English','Arabic','Actions'],
+        row:function(r){ return '<td><div class="name" style="font-family:monospace;font-size:.82rem">'+esc(r.key)+'</div></td>'+
+            '<td><div class="excerpt">'+esc(r.value_en||'')+'</div></td>'+
+            '<td><div class="excerpt" style="direction:rtl">'+esc(r.value_ar||'')+'</div></td>'; },
+        fields:[ F('key','Key','text',{req:true,pk:true,full:true,hint:'matches an i18n key, e.g. cta.title'}),
+          F('value_en','English','textarea',{full:true}), F('value_ar','Arabic','textarea',{full:true,ar:true}) ] },
+
+      // ── RECORDS (sensitive, admin-only) ──
+      patients:{ type:'collection', table:'patients', title:'Patients', order:'created_at', asc:false, pk:'id',
+        cols:['Patient','Contact','Born','Actions'],
+        extraActions:'<button class="btn edit" data-act="records">Records</button>',
+        row:function(r){ return '<td><div class="name">'+esc(r.full_name)+'</div><div class="sub">'+esc(r.gender||'')+'</div></td>'+
+            '<td>'+esc(r.phone||'—')+(r.email?'<div class="sub">'+esc(r.email)+'</div>':'')+'</td>'+
+            '<td>'+fmtDate(r.date_of_birth)+'</td>'; },
+        fields:[ F('full_name','Full name','text',{req:true,full:true}),
+          F('phone','Phone','text'), F('email','Email','text'),
+          F('date_of_birth','Date of birth','date'), F('gender','Gender','select',{opts:['female','male','other']}),
+          F('address','Address','text',{full:true}), F('notes','Notes','textarea',{full:true}) ] },
+      records:{ type:'collection', table:'patient_records', title:'Records', order:'visit_date', asc:false, pk:'id', hidden:true,
+        cols:['Visit','Treatment','Doctor','Notes','Actions'],
+        row:function(r){ return '<td>'+fmtDate(r.visit_date)+'</td><td>'+esc(r.treatment||'—')+'</td>'+
+            '<td>'+esc(r.doctor||'—')+'</td><td><div class="excerpt">'+esc(r.clinical_notes||'')+'</div></td>'; },
+        fields:[ F('visit_date','Visit date','date',{req:true}), F('treatment','Treatment','text'),
+          F('doctor','Doctor','text'), F('clinical_notes','Clinical notes','textarea',{full:true}) ] }
+    };
+
+    async function load(){
+      var cfg=SECTIONS[state.section];
+      var content=document.getElementById('content');
+      content.innerHTML='<div class="state">Loading…</div>';
+      var q=db.from(cfg.table).select('*');
+      if(state.section==='records' && state.patientCtx) q=q.eq('patient_id', state.patientCtx.id);
+      q=q.order(cfg.order,{ascending:!!cfg.asc});
+      if(cfg.type==='inbox' && state.filter!=='all') q=q.eq('status',state.filter);
+      var res=await q;
+      if(res.error){ content.innerHTML='<div class="err">Couldn\'t load '+esc(cfg.title)+': '+esc(res.error.message)+'</div>'; return; }
+      state.rows=res.data||[]; render(); renderKpis(); if(cfg.type==='inbox') refreshBadges();
+    }
+
+    function render(){
+      var cfg=SECTIONS[state.section], content=document.getElementById('content');
+      if(!state.rows.length){
+        content.innerHTML='<div class="state"><div class="big">Nothing here yet</div>'+
+          (cfg.type==='collection'?'Click “Add new” to create the first one.':
+            (state.filter==='all'?'New items from the website will appear here.':'No '+esc(state.filter)+' items.'))+'</div>';
+        return;
+      }
+      var head='<tr>'+cfg.cols.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr>';
+      var pk=cfg.pk||'id';
+      var body=state.rows.map(function(r){
+        var actions = cfg.type==='collection'
+          ? '<td><div class="acts">'+(typeof cfg.extraActions==='function'?cfg.extraActions(r):(cfg.extraActions||''))+
+            '<button class="btn edit" data-act="edit">Edit</button>'+
+            '<button class="btn bad" data-act="delete">Delete</button></div></td>'
+          : '';
+        return '<tr data-id="'+esc(r[pk])+'">'+cfg.row(r)+actions+'</tr>';
+      }).join('');
+      content.innerHTML='<table><thead>'+head+'</thead><tbody>'+body+'</tbody></table>';
+    }
+
+    function renderKpis(){
+      var cfg=SECTIONS[state.section], counts={};
+      state.rows.forEach(function(r){ var k=cfg.type==='inbox'?r.status:(r.is_active?'active':(r.is_published?'published':'other'));
+        counts[k]=(counts[k]||0)+1; });
+      var items=[['Total',state.rows.length]];
+      if(cfg.type==='inbox') cfg.filters.slice(1).forEach(function(f){ items.push([f[1],counts[f[0]]||0]); });
+      else if(['doctors','treatments','blog_posts'].indexOf(cfg.table)>=0){
+        var on=state.rows.filter(function(r){return r.is_active||r.is_published;}).length;
+        items.push([cfg.table==='blog_posts'?'Published':'Active',on]); }
+      document.getElementById('kpis').innerHTML=items.map(function(it){
+        return '<div class="kpi"><div class="n">'+it[1]+'</div><div class="l">'+it[0]+'</div></div>'; }).join('');
+    }
+
+    async function refreshBadges(){
+      [['bookings','new'],['messages','new'],['reviews','pending']].forEach(function(d){
+        db.from(SECTIONS[d[0]].table).select('id',{count:'exact',head:true}).eq('status',d[1]).then(function(r){
+          var el=document.getElementById('b-'+d[0]);
+          if(!r.error&&r.count){ el.textContent=r.count; el.style.display='inline-block'; } else el.style.display='none'; }); });
+    }
+
+    // ── editor ──
+    function openEditor(record){
+      var cfg=SECTIONS[state.section]; editing=record;
+      document.getElementById('modalTitle').textContent=(record?'Edit ':'Add ')+cfg.title.replace(/s$/,'').toLowerCase();
+      document.getElementById('formErr').textContent='';
+      var rows='', buf=[];
+      cfg.fields.forEach(function(f){
+        var val=record?record[f.n]:'';
+        var html=fieldHTML(f,val,!!record);
+        if(f.t==='checkbox'||f.full){ if(buf.length){rows+='<div class="frow">'+buf.join('')+'</div>'; buf=[];} rows+=html; }
+        else { buf.push(html); if(buf.length===2){ rows+='<div class="frow">'+buf.join('')+'</div>'; buf=[]; } }
+      });
+      if(buf.length) rows+='<div class="frow">'+buf.join('')+'</div>';
+      var importPanel='';
+      if(state.section==='doctors'){
+        importPanel='<div class="import-panel"><strong>Doctor profile</strong>'+
+          ' <span class="hint">— fill in every box below. Each one maps to a part of the doctor\u2019s page: '+
+          'the name and specialty appear in the header, the tagline sits under the name, credentials become '+
+          'the gold star checklist, and the About text becomes the paragraphs. Leave a box empty and that '+
+          'section is simply hidden on the page.</span></div>';
+      }
+      document.getElementById('modalBody').innerHTML=importPanel+rows;
+      document.getElementById('overlay').classList.add('open');
+    }
+    function fieldHTML(f,val,isEdit){
+      var cls='fld'+(f.full?' full':'')+(f.t==='checkbox'?' check':'');
+      var id='f_'+f.n;
+      var label='<label for="'+id+'">'+esc(f.l)+(f.req?' *':'')+(f.hint?' <span class="hint">— '+esc(f.hint)+'</span>':'')+'</label>';
+      var arcls=f.ar?' ar':'';
+      var dis=(f.pk&&isEdit)?' disabled':'';
+      var input;
+      if(f.t==='image'){
+        var iv = (val && !/^https?:|^\//.test(val)) ? '../'+val : val;
+        return '<div class="fld full"><label>'+esc(f.l)+(f.hint?' <span class="hint">— '+esc(f.hint)+'</span>':'')+'</label>'+
+          '<div class="img-field">'+
+            (val?'<img class="img-prev" src="'+esc(iv)+'" alt="">':'<div class="img-prev"></div>')+
+            '<input type="file" accept="image/*" data-imgfile="'+f.n+'">'+
+            '<input type="hidden" data-f="'+f.n+'" value="'+esc(val)+'">'+
+            '<span class="img-status"></span></div></div>';
+      }
+      if(f.t==='multiselect'){
+        var arr=Array.isArray(val)?val:(val?[val]:[]);
+        var boxes=f.opts.map(function(o){
+          return '<label style="display:inline-flex;align-items:center;gap:.4rem;margin:0 1rem .4rem 0;font-weight:400;color:var(--ink);font-size:.9rem">'+
+            '<input type="checkbox" data-multi="'+f.n+'" value="'+esc(o)+'"'+(arr.indexOf(o)>=0?' checked':'')+
+            ' style="width:16px;height:16px;accent-color:var(--gold)">'+esc(o)+'</label>';
+        }).join('');
+        return '<div class="fld'+(f.full?' full':'')+'"><label>'+esc(f.l)+
+          (f.hint?' <span class="hint">— '+esc(f.hint)+'</span>':'')+
+          '</label><div style="display:flex;flex-wrap:wrap;margin-top:.2rem">'+boxes+'</div></div>';
+      }
+      if(f.t==='textarea') input='<textarea id="'+id+'" data-f="'+f.n+'" class="'+arcls.trim()+'">'+esc(val)+'</textarea>';
+      else if(f.t==='checkbox') return '<div class="'+cls+'"><input type="checkbox" id="'+id+'" data-f="'+f.n+'" '+(val?'checked':'')+'>'+label+'</div>';
+      else if(f.t==='select'){ input='<select id="'+id+'" data-f="'+f.n+'"><option value="">—</option>'+
+        f.opts.map(function(o){return '<option '+(val===o?'selected':'')+'>'+esc(o)+'</option>';}).join('')+'</select>'; }
+      else if(f.t==='number') input='<input type="number" id="'+id+'" data-f="'+f.n+'" value="'+esc(val)+'">';
+      else if(f.t==='date') input='<input type="date" id="'+id+'" data-f="'+f.n+'" value="'+esc(val?String(val).slice(0,10):'')+'">';
+      else input='<input type="text" id="'+id+'" data-f="'+f.n+'" class="'+arcls.trim()+'" value="'+esc(val)+'"'+dis+'>';
+      return '<div class="'+cls+'">'+label+input+'</div>';
+    }
+    function closeEditor(){ document.getElementById('overlay').classList.remove('open'); editing=null; }
+
+    async function saveRecord(){
+      var cfg=SECTIONS[state.section], pk=cfg.pk||'id';
+      var saveBtn=document.getElementById('modalSave'), errEl=document.getElementById('formErr');
+      var obj={};
+      cfg.fields.forEach(function(f){
+        if(f.t==='multiselect'){
+          var picked=Array.prototype.slice.call(document.querySelectorAll('[data-multi="'+f.n+'"]:checked')).map(function(c){return c.value;});
+          obj[f.n]=picked.length?picked:null; return;
+        }
+        var el=document.querySelector('[data-f="'+f.n+'"]'); if(!el) return;
+        var v;
+        if(f.t==='checkbox') v=el.checked;
+        else if(f.t==='number'){ v=el.value===''?null:parseInt(el.value,10); }
+        else { v=el.value.trim(); if(v==='') v=null; }
+        obj[f.n]=v;
+      });
+      // slugs go straight into URLs — normalise so spaces/capitals can't break the link
+      if(obj.slug!=null && obj.slug!==''){
+        var cleanSlug=slugify(obj.slug);
+        if(cleanSlug && cleanSlug!==obj.slug){
+          obj.slug=cleanSlug;
+          var slugEl=document.querySelector('[data-f="slug"]'); if(slugEl) slugEl.value=cleanSlug;
+        }
+      }
+
+      // validate required
+      var missing=cfg.fields.filter(function(f){return f.req && (obj[f.n]==null||obj[f.n]==='');});
+      if(missing.length){ errEl.textContent='Fill in: '+missing.map(function(f){return f.l;}).join(', '); return; }
+
+      // departments: auto-link added ones to the dynamic styled page if no page_url is given
+      if(state.section==='departments' && obj.slug && !obj.page_url){ obj.page_url='treatments/department.html?slug='+obj.slug; }
+
+      saveBtn.disabled=true; saveBtn.textContent='Saving…'; errEl.textContent='';
+      try{
+        var res;
+        if(editing){ var payload={}; Object.keys(obj).forEach(function(k){ if(k!==pk) payload[k]=obj[k]; });
+          res=await db.from(cfg.table).update(payload).eq(pk, editing[pk]); }
+        else {
+          if(state.section==='records' && state.patientCtx) obj.patient_id=state.patientCtx.id;
+          var clean={}; Object.keys(obj).forEach(function(k){ if(obj[k]!==null) clean[k]=obj[k]; });
+          res=await db.from(cfg.table).insert(clean);
+        }
+        if(res.error){ errEl.textContent=res.error.message; return; }
+        closeEditor(); load();
+      } finally { saveBtn.disabled=false; saveBtn.textContent='Save'; }
+    }
+
+    async function doAction(id, act, v){
+      var cfg=SECTIONS[state.section], pk=cfg.pk||'id';
+      var row=state.rows.find(function(r){return String(r[pk])===String(id);});
+      if(act==='edit'){ openEditor(row); return; }
+      if(act==='togglevis'){
+        var next=!row.is_active;
+        var tv=await db.from(cfg.table).update({is_active:next}).eq(pk,row[pk]);
+        if(tv.error) return alert('Could not change visibility: '+tv.error.message);
+        load(); return;
+      }
+      if(act==='records'){ state.patientCtx=row; switchSection('records'); return; }
+      if(act==='moveup' || act==='movedown'){
+        // swap this row with its neighbour, then renumber sort_order sequentially
+        var list=state.rows.slice();
+        var i=list.findIndex(function(r){return String(r[pk])===String(id);});
+        var j=(act==='moveup')?i-1:i+1;
+        if(i<0 || j<0 || j>=list.length) return;           // at an edge → nothing to do
+        var t=list[i]; list[i]=list[j]; list[j]=t;          // swap positions
+        for(var k=0;k<list.length;k++){
+          if(list[k].sort_order!==k){
+            var u=await db.from(cfg.table).update({sort_order:k}).eq(pk,list[k][pk]);
+            if(u.error) return alert('Reorder failed: '+u.error.message);
+          }
+        }
+        load(); return;
+      }
+      if(act==='delete'){
+        if(!confirm('Delete this '+cfg.title.replace(/s$/,'').toLowerCase()+'? This can\'t be undone.')) return;
+        var d=await db.from(cfg.table).delete().eq(pk,id); if(d.error) return alert('Delete failed: '+d.error.message);
+      } else if(act==='status'){ var u=await db.from(cfg.table).update({status:v}).eq(pk,id); if(u.error) return alert('Update failed: '+u.error.message); }
+      else if(act==='feature'){ var f=await db.from(cfg.table).update({is_featured:!row.is_featured}).eq(pk,id); if(f.error) return alert('Update failed: '+f.error.message); }
+      load();
+    }
+
+    function switchSection(sec){
+      state.section=sec; state.filter='all';
+      if(sec==='services'){
+        document.querySelectorAll('.nav-item[data-section]').forEach(function(n){ n.classList.toggle('active', n.dataset.section==='services'); });
+        document.getElementById('title').textContent='Services';
+        document.getElementById('panelTitle').textContent='Services';
+        document.getElementById('headRight').innerHTML='<button class="add-btn" id="svcAddNew">+ Add service</button>';
+        document.getElementById('kpis').innerHTML='';
+        svcLoadList(); return;
+      }
+      if(sec!=='records') state.patientCtx=null;
+      document.querySelectorAll('.nav-item[data-section]').forEach(function(n){
+        n.classList.toggle('active', n.dataset.section===sec || (sec==='records'&&n.dataset.section==='patients')); });
+      var cfg=SECTIONS[sec];
+      var titleText = (sec==='records' && state.patientCtx) ? 'Records — '+state.patientCtx.full_name : cfg.title;
+      document.getElementById('title').textContent=titleText;
+      document.getElementById('panelTitle').textContent=titleText;
+      var hr=document.getElementById('headRight'), html='';
+      if(sec==='records') html+='<span class="chip" id="backToPatients">← Patients</span>';
+      if(cfg.type==='inbox') html+=cfg.filters.map(function(f){
+        return '<span class="chip'+(f[0]==='all'?' active':'')+'" data-filter="'+f[0]+'">'+f[1]+'</span>'; }).join('');
+      html+='<span class="refresh" id="refresh">↻ Refresh</span>';
+      if(cfg.type==='collection' || (cfg.fields && cfg.type==='inbox')) html+='<button class="add-btn" id="addNew">+ Add '+(sec==='records'?'record':'new')+'</button>';
+      hr.innerHTML=html;
+      document.getElementById('kpis').innerHTML=''; load();
+    }
+
+    document.addEventListener('click', function(e){
+      var nav=e.target.closest('.nav-item[data-section]'); if(nav){ switchSection(nav.dataset.section); return; }
+      var chip=e.target.closest('.chip[data-filter]');
+      if(chip){ state.filter=chip.dataset.filter;
+        document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('active',c===chip);}); load(); return; }
+      if(e.target.id==='refresh'){ load(); return; }
+      if(e.target.id==='backToPatients'){ switchSection('patients'); return; }
+      if(e.target.id==='addNew'){ openEditor(null); return; }
+      if(e.target.id==='signout'){ signOut(); return; }
+      if(e.target.id==='modalClose'||e.target.id==='modalCancel'||e.target.id==='overlay'){ closeEditor(); return; }
+      if(e.target.id==='modalSave'){ saveRecord(); return; }
+      var btn=e.target.closest('button[data-act]');
+      if(btn){ if(btn.disabled) return; var tr=btn.closest('tr[data-id]'); if(tr) doAction(tr.dataset.id, btn.dataset.act, btn.dataset.v); }
+    });
+
+    async function signOut(){ if(window.HC) await window.HC.auth.signOut(); window.location.href='login.html'; }
+
+    // ── Import doctor profile from a file (EN / AR) ──
+    function ensureMammoth(){ return new Promise(function(res,rej){
+      if(window.mammoth) return res();
+      var s=document.createElement('script');
+      s.src='https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js';
+      s.onload=res; s.onerror=function(){rej(new Error('load failed'));}; document.head.appendChild(s); }); }
+    function slugify(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+    function setF(name,val){ if(val==null||val==='') return; var el=document.querySelector('[data-f="'+name+'"]'); if(el) el.value=val; }
+    var DOC_LABELS={name:'name',specialty:'specialty',title:'specialty',role:'specialty',
+      tagline:'tagline',intro:'tagline',subtitle:'tagline',
+      credentials:'credentials',qualifications:'credentials',highlights:'credentials',
+      about:'about',bio:'about',biography:'about',profile:'about',overview:'about'};
+    function parseDoctorDoc(text){
+      var lines=String(text).replace(/\r/g,'').split('\n');
+      var out={name:'',specialty:'',tagline:'',credentials:'',about:''}, buckets={}, cur=null, found=false;
+      lines.forEach(function(line){
+        var m=line.match(/^\s*([A-Za-z][A-Za-z /]{1,20})\s*[:：]\s*(.*)$/);
+        var key=m?DOC_LABELS[m[1].trim().toLowerCase()]:null;
+        if(key){ found=true; cur=key; buckets[cur]=buckets[cur]||''; if(m[2].trim()) buckets[cur]+=m[2].trim()+'\n'; }
+        else if(cur){ buckets[cur]+=line+'\n'; }
+      });
+      if(!found){ out.about=String(text).trim(); return out; }
+      ['name','specialty','tagline','credentials','about'].forEach(function(k){ if(buckets[k]) out[k]=buckets[k].trim(); });
+      out.name=(out.name.split('\n')[0]||'').trim();
+      out.specialty=(out.specialty.split('\n')[0]||'').trim();
+      out.tagline=out.tagline.replace(/\n+/g,' ').trim();
+      out.credentials=out.credentials.split('\n').map(function(l){return l.replace(/^[-*•\u2022\u25CF]\s*/,'').trim();}).filter(Boolean).join('\n');
+      return out;
+    }
+    // Split one profile file into its English and Arabic halves.
+    // Blocks are separated by an explicit marker (---, [AR], == AR ==) when present;
+    // otherwise the second "Name:" label starts the second block. Each half is then
+    // assigned to a language by looking for Arabic letters, so the order doesn't matter.
+    function isArabic(s){ return /[\u0600-\u06FF]/.test(String(s||'')); }
+    function splitDoctorDoc(text){
+      var raw=String(text).replace(/\r/g,'');
+      var lines=raw.split('\n');
+      var cut=-1;
+      for(var i=1;i<lines.length;i++){
+        if(/^\s*(-{3,}|={3,}|\[\s*(ar|en|arabic|english)\s*\]|={2,}\s*(ar|en|arabic|english)\s*={2,})\s*$/i.test(lines[i])){ cut=i; break; }
+      }
+      if(cut<0){                                   // no marker — fall back to the second Name: label
+        var seen=0;
+        for(var j=0;j<lines.length;j++){
+          if(/^\s*name\s*[:：]/i.test(lines[j]) || /^\s*(الاسم|الإسم)\s*[:：]/.test(lines[j])){
+            seen++; if(seen===2){ cut=j; break; }
+          }
+        }
+      }
+      if(cut<0) return isArabic(raw) ? {ar:raw, en:''} : {en:raw, ar:''};
+      var a=lines.slice(0,cut).join('\n');
+      var b=lines.slice(/^\s*(-{3,}|={3,}|\[)/.test(lines[cut])?cut+1:cut).join('\n');
+      return isArabic(a)&&!isArabic(b) ? {ar:a, en:b} : {en:a, ar:b};
+    }
+
+    function fillDoctorSide(text, lng){
+      if(!text || !text.trim()) return false;
+      var p=parseDoctorDoc(text), suf=(lng==='ar'?'_ar':'_en');
+      setF('name'+suf,p.name); setF('specialty'+suf,p.specialty); setF('tagline'+suf,p.tagline);
+      setF('credentials'+suf,p.credentials); setF('bio'+suf,p.about);
+      if(lng==='en' && p.name){ var sl=document.querySelector('[data-f="slug"]'); if(sl && !sl.value) sl.value=slugify(p.name); }
+      return !!(p.name||p.about||p.specialty);
+    }
+
+    async function importDoctorDoc(file, lng, statusEl){
+      statusEl.style.color=''; statusEl.textContent='Reading…';
+      var text='';
+      try{
+        if(/\.docx?$/i.test(file.name)){
+          await ensureMammoth();
+          var ab=await file.arrayBuffer();
+          text=(await window.mammoth.extractRawText({arrayBuffer:ab})).value||'';
+        } else { text=await file.text(); }
+      }catch(e){ statusEl.style.color='var(--red)'; statusEl.textContent='Could not read that file'; return; }
+
+      if(lng==='auto'){
+        var parts=splitDoctorDoc(text);
+        var gotEn=fillDoctorSide(parts.en,'en');
+        var gotAr=fillDoctorSide(parts.ar,'ar');
+        if(!gotEn && !gotAr){
+          statusEl.style.color='var(--red)';
+          statusEl.textContent='No fields found — check the labels (Name, Specialty, Tagline, Credentials, About)';
+          return;
+        }
+        var got=[gotEn?'English':null, gotAr?'Arabic':null].filter(Boolean).join(' + ');
+        statusEl.style.color='var(--green)';
+        statusEl.textContent=got+' imported ✓ — review & Save'+((gotEn&&gotAr)?'':' (only one language found in the file)');
+        return;
+      }
+      fillDoctorSide(text,lng);
+      statusEl.style.color='var(--green)'; statusEl.textContent=(lng==='ar'?'Arabic':'English')+' imported ✓ — review & Save';
+    }
+
+    // ── image upload to Supabase Storage (auto-resized) ──
+    function resizeImage(file, maxDim, quality){
+      return new Promise(function(resolve){
+        if(!/^image\//.test(file.type) || /gif|svg/.test(file.type)){ resolve(file); return; }
+        var img=new Image(); var url=URL.createObjectURL(file);
+        img.onload=function(){
+          var w=img.naturalWidth, h=img.naturalHeight;
+          if(Math.max(w,h)<=maxDim){ URL.revokeObjectURL(url); resolve(file); return; }
+          var scale=maxDim/Math.max(w,h);
+          var cv=document.createElement('canvas'); cv.width=Math.round(w*scale); cv.height=Math.round(h*scale);
+          cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height);
+          cv.toBlob(function(blob){ URL.revokeObjectURL(url); resolve(blob||file); }, 'image/jpeg', quality);
+        };
+        img.onerror=function(){ URL.revokeObjectURL(url); resolve(file); };
+        img.src=url;
+      });
+    }
+    document.addEventListener('change', async function(e){
+      var fi=e.target.closest('[data-imgfile]'); if(!fi) return;
+      var file=fi.files&&fi.files[0]; if(!file) return;
+      var wrap=fi.closest('.img-field');
+      var hidden=wrap.querySelector('input[type=hidden][data-f]');
+      var status=wrap.querySelector('.img-status');
+      var prev=wrap.querySelector('.img-prev');
+      status.className='img-status'; status.textContent='Optimizing…';
+      try{
+        var blob=await resizeImage(file, 1200, 0.82);
+        status.textContent='Uploading…';
+        var cfg=SECTIONS[state.section];
+        var base=file.name.replace(/\.[^.]+$/,'').replace(/[^a-zA-Z0-9._-]/g,'_');
+        var ext=(blob.type==='image/jpeg')?'jpg':(file.name.split('.').pop()||'img').toLowerCase();
+        var path=cfg.table+'/'+Date.now()+'_'+base+'.'+ext;
+        var up=await db.storage.from('images').upload(path,blob,{upsert:true,cacheControl:'3600',contentType:blob.type||file.type});
+        if(up.error){ status.className='img-status bad'; status.textContent='Upload failed: '+up.error.message; return; }
+        var url=db.storage.from('images').getPublicUrl(path).data.publicUrl;
+        hidden.value=url;
+        var nimg=document.createElement('img'); nimg.className='img-prev'; nimg.src=url; nimg.alt='';
+        if(prev) prev.replaceWith(nimg);
+        status.className='img-status ok'; status.textContent='Uploaded ✓';
+      }catch(err){ status.className='img-status bad'; status.textContent='Upload error'; console.error(err); }
+    });
+
+    /* ════════════ SERVICES — Add a full premium service page ════════════ */
+    // one canonical list, matching the sections on the website (see SVC_DEPTS below)
+    // the four departments on the website — Laser and Votiva are single pages, not departments
+    var SVC_CATS=[['body-shaping','Body Shaping'],['skin-rejuvenation','Skin Rejuvenation'],['hair-restoration','Hair Restoration'],['surgery','Surgery']];
+    var svcEditing=null;
+
+    // Every service that ships with the website (body, skin, hair, surgery).
+    // Any of these missing from the `treatments` table are added automatically
+    // the first time the Services section is opened, so the list is always complete.
+    // the six surgery procedures are now one "Cosmetic Surgery" entry — remove the old rows
+    var LEGACY_SERVICE_SLUGS=["rhinoplasty", "liposuction", "tummy-tuck", "breast-surgery", "facelift", "eyelid-surgery"];
+    var SITE_SERVICES=[
+      {"slug": "tesla-former", "category": "body-shaping", "parent_slug": "body-shaping", "name_en": "Tesla Former", "name_ar": "Tesla Former في مصر", "description_en": "يبني العضلات ويحرق الدهون باستخدام تقنية الموجات الكهرومغناطيسية المركّزة — يعادل آلاف تمارين البطن في جلسة واحدة.", "description_ar": "يبني العضلات ويحرق الدهون باستخدام تقنية الموجات الكهرومغناطيسية المركّزة — يعادل آلاف تمارين البطن في جلسة واحدة.", "image_url": "assets/images/sub-treatments/tesla-former.jpg", "page_url": "treatments/body-shaping/tesla-former.html", "sort_order": 1, "is_active": true},
+      {"slug": "emtone", "category": "body-shaping", "parent_slug": "body-shaping", "name_en": "EMTONE", "name_ar": "EMTONE — علاج السيلوليت", "description_en": "The first device to simultaneously treat all major cellulite causes — using radiofrequency and targeted pressure.", "description_ar": "أول جهاز يعالج كل أسباب السيلوليت في وقت واحد — باستخدام الموجات الراديوية والضغط المستهدف.", "image_url": "assets/images/sub-treatments/emtone.jpg", "page_url": "treatments/body-shaping/emtone.html", "sort_order": 2, "is_active": true},
+      {"slug": "body-fx", "category": "body-shaping", "parent_slug": "body-shaping", "name_en": "Body FX", "name_ar": "Body FX في مصر", "description_en": "Non-invasive radiofrequency body contouring that reduces fat, tightens skin, and smooths cellulite — all in one device.", "description_ar": "نحت الجسم بالموجات الراديوية بدون تدخل جراحي — بيقلل الدهون ويشدّ البشرة ويخفف السيلوليت في جهاز واحد.", "image_url": "assets/images/sub-treatments/body-fx.jpg", "page_url": "treatments/body-shaping/body-fx.html", "sort_order": 3, "is_active": true},
+      {"slug": "clatuu-alpha", "category": "body-shaping", "parent_slug": "body-shaping", "name_en": "Clatuu Alpha", "name_ar": "Clatuu Alpha في مصر", "description_en": "تجميد الدهون المتقدم — تطبيقات 360° بتستهدف الدهون العنيدة اللي مش بتروح بالحمية أو الرياضة.", "description_ar": "تجميد الدهون المتقدم — تطبيقات 360° بتستهدف الدهون العنيدة اللي مش بتروح بالحمية أو الرياضة.", "image_url": "assets/images/sub-treatments/clatuu-alpha.jpg", "page_url": "treatments/body-shaping/clatuu-alpha.html", "sort_order": 4, "is_active": true},
+      {"slug": "hifu-body", "category": "body-shaping", "parent_slug": "body-shaping", "name_en": "HIFU Body", "name_ar": "HIFU Body في مصر", "description_en": "Non-surgical body lifting and tightening with high-intensity focused ultrasound — for arms, abdomen, thighs, and more.", "description_ar": "شد ورفع الجسم بدون جراحة باستخدام الموجات فوق الصوتية المركّزة عالية الكثافة — للأذرع، البطن، الفخذين، والمناطق الأخرى.", "image_url": "assets/images/sub-treatments/hifu-body.jpg", "page_url": "treatments/body-shaping/hifu-body.html", "sort_order": 5, "is_active": true},
+      {"slug": "morpheus8-body", "category": "body-shaping", "parent_slug": "body-shaping", "name_en": "Morpheus8 Body", "name_ar": "Morpheus8 Body في مصر", "description_en": "Microneedling + radiofrequency for deep skin remodeling on the body — stretch marks, laxity, and texture.", "description_ar": "الميكرونيدلينج + الموجات الراديوية لإعادة بناء البشرة بعمق على الجسم — لعلامات التمدد، الترهل، والملمس.", "image_url": "assets/images/sub-treatments/morpheus8-body.jpg", "page_url": "treatments/body-shaping/morpheus8-body.html", "sort_order": 6, "is_active": true},
+      {"slug": "botox", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Botox", "name_ar": "البوتوكس في مصر", "description_en": "Smooths wrinkles and prevents new ones by relaxing targeted facial muscles. Refreshed, not frozen.", "description_ar": "يخفي التجاعيد ويمنع ظهور الجديدة عن طريق ارتخاء عضلات الوجه المستهدفة. إطلالة منتعشة طبيعية.", "image_url": "assets/images/sub-treatments/botox.jpg", "page_url": "treatments/skin-rejuvenation/botox.html", "sort_order": 7, "is_active": true},
+      {"slug": "filler", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Dermal Fillers", "name_ar": "الفيلر في مصر", "description_en": "Restores lost volume in lips, cheeks, jawline, and under-eye — for natural, balanced results.", "description_ar": "يستعيد الحجم المفقود في الشفايف، الخدود، الفك، وتحت العين — لنتائج طبيعية متوازنة.", "image_url": "assets/images/sub-treatments/filler.jpg", "page_url": "treatments/skin-rejuvenation/filler.html", "sort_order": 8, "is_active": true},
+      {"slug": "skin-boosters", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Skin Boosters", "name_ar": "Skin Boosters في مصر", "description_en": "Deep hyaluronic hydration injections that restore glow, elasticity, and quality from within.", "description_ar": "حقن ترطيب عميق بحمض الهيالورونيك بتستعيد الإشراقة، المرونة، وجودة البشرة من الداخل.", "image_url": "assets/images/sub-treatments/skin-boosters.jpg", "page_url": "treatments/skin-rejuvenation/skin-boosters.html", "sort_order": 9, "is_active": true},
+      {"slug": "biostimulators", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Biostimulators", "name_ar": "Biostimulators في مصر", "description_en": "Stimulate your own collagen for firmer, denser skin and long-lasting natural rejuvenation.", "description_ar": "تحفّز إنتاج الكولاجين الطبيعي لبشرة أكثر شداً وكثافة، مع تجديد طبيعي طويل المدى.", "image_url": "assets/images/sub-treatments/biostimulators.jpg", "page_url": "treatments/skin-rejuvenation/biostimulators.html", "sort_order": 10, "is_active": true},
+      {"slug": "hydrafacial", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Hydrafacial", "name_ar": "الهيدرافيشيال في مصر", "description_en": "Deep cleansing, exfoliation, and hydration in one session. Instant glow with zero downtime.", "description_ar": "تنظيف عميق، تقشير، وترطيب في جلسة واحدة. إشراقة فورية بدون فترة نقاهة.", "image_url": "assets/images/sub-treatments/hydrafacial.jpg", "page_url": "treatments/skin-rejuvenation/hydrafacial.html", "sort_order": 11, "is_active": true},
+      {"slug": "iface", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "iFace", "name_ar": "iFace", "description_en": "Our signature combination — Hydrafacial + Forma in one session for cleansing, hydration, and skin tightening.", "description_ar": "البروتوكول المميز عندنا — هيدرافيشيال + فورما في جلسة واحدة للتنظيف، الترطيب، وشد البشرة.", "image_url": "assets/images/sub-treatments/iface.jpg", "page_url": "treatments/skin-rejuvenation/iface.html", "sort_order": 12, "is_active": true},
+      {"slug": "forma", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Forma Skin Tightening", "name_ar": "الفورما لشد البشرة", "description_en": "Radiofrequency skin tightening — gentle warming that stimulates collagen and firms over time.", "description_ar": "شد البشرة بالموجات الراديوية — حرارة لطيفة بتحفّز الكولاجين وبتشدّ مع الوقت.", "image_url": "assets/images/sub-treatments/forma.jpg", "page_url": "treatments/skin-rejuvenation/forma.html", "sort_order": 13, "is_active": true},
+      {"slug": "hifu", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "HIFU – Non-Surgical Face Lift", "name_ar": "الهايفو – شد الوجه بدون جراحة", "description_en": "High-Intensity Focused Ultrasound for non-surgical lifting and tightening at the deepest skin layers.", "description_ar": "موجات فوق صوتية مركّزة عالية الكثافة لشد ورفع البشرة بدون جراحة في أعمق الطبقات.", "image_url": "assets/images/sub-treatments/hifu.jpg", "page_url": "treatments/skin-rejuvenation/hifu.html", "sort_order": 14, "is_active": true},
+      {"slug": "morpheus8", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Morpheus8", "name_ar": "Morpheus8 في مصر", "description_en": "Microneedling + radiofrequency for deep skin remodeling — scars, texture, pores, and tightening.", "description_ar": "ميكرونيدلينج + موجات راديوية لإعادة بناء عميقة للبشرة — للندبات، الملمس، المسام، والشد.", "image_url": "assets/images/sub-treatments/morpheus8.jpg", "page_url": "treatments/skin-rejuvenation/morpheus8.html", "sort_order": 15, "is_active": true},
+      {"slug": "laser", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Laser Treatments", "name_ar": "علاجات الليزر", "description_en": "Hair removal, skin resurfacing, pigmentation correction.", "description_ar": "إزالة الشعر، تجديد البشرة، علاج التصبغات.", "image_url": "assets/images/laser.jpg", "page_url": "treatments/laser.html", "sort_order": 16, "is_active": true},
+      {"slug": "votiva", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Votiva", "name_ar": "فوتيفا", "description_en": "Non-surgical intimate wellness — tightening, urinary incontinence, and post-childbirth restoration.", "description_ar": "تجميل المنطقة الحساسة بدون جراحة — شد، علاج سلس البول، واستعادة ما بعد الولادة.", "image_url": "assets/images/votiva.jpg", "page_url": "treatments/votiva.html", "sort_order": 17, "is_active": true},
+      {"slug": "exosomes", "category": "hair-restoration", "parent_slug": "hair-restoration", "name_en": "Exosomes", "name_ar": "Exosomes", "description_en": "The latest Korean technology for hereditary baldness and chronic hair loss — cellular communication signals that reprogram the follicle for new, healthy growth.", "description_ar": "أحدث تكنولوجيا كورية لعلاج الصلع الوراثي وتساقط الشعر المزمن — إشارات تواصل خلوي بتعيد برمجة البصيلة لنمو شعر جديد وصحي.", "image_url": "assets/images/sub-treatments/exosomes.jpg", "page_url": "treatments/hair-restoration/exosomes.html", "sort_order": 18, "is_active": true},
+      {"slug": "growth-factor", "category": "hair-restoration", "parent_slug": "hair-restoration", "name_en": "Growth Factor", "name_ar": "Growth Factor", "description_en": "Concentrated multivitamin and peptide injections — feed the follicle, stop the shedding, fill thinning gaps, and restore healthy hair quality.", "description_ar": "حقن فيتامينات وببتيدات مركزة — بتغذي البصيلة، بتوقف التساقط، بتملي فراغات التخفيف، وبترجع للشعر جودته الصحية.", "image_url": "assets/images/sub-treatments/growth-factor.jpg", "page_url": "treatments/hair-restoration/growth-factor.html", "sort_order": 19, "is_active": true},
+      {"slug": "body-filler", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Body Fillers", "name_ar": "فيلر الجسم", "description_en": "Adds shape and volume to the buttocks, hips and calves without surgery.", "description_ar": "بيضيف شكل وحجم للمؤخرة والأرداف والسمانة من غير جراحة.", "image_url": "assets/images/sub-treatments/body-filler.jpg", "page_url": "treatments/skin-rejuvenation/body-filler.html", "sort_order": 20, "is_active": true},
+      {"slug": "rich-pl", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Rich PL Advance", "name_ar": "Rich PL Advance", "description_en": "An Italian multi-biostimulator — PLLA, hyaluronic acid, CaHA and collagen III in one — for instant hydration and long-lasting collagen renewal.", "description_ar": "حقن إيطالي متعدد المحفّزات — PLLA وحمض الهيالورونيك وCaHA وكولاجين III — لترطيب فوري وتجديد كولاجين يدوم.", "image_url": "assets/images/sub-treatments/filler.jpg", "page_url": "treatments/skin-rejuvenation/rich-pl.html", "sort_order": 21, "is_active": true},
+      {"slug": "sculptra", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Sculptra", "name_ar": "Sculptra", "description_en": "The original poly-L-lactic acid biostimulator that rebuilds deep collagen for gradual, long-lasting facial volume and lift.", "description_ar": "المحفّز الحيوي الأصلي ببولي إل لاكتيك اللي بيبني كولاجين عميق لحجم ورفع طبيعي يدوم.", "image_url": "assets/images/sub-treatments/biostimulators.jpg", "page_url": "treatments/skin-rejuvenation/sculptra.html", "sort_order": 22, "is_active": true},
+      {"slug": "radiesse", "category": "skin-rejuvenation", "parent_slug": "skin-rejuvenation", "name_en": "Radiesse", "name_ar": "Radiesse", "description_en": "A calcium hydroxyapatite (CaHA) filler that lifts and contours immediately, then stimulates your own collagen for results that last up to 18 months.", "description_ar": "فيلر هيدروكسي أباتيت الكالسيوم بيرفع ويحدّد فوراً وبعدين بيحفّز الكولاجين لنتيجة تدوم لحد 18 شهر.", "image_url": "assets/images/sub-treatments/body-filler.jpg", "page_url": "treatments/skin-rejuvenation/radiesse.html", "sort_order": 23, "is_active": true},
+      {"slug": "surgery", "category": "surgery", "parent_slug": "surgery", "name_en": "Cosmetic Surgery", "name_ar": "جراحات التجميل", "description_en": "Rhinoplasty, liposuction, tummy tuck, breast surgery, facelift and eyelid surgery — consultation-led with our specialist surgeon.", "description_ar": "تجميل الأنف، شفط الدهون، شد البطن، جراحات الثدي، شد الوجه وجراحة الجفون — بخطة بعد استشارة مع دكتورة متخصصة.", "image_url": "assets/images/dept-surgery.jpg", "page_url": "treatments/surgery.html", "sort_order": 24, "is_active": true}
+    ];
+
+    var svcSyncNote='';
+    // Adds any built-in service that isn't in the `treatments` table yet.
+    async function svcSyncBuiltin(existing){
+      var have={}; (existing||[]).forEach(function(t){ if(t&&t.slug) have[t.slug]=1; });
+      var changed=0;
+      // 1) drop the old per-procedure surgery rows (they're one "Cosmetic Surgery" entry now)
+      var stale=LEGACY_SERVICE_SLUGS.filter(function(s){ return have[s]; });
+      if(stale.length){
+        var del=await db.from('treatments').delete().in('slug',stale);
+        if(!del.error){ changed+=stale.length; stale.forEach(function(s){ delete have[s]; }); }
+      }
+      // 2) add any built-in service that isn't in the table yet
+      var missing=SITE_SERVICES.filter(function(s){ return !have[s.slug]; });
+      if(missing.length){
+        var ins=await db.from('treatments').insert(missing);
+        if(ins.error){
+          svcSyncNote='Could not add '+missing.length+' built-in service(s) automatically: '
+            +esc(ins.error.message)+' — run <code>backend/migration-treatments-complete.sql</code> in Supabase, then reload.';
+          return changed;
+        }
+        changed+=missing.length;
+      }
+      if(changed){
+        svcSyncNote='Service list synced'
+          +(missing.length?' — added '+missing.length+' built-in service(s)':'')
+          +(stale.length?' — merged '+stale.length+' surgery procedures into one “Cosmetic Surgery” entry':'')+'.';
+      }
+      return changed;
+    }
+
+    var svcAdded=[], svcBuiltin=[];   // kept so the reorder buttons know each row's neighbours
+
+    // ── Per-page text editor ───────────────────────────────────────────
+    // Every visible string on a service page carries a data-i18n key, and the site
+    // already applies overrides from `site_content` to those keys. This reads the page,
+    // lists each field in page order with its current English/Arabic text, and saves
+    // whatever you change back as an override. No schema change needed.
+    var AR_DEFAULTS=null;                       // TRANSLATIONS.ar from i18n.js, loaded once
+    async function loadArabicDefaults(){
+      if(AR_DEFAULTS) return AR_DEFAULTS;
+      try{
+        var src=await (await fetch('../assets/js/i18n.js',{cache:'force-cache'})).text();
+        var i=src.search(/(?:const|var|let)\s+TRANSLATIONS\s*=/);
+        if(i<0) return (AR_DEFAULTS={});
+        var j=src.indexOf('{',i), d=0, k=j;
+        while(k<src.length){ if(src[k]==='{') d++; else if(src[k]==='}'){ d--; if(!d) break; } k++; }
+        var obj=(new Function('return '+src.slice(j,k+1)))();
+        AR_DEFAULTS=(obj&&obj.ar)||{};
+      }catch(e){ AR_DEFAULTS={}; }
+      return AR_DEFAULTS;
+    }
+    function keyGroup(k){ var p=String(k).split('.'); return p.length>2?p[2]:(p[1]||p[0]); }
+
+    async function openTextEditor(pageUrl, label){
+      var ov=document.getElementById('overlay'), mt=document.getElementById('modalTitle'),
+          mb=document.getElementById('modalBody'), sb=document.getElementById('modalSave'),
+          ee=document.getElementById('formErr');
+      ov.classList.add('open'); mt.textContent='Edit — '+label;
+      mb.innerHTML='<p class="state">Reading the page…</p>'; ee.textContent='';
+      var fields=[], media=[];
+      try{
+        var html=await (await fetch('../'+pageUrl,{cache:'no-store'})).text();
+        var doc=new DOMParser().parseFromString(html,'text/html');
+        var seen={};
+        doc.querySelectorAll('[data-i18n],[data-i18n-html]').forEach(function(el){
+          var key=el.getAttribute('data-i18n')||el.getAttribute('data-i18n-html');
+          if(!key||seen[key]) return; seen[key]=1;
+          var txt=(el.getAttribute('data-i18n-html')?el.innerHTML:el.textContent)||'';
+          fields.push({key:key, en:txt.replace(/\s+/g,' ').trim(), group:keyGroup(key)});
+        });
+        // every image and video the page ships with
+        var mseen={};
+        function addMedia(kind,key,where){
+          key=(kind==='video')?String(key).trim():mediaKeyOf(key);
+          if(!key||mseen[kind+key]) return; mseen[kind+key]=1;
+          media.push({kind:kind, key:key, where:where});
+        }
+        doc.querySelectorAll('img[src]').forEach(function(el){ addMedia('image', el.getAttribute('src'), el.closest('.bts-gallery')?'gallery':'page'); });
+        doc.querySelectorAll('[data-full]').forEach(function(el){ addMedia('image', el.getAttribute('data-full'), 'gallery'); });
+        doc.querySelectorAll('[style*="background-image"]').forEach(function(el){
+          var m=/url\((['"]?)([^'")]+)\1\)/.exec(el.getAttribute('style')||''); if(m) addMedia('image', m[2], 'background'); });
+        // images used only inside a <style> rule — the page banner is one of these
+        doc.querySelectorAll('style').forEach(function(st){
+          var css=st.textContent||'', mm;
+          var re=/url\((['"]?)([^'")]+)\1\)/g;
+          while((mm=re.exec(css))){
+            if(/\.(jpe?g|png|webp|gif|avif)$/i.test(mm[2].split(/[?#]/)[0])) addMedia('image', mm[2], 'page banner');
+          }
+        });
+        doc.querySelectorAll('[data-yt]').forEach(function(el){ addMedia('video', el.getAttribute('data-yt'), el.classList.contains('tf-video-frame')?'hero video':'gallery video'); });
+      }catch(e){ mb.innerHTML='<p class="state">Could not read that page: '+esc(String(e))+'</p>'; return; }
+
+      var ar=await loadArabicDefaults(), over={}, mover={};
+      try{
+        var res=await db.from('site_content').select('*').in('key', fields.map(function(f){return f.key;}));
+        (res.data||[]).forEach(function(r){ over[r.key]=r; });
+      }catch(e){}
+      try{
+        var mres=await db.from('media_overrides').select('*');
+        (mres.data||[]).forEach(function(r){ mover[r.key]=r; });
+      }catch(e){}
+
+      // ---- tabs ----
+      var h='<div class="ed-tabs" style="display:flex;gap:.5rem;margin-bottom:1rem;border-bottom:1px solid var(--line)">'+
+        '<button class="chip ed-tab" data-tab="text" style="border-bottom:2px solid var(--gold)">Text ('+fields.length+')</button>'+
+        '<button class="chip ed-tab" data-tab="media">Images &amp; video ('+media.length+')</button></div>';
+
+      h+='<div data-pane="text">';
+      h+='<p class="hint" style="margin-bottom:1rem">Every text field on this page, in the order it appears. '+
+         'Change what you need — anything you leave alone stays exactly as it is.</p>';
+      var lastG=null;
+      fields.forEach(function(f){
+        if(f.group!==lastG){ lastG=f.group;
+          h+='<h4 style="margin:1.4rem 0 .5rem;font-family:var(--font-heading);color:var(--navy);text-transform:capitalize">'+esc(f.group)+'</h4>'; }
+        var o=over[f.key]||{};
+        var enVal=(o.value_en!=null&&o.value_en!=='')?o.value_en:f.en;
+        var arVal=(o.value_ar!=null&&o.value_ar!=='')?o.value_ar:(ar[f.key]||'');
+        h+='<div class="fld full" data-tkey="'+esc(f.key)+'">'+
+             '<label style="font-family:monospace;font-size:.72rem;color:var(--muted)">'+esc(f.key)+
+             ' <span class="tchanged" style="display:none;color:var(--gold);font-family:var(--font-body)"><b>changed</b></span></label>'+
+             '<textarea data-ten rows="2">'+esc(enVal)+'</textarea>'+
+             '<textarea data-tar rows="2" dir="rtl" style="margin-top:.4rem">'+esc(arVal)+'</textarea>'+
+           '</div>';
+      });
+      h+='</div>';
+
+      // ---- media pane ----
+      var pkey=mediaKeyOf(pageUrl).replace(/\.html$/,'');
+      var adds=[], galReady=true;
+      try{
+        var ares=await db.from('gallery_additions').select('*').eq('page_key',pkey).order('sort_order',{ascending:true});
+        if(ares.error) galReady=false; else adds=ares.data||[];
+      }catch(e){ galReady=false; }
+      h+='<div data-pane="media" style="display:none">';
+      if(!galReady){
+        h+='<div class="import-panel" style="margin-bottom:1.2rem;border-color:var(--gold)"><strong>Adding is not set up yet</strong>'+
+           ' <span class="hint">— run <b>backend/SETUP-ALL.sql</b> once in Supabase (SQL Editor \u2192 New query \u2192 Run) '+
+           'to switch this on. Replacing images and video below works either way.</span></div>';
+      }
+      if(galReady) h+='<div class="import-panel" style="margin-bottom:1.2rem"><strong>Add to the gallery</strong>'+
+         ' <span class="hint">— upload a photo, or paste a YouTube link, to add a brand new item to this page\u2019s gallery. '+
+         'It is added after the ones already there.</span>'+
+         '<div class="dropzone" data-galdrop style="margin-top:.7rem;border:1.5px dashed var(--sky-dark);border-radius:.6rem;'+
+           'padding:1rem;text-align:center;cursor:pointer;font-size:.86rem;color:var(--muted);transition:all .18s ease">'+
+           'Drop a photo here, or <b style="color:var(--navy)">click to choose a file</b>'+
+           '<input type="file" accept="image/*" data-galfile hidden></div>'+
+         '<div class="ip-row" style="margin-top:.6rem;gap:.6rem;flex-wrap:wrap">'+
+           '<input type="text" data-galvid placeholder="YouTube link or id" style="flex:1;min-width:190px">'+
+           '<button class="btn edit" data-galadd>Add video</button>'+
+           '<span class="gal-status hint"></span></div>'+
+         '<div data-gallist style="margin-top:.8rem"></div></div>';
+      h+='<p class="hint" style="margin-bottom:1rem">Every image and video already on this page. Upload a replacement, paste a URL, '+
+         'or for a video paste a YouTube link. Leave one blank to keep what\u2019s there. '+
+         '<b>Reset</b> puts the original back.</p>';
+      media.forEach(function(m,i){
+        var cur=(mover[m.key]||{}).value||'';
+        var prev = m.kind==='video'
+          ? 'https://i.ytimg.com/vi/'+encodeURIComponent(cur||m.key)+'/default.jpg'
+          : (cur || '../'+m.key);
+        h+='<div class="fld full" data-mkey="'+esc(m.key)+'" data-mkind="'+esc(m.kind)+'" '+
+             'style="display:flex;gap:.9rem;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:.9rem">'+
+             '<img class="mprev" src="'+esc(prev)+'" alt="" style="width:74px;height:56px;object-fit:cover;border-radius:.5rem;border:1px solid var(--line);flex:none;background:var(--sky)">'+
+             '<div style="flex:1;min-width:0">'+
+               '<div style="font-family:monospace;font-size:.72rem;color:var(--muted);word-break:break-all">'+
+                 esc(m.key)+' <span style="font-family:var(--font-body);color:var(--gold)">'+esc(m.where)+'</span>'+
+                 (cur?' <span style="font-family:var(--font-body);color:var(--green)">• replaced</span>':'')+'</div>'+
+               (m.kind==='video'
+                 ? '<input type="text" data-mval placeholder="YouTube link or id" value="'+esc(cur)+'" style="margin-top:.35rem">'
+                 : '<input type="hidden" data-mval value="'+esc(cur)+'">'+
+                   '<div class="dropzone" data-mdrop style="margin-top:.35rem;border:1.5px dashed var(--sky-dark);border-radius:.6rem;'+
+                     'padding:.6rem .8rem;text-align:center;cursor:pointer;font-size:.82rem;color:var(--muted);transition:all .18s ease">'+
+                     'Drop an image here, or <b style="color:var(--navy)">click to choose a file</b>'+
+                     '<input type="file" accept="image/*" data-mfile hidden></div>')+
+             '</div>'+
+             '<button class="chip" data-mreset'+(cur?'':' disabled')+' style="flex:none">Reset</button>'+
+           '</div>';
+      });
+      h+='</div>';
+
+      mb.innerHTML=h;
+      mb.querySelectorAll('[data-tkey]').forEach(function(w){
+        var mark=function(){ w.querySelector('.tchanged').style.display='inline'; };
+        w.querySelector('[data-ten]').addEventListener('input',mark);
+        w.querySelector('[data-tar]').addEventListener('input',mark);
+      });
+      mb.querySelectorAll('.ed-tab').forEach(function(tb){
+        tb.addEventListener('click', function(){
+          mb.querySelectorAll('.ed-tab').forEach(function(x){ x.style.borderBottom='none'; });
+          tb.style.borderBottom='2px solid var(--gold)';
+          mb.querySelectorAll('[data-pane]').forEach(function(pn){
+            pn.style.display = (pn.getAttribute('data-pane')===tb.getAttribute('data-tab'))?'':'none'; });
+        });
+      });
+      // replacing an image: drag a file onto the row, or click to choose one
+      async function uploadInto(row, file){
+        var hidden=row.querySelector('[data-mval]'), zone=row.querySelector('[data-mdrop]');
+        if(!file || !/^image\//.test(file.type)){ if(zone) zone.innerHTML='That file is not an image'; return; }
+        var label=zone?zone.innerHTML:'';
+        if(zone){ zone.innerHTML='Uploading…'; zone.style.borderColor='var(--gold)'; }
+        try{
+          var blob=await resizeImage(file, 1600, 0.84);
+          var path='site/'+Date.now()+'-'+file.name.replace(/[^a-zA-Z0-9._-]/g,'');
+          var up=await db.storage.from('images').upload(path, blob, {contentType:'image/jpeg', upsert:true});
+          if(up.error) throw up.error;
+          hidden.value=db.storage.from('images').getPublicUrl(path).data.publicUrl;
+          row.querySelector('.mprev').src=hidden.value;
+          var rb=row.querySelector('[data-mreset]'); if(rb) rb.disabled=false;
+          if(zone){ zone.innerHTML='Ready \u2014 press <b>Save</b> to apply'; zone.style.borderColor='var(--green)'; }
+        }catch(err){
+          if(zone){ zone.innerHTML=label||'Drop an image here'; zone.style.borderColor='var(--sky-dark)'; }
+          alert('Upload failed: '+(err.message||err));
+        }
+      }
+      mb.querySelectorAll('[data-mdrop]').forEach(function(zone){
+        var row=zone.closest('[data-mkey]'), fi=zone.querySelector('[data-mfile]');
+        zone.addEventListener('click', function(){ fi.click(); });
+        fi.addEventListener('change', function(){ if(fi.files&&fi.files[0]) uploadInto(row, fi.files[0]); fi.value=''; });
+        ['dragenter','dragover'].forEach(function(ev){
+          zone.addEventListener(ev, function(e){ e.preventDefault(); e.stopPropagation();
+            zone.style.borderColor='var(--gold)'; zone.style.background='rgba(201,168,76,.07)'; }); });
+        ['dragleave','drop'].forEach(function(ev){
+          zone.addEventListener(ev, function(e){ e.preventDefault(); e.stopPropagation();
+            zone.style.background=''; if(ev==='dragleave') zone.style.borderColor='var(--sky-dark)'; }); });
+        zone.addEventListener('drop', function(e){
+          var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];
+          if(f) uploadInto(row, f);
+        });
+      });
+      mb.querySelectorAll('[data-mreset]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var row=btn.closest('[data-mkey]');
+          row.querySelector('[data-mval]').value='';
+          row.setAttribute('data-mclear','1');
+          var z=row.querySelector('[data-mdrop]');
+          if(z){ z.innerHTML='Original restored \u2014 press <b>Save</b> to apply'; z.style.borderColor='var(--sky-dark)'; }
+        });
+      });
+
+      // ---- add / remove gallery items (saved immediately, not on Save) ----
+      var galStatus=mb.querySelector('.gal-status'), galList=mb.querySelector('[data-gallist]');
+      if(galList){
+      function drawAdds(){
+        if(!adds.length){ galList.innerHTML='<p class="hint">Nothing added yet.</p>'; return; }
+        galList.innerHTML=adds.map(function(it){
+          var thumb=it.kind==='video'
+            ? (it.thumb||('https://i.ytimg.com/vi/'+encodeURIComponent(it.value)+'/default.jpg'))
+            : it.value;
+          return '<div style="display:flex;gap:.7rem;align-items:center;margin-bottom:.5rem">'+
+            '<img src="'+esc(thumb)+'" alt="" style="width:56px;height:42px;object-fit:cover;border-radius:.4rem;border:1px solid var(--line)">'+
+            '<span style="flex:1;font-size:.8rem;word-break:break-all">'+esc(it.kind)+' — '+esc(it.value)+'</span>'+
+            '<button class="chip" data-galdel="'+esc(it.id)+'">Remove</button></div>'; }).join('');
+      }
+      drawAdds();
+      async function addItem(kind, value, thumb){
+        galStatus.style.color=''; galStatus.textContent='Adding…';
+        var row={ page_key:pkey, kind:kind, value:value, thumb:thumb||null,
+                  sort_order:adds.length, is_active:true };
+        var r=await db.from('gallery_additions').insert(row).select();
+        if(r.error){ galStatus.style.color='var(--red)'; galStatus.textContent='Could not add: '+r.error.message; return; }
+        adds.push((r.data&&r.data[0])||row); drawAdds();
+        galStatus.style.color='var(--green)'; galStatus.textContent='Added \u2713 — reload the page to see it.';
+      }
+      var galFile=mb.querySelector('[data-galfile]'), galDrop=mb.querySelector('[data-galdrop]');
+      if(galDrop){
+        galDrop.addEventListener('click', function(){ galFile.click(); });
+        ['dragenter','dragover'].forEach(function(ev){
+          galDrop.addEventListener(ev, function(e){ e.preventDefault(); e.stopPropagation();
+            galDrop.style.borderColor='var(--gold)'; galDrop.style.background='rgba(201,168,76,.07)'; }); });
+        ['dragleave','drop'].forEach(function(ev){
+          galDrop.addEventListener(ev, function(e){ e.preventDefault(); e.stopPropagation();
+            galDrop.style.background=''; galDrop.style.borderColor='var(--sky-dark)'; }); });
+        galDrop.addEventListener('drop', function(e){
+          var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];
+          if(f && /^image\//.test(f.type)){ var dt=new DataTransfer(); dt.items.add(f); galFile.files=dt.files;
+            galFile.dispatchEvent(new Event('change',{bubbles:true})); }
+          else { galStatus.style.color='var(--red)'; galStatus.textContent='That file is not an image.'; }
+        });
+      }
+      if(galFile) galFile.addEventListener('change', async function(){
+        var file=galFile.files&&galFile.files[0]; if(!file) return;
+        galStatus.style.color=''; galStatus.textContent='Uploading…';
+        try{
+          var blob=await resizeImage(file, 1600, 0.84);
+          var path='gallery/'+Date.now()+'-'+file.name.replace(/[^a-zA-Z0-9._-]/g,'');
+          var up=await db.storage.from('images').upload(path, blob, {contentType:'image/jpeg', upsert:true});
+          if(up.error) throw up.error;
+          await addItem('image', db.storage.from('images').getPublicUrl(path).data.publicUrl);
+        }catch(err){ galStatus.style.color='var(--red)'; galStatus.textContent='Upload failed: '+(err.message||err); }
+        galFile.value='';
+      });
+      var galAdd=mb.querySelector('[data-galadd]');
+      if(galAdd) galAdd.addEventListener('click', function(){
+        var inp=mb.querySelector('[data-galvid]'), v=(inp.value||'').trim();
+        if(!v){ galStatus.style.color='var(--red)'; galStatus.textContent='Paste a YouTube link first.'; return; }
+        var id=(v.match(/(?:v=|be\/|shorts\/|embed\/)([A-Za-z0-9_-]{6,})/)||[0,v])[1];
+        addItem('video', id, 'https://i.ytimg.com/vi/'+encodeURIComponent(id)+'/hqdefault.jpg');
+        inp.value='';
+      });
+      galList.addEventListener('click', async function(e){
+        var d=e.target.closest('[data-galdel]'); if(!d) return;
+        var id=d.getAttribute('data-galdel');
+        d.disabled=true;
+        var r=await db.from('gallery_additions').delete().eq('id',id);
+        if(r.error){ d.disabled=false; galStatus.style.color='var(--red)'; galStatus.textContent='Could not remove: '+r.error.message; return; }
+        adds=adds.filter(function(x){ return String(x.id)!==String(id); });
+        drawAdds(); galStatus.style.color='var(--green)'; galStatus.textContent='Removed \u2713';
+      });
+      }   // end if(galList)
+
+      sb.style.display='';
+      sb.onclick=async function(){
+        var rows=[], mrows=[], mdel=[];
+        mb.querySelectorAll('[data-tkey]').forEach(function(w){
+          if(w.querySelector('.tchanged').style.display==='none') return;
+          rows.push({ key:w.getAttribute('data-tkey'),
+                      value_en:w.querySelector('[data-ten]').value.trim()||null,
+                      value_ar:w.querySelector('[data-tar]').value.trim()||null });
+        });
+        mb.querySelectorAll('[data-mkey]').forEach(function(w){
+          var key=w.getAttribute('data-mkey'), kind=w.getAttribute('data-mkind');
+          var val=w.querySelector('[data-mval]').value.trim();
+          var was=(mover[key]||{}).value||'';
+          if(kind==='video' && val) val=(val.match(/(?:v=|be\/|shorts\/|embed\/)([A-Za-z0-9_-]{6,})/)||[0,val])[1];
+          if(val===was) return;
+          if(!val && was) mdel.push(key); else if(val) mrows.push({key:key, value:val, kind:kind});
+        });
+        if(!rows.length && !mrows.length && !mdel.length){ ee.textContent='Nothing changed.'; return; }
+        sb.disabled=true; sb.textContent='Saving…'; ee.textContent='';
+        try{
+          if(rows.length){ var a=await db.from('site_content').upsert(rows,{onConflict:'key'}); if(a.error) throw a.error; }
+          if(mrows.length){ var c=await db.from('media_overrides').upsert(mrows,{onConflict:'key'}); if(c.error) throw c.error; }
+          for(var i=0;i<mdel.length;i++){ var d=await db.from('media_overrides').delete().eq('key',mdel[i]); if(d.error) throw d.error; }
+        }catch(err){ sb.disabled=false; sb.textContent='Save'; ee.textContent='Could not save: '+(err.message||err); return; }
+        sb.disabled=false; sb.textContent='Save'; sb.onclick=null;
+        ov.classList.remove('open');
+        alert('Saved '+(rows.length+mrows.length+mdel.length)+' change(s). Reload the page to see them.');
+      };
+    }
+    function mediaKeyOf(u){
+      if(!u) return '';
+      return String(u).replace(/^(\.\.\/)+/,'').replace(/^\.\//,'').replace(/^\//,'').split(/[?#]/)[0];
+    }
+    document.addEventListener('click', function(e){
+      var b=e.target.closest('[data-svctext]'); if(!b) return;
+      openTextEditor(b.getAttribute('data-svctext'), b.getAttribute('data-name')||'service');
+    });
+
+    // up/down reorder cell for the Services lists (mirrors orderCell used by the other sections)
+    function svcOrdCell(kind,idx,len,val,grp){
+      var g=grp?' data-grp="'+esc(grp)+'"':'';
+      var up='<button class="ordbtn" data-svcmove="'+kind+'"'+g+' data-i="'+idx+'" data-dir="-1" title="Move up"'+(idx<=0?' disabled':'')+'>&#9650;</button>';
+      var dn='<button class="ordbtn" data-svcmove="'+kind+'"'+g+' data-i="'+idx+'" data-dir="1" title="Move down"'+(idx>=len-1?' disabled':'')+'>&#9660;</button>';
+      return '<td><div class="ord">'+up+'<span class="ordn">'+esc(val==null?idx:val)+'</span>'+dn+'</div></td>';
+    }
+    // department order used for grouping the built-in list
+    var SVC_DEPTS=SVC_CATS;   // same list — the dashboard must never disagree with itself
+    function svcDeptLabel(c){
+      for(var i=0;i<SVC_DEPTS.length;i++) if(SVC_DEPTS[i][0]===c) return SVC_DEPTS[i][1];
+      return c||'Other';
+    }
+    function svcGroupBuiltin(list){
+      var seen={}, order=[];
+      list.forEach(function(t){ var c=t.category||'other'; if(!seen[c]){seen[c]=[];order.push(c);} seen[c].push(t); });
+      var ranked=SVC_DEPTS.map(function(d){return d[0];}).filter(function(c){return seen[c];})
+        .concat(order.filter(function(c){return SVC_DEPTS.map(function(d){return d[0];}).indexOf(c)<0;}));
+      return ranked.map(function(c){ return {cat:c, label:svcDeptLabel(c), rows:seen[c]}; });
+    }
+
+    function svcBadge(active){ return '<span class="svc-badge'+(active?'':' off')+'">'+(active?'Live':'Hidden')+'</span>'; }
+    function svcNameCell(en,ar){ return '<td><strong>'+esc(en||'—')+'</strong>'+(ar?'<br><span style="color:var(--muted);font-size:.8rem" dir="rtl">'+esc(ar)+'</span>':'')+'</td>'; }
+
+    async function svcLoadList(){
+      var box=document.getElementById('content');
+      box.innerHTML='<div class="state">Loading…</div>';
+      var spR=await db.from('service_pages').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:false});
+      if(spR.error){ box.innerHTML='<div class="err">'+esc(spR.error.message)+'</div>'; return; }
+      var trR=await db.from('treatments').select('*').order('sort_order',{ascending:true});
+      svcSyncNote='';
+      if(!trR.error){                                   // make sure every built-in service is listed
+        var addedN=await svcSyncBuiltin(trR.data||[]);
+        if(addedN) trR=await db.from('treatments').select('*').order('sort_order',{ascending:true});
+      }
+      var added=spR.data||[]; var builtin=(trR.data||[]).filter(function(t){return t.page_url && t.page_url.indexOf('service.html?slug=')<0;});
+      svcAdded=added; svcBuiltin=builtin;   // remember order for the up/down buttons
+      var html='<div class="svc-wrap">';
+      if(svcSyncNote) html+='<div class="state" style="padding:.7rem .9rem;margin-bottom:.9rem;background:#FAF6EA;border:1px solid #E7D9A8;border-radius:10px;font-size:.82rem">'+svcSyncNote+'</div>';
+      html+='<p style="color:var(--muted);font-size:.85rem;margin-bottom:1.1rem">All treatments on the website. <strong>Added in dashboard</strong> are built &amp; edited here and published at <code>/treatments/service.html?slug=…</code>. <strong>Built-in pages</strong> ship with the site — you can view them and show/hide them.</p>';
+
+      // ── Added in the dashboard (fully editable) ──
+      html+='<div class="svc-sec-h"><h4>Added in dashboard <span class="svc-count">'+added.length+'</span></h4></div>';
+      if(!added.length){ html+='<div class="state" style="padding:1.1rem .5rem">None yet — click <strong>“+ Add service”</strong> to create your first full treatment page.</div>'; }
+      else{
+        html+='<table class="svc-list"><thead><tr><th>Name</th><th>Slug</th><th>Category</th><th>Order</th><th>Status</th><th></th></tr></thead><tbody>';
+        added.forEach(function(s,i){
+          html+='<tr>'+svcNameCell(s.name_en,s.name_ar)
+            +'<td><code>'+esc(s.slug)+'</code></td><td>'+esc(s.category||'—')+'</td>'
+            +svcOrdCell('added',i,added.length,s.sort_order)
+            +'<td>'+svcBadge(s.is_active)+'</td>'
+            +'<td style="text-align:right;white-space:nowrap">'
+            +'<a class="chip" href="../treatments/service.html?slug='+encodeURIComponent(s.slug)+'" target="_blank" rel="noopener">View ↗</a> '
+            +'<button class="chip" data-svcedit="'+esc(s.id)+'">Edit</button> '
+            +'<button class="chip" data-svcdel="'+esc(s.id)+'" data-slug="'+esc(s.slug)+'" style="color:#a23">Delete</button></td></tr>';
+        });
+        html+='</tbody></table>';
+      }
+
+      // ── Built-in pages (view + show/hide), grouped by department ──
+      html+='<div class="svc-sec-h" style="margin-top:1.8rem"><h4>Built-in pages <span class="svc-count">'+builtin.length+'</span></h4></div>';
+      if(!builtin.length){ html+='<div class="state" style="padding:1.1rem .5rem">No built-in treatments found. Run <code>backend/seed-treatments.sql</code> in Supabase.</div>'; }
+      else{
+        html+='<p style="color:var(--muted);font-size:.82rem;margin:-.4rem 0 1rem">The arrows move a treatment within its own department — that\u2019s the order shown on the department page and on the home page.</p>';
+        svcGroupBuiltin(builtin).forEach(function(g){
+          html+='<div class="svc-sec-h" style="margin-top:1.2rem"><h4 style="font-size:.92rem">'+esc(g.label)+
+                ' <span class="svc-count">'+g.rows.length+'</span></h4></div>';
+          html+='<table class="svc-list"><thead><tr><th>Name</th><th>Slug</th><th>Order</th><th>Status</th><th></th></tr></thead><tbody>';
+          g.rows.forEach(function(t,i){
+            html+='<tr>'+svcNameCell(t.name_en,t.name_ar)
+              +'<td><code>'+esc(t.slug)+'</code></td>'
+              +svcOrdCell('builtin',i,g.rows.length,t.sort_order,g.cat)
+              +'<td>'+svcBadge(t.is_active)+'</td>'
+              +'<td style="text-align:right;white-space:nowrap">'
+              +'<a class="chip" href="../'+esc(t.page_url)+'" target="_blank" rel="noopener">View ↗</a> '
+              +'<button class="chip" data-svctext="'+esc(t.page_url)+'" data-name="'+esc(t.name_en)+'">Edit page</button> '
+              +'<button class="chip" data-svctoggle="'+esc(t.slug)+'" data-to="'+(t.is_active?'0':'1')+'">'+(t.is_active?'Hide':'Show')+'</button></td></tr>';
+          });
+          html+='</tbody></table>';
+        });
+      }
+      html+='</div>';
+      box.innerHTML=html;
+    }
+
+    function fld(label,k,opt){ opt=opt||{}; var ar=opt.ar; var tag=opt.textarea?'textarea':'input';
+      return '<div class="svc-fld"><label>'+esc(label)+'</label><'+tag+' data-k="'+k+'"'+(ar?' dir="rtl"':'')+(opt.type?' type="'+opt.type+'"':'')+(opt.ph?' placeholder="'+esc(opt.ph)+'"':'')+(opt.textarea?'></textarea>':'>')+'</div>'; }
+    function imgField(label,k){ return '<div class="svc-img" data-imgk="'+k+'"><label style="font-size:.74rem;color:var(--muted);font-weight:600;display:block">'+esc(label)+'</label>'
+      +'<input type="file" accept="image/*" data-svcfile style="font-size:.78rem;margin-top:.4rem"><input type="hidden" data-k="'+k+'"><img alt=""><div class="st"></div></div>'; }
+    function listBlock(title,id,cols,gridCls){
+      return '<h4>'+esc(title)+'</h4><div class="svc-rows" id="svc-l-'+id+'" data-cols=\''+JSON.stringify(cols)+'\' data-grid="'+(gridCls||'pair')+'"></div>'
+        +'<button type="button" class="svc-addrow" data-add="'+id+'">+ Add</button>'; }
+
+    function svcRowHtml(cols,grid,vals){ vals=vals||{};
+      var inner=cols.map(function(c){ var tag=c.textarea?'textarea':'input'; var v=vals[c.k]!=null?vals[c.k]:'';
+        return '<div class="svc-fld"><'+tag+' data-col="'+c.k+'"'+(c.ar?' dir="rtl"':'')+(c.type?' type="'+c.type+'"':'')+(c.ph?' placeholder="'+esc(c.ph)+'"':'')+(c.textarea?'>'+esc(v)+'</textarea>':' value="'+esc(v)+'">')+'</div>';
+      }).join('');
+      return '<div class="svc-row '+grid+'" style="grid-template-columns:repeat('+(grid==='pair'?2:(cols.length>4?2:cols.length))+',1fr)"><button type="button" class="rm" data-rm title="Remove">×</button>'+inner+'</div>';
+    }
+    function fillList(id,cols,grid,arr){ var c=document.getElementById('svc-l-'+id); (arr&&arr.length?arr:[{}]).forEach(function(v){ c.insertAdjacentHTML('beforeend', svcRowHtml(cols,grid,v)); }); }
+
+    // pair lists pull EN+AR together: {en,ar}
+    function pairCols(phEn,phAr){ return [{k:'en',ph:phEn},{k:'ar',ph:phAr,ar:true}]; }
+
+    function openServiceForm(rec){
+      svcEditing=rec||null;
+      var c=(rec&&rec.content)||{}; var E=c.en||{}, A=c.ar||{};
+      document.getElementById('headRight').innerHTML='<button class="add-btn" id="svcAddNew">+ Add service</button>';
+      var box=document.getElementById('content');
+      var html='<div class="svc-wrap svc-form">';
+      html+='<h4>Basics</h4><div class="svc-grid">'
+        +'<input type="hidden" data-k="slug" value="'+esc(rec?rec.slug:'')+'">'
+        +'<div class="svc-fld"><label>Category *</label><select data-k="category">'+SVC_CATS.map(function(x){return '<option value="'+x[0]+'"'+((rec&&rec.category===x[0])?' selected':'')+'>'+x[1]+'</option>';}).join('')+'</select></div>'
+        +'<div class="svc-fld"><label>Status</label><select data-k="is_active"><option value="true"'+((!rec||rec.is_active)?' selected':'')+'>Live</option><option value="false"'+((rec&&!rec.is_active)?' selected':'')+'>Hidden</option></select></div>'
+        +'</div>';
+      html+='<h4>Name & tags</h4><div class="svc-grid">'
+        +fld('Name (EN) *','name_en',{ph:'PRP Hair'})+fld('الاسم (AR)','name_ar',{ar:true})
+        +fld('Tag 1 (EN)','tag1_en',{ph:'Natural regrowth'})+fld('تاج 1 (AR)','tag1_ar',{ar:true})
+        +fld('Tag 2 (EN)','tag2_en',{ph:'Non-surgical'})+fld('تاج 2 (AR)','tag2_ar',{ar:true})
+        +fld('Tag 3 (EN)','tag3_en',{ph:'Minimal downtime'})+fld('تاج 3 (AR)','tag3_ar',{ar:true})
+        +'</div>';
+      html+='<h4>Images</h4><div class="svc-imgrow">'+imgField('Banner image','hero_image_url')+imgField('Banner image \u2014 phone','hero_mobile_url')+'</div>'
+        +'<div class="svc-imgrow" style="margin-top:.7rem">'+imgField('Before image','ba_before_url')+imgField('After image','ba_after_url')+'</div>'
+        +'<div class="svc-grid" style="margin-top:.7rem">'+fld('Before/After caption 1 (EN)','ba_cap1_en')+fld('تعليق 1 (AR)','ba_cap1_ar',{ar:true})+fld('Before/After caption 2 (EN)','ba_cap2_en')+fld('تعليق 2 (AR)','ba_cap2_ar',{ar:true})+'</div>'
+        +'<div class="svc-imgrow" style="margin-top:.7rem">'+imgField('2nd before image (optional)','ba2_before_url')+imgField('2nd after image (optional)','ba2_after_url')+'</div>';
+      html+='<h4>Video</h4><div class="svc-grid">'
+        +fld('YouTube video ID','video_id',{ph:'e.g. dQw4w9WgXcQ'})+'<div></div>'
+        +fld('Video title (EN)','video_title_en')+fld('عنوان الفيديو (AR)','video_title_ar',{ar:true})
+        +fld('Video note (EN)','video_note_en')+fld('ملاحظة الفيديو (AR)','video_note_ar',{ar:true})+'</div>';
+      html+='<h4>About</h4><div class="svc-grid">'
+        +fld('About title (EN)','about_title_en',{ph:'What Is PRP for Hair?'})+fld('عنوان النبذة (AR)','about_title_ar',{ar:true})
+        +fld('Detail section title (EN)','benefits_title_en',{ph:'PRP, In Detail'})+fld('عنوان القسم (AR)','benefits_title_ar',{ar:true})
+        +fld('Short intro (EN)','about_short_en',{textarea:true})+fld('مقدمة قصيرة (AR)','about_short_ar',{textarea:true,ar:true})
+        +fld('Full description (EN)','about_body_en',{textarea:true})+fld('الوصف الكامل (AR)','about_body_ar',{textarea:true,ar:true})+'</div>';
+      html+=listBlock('Benefits (one per row)','benefits',pairCols('Benefit (EN)','الفايدة (AR)'));
+      html+=listBlock('Process steps','process',[{k:'en',ph:'Step (EN)',textarea:true},{k:'ar',ph:'الخطوة (AR)',ar:true,textarea:true}]);
+      html+=listBlock('Who is it for?','who',pairCols('Candidate (EN)','مناسب لـ (AR)'));
+      html+='<h4>Contraindications</h4><div class="svc-grid">'+fld('Intro (EN)','contra_intro_en',{textarea:true})+fld('مقدمة (AR)','contra_intro_ar',{textarea:true,ar:true})+'</div>'
+        +'<div class="svc-rows" id="svc-l-contra" data-grid="pair"></div><button type="button" class="svc-addrow" data-add="contra">+ Add</button>';
+      html+=listBlock('Technology & brands (optional)','tech',pairCols('Point (EN)','نقطة (AR)'));
+      html+=listBlock('Comparisons','compare',[{k:'label_en',ph:'X vs Y (EN)'},{k:'text_en',ph:'Explanation (EN)',textarea:true},{k:'label_ar',ph:'مقارنة (AR)',ar:true},{k:'text_ar',ph:'الشرح (AR)',ar:true,textarea:true}],'grid');
+      html+=listBlock('FAQ','faq',[{k:'q_en',ph:'Question (EN)'},{k:'a_en',ph:'Answer (EN)',textarea:true},{k:'q_ar',ph:'السؤال (AR)',ar:true},{k:'a_ar',ph:'الإجابة (AR)',ar:true,textarea:true}],'grid');
+      html+=listBlock('Why choose Hollywood Clinic?','why',pairCols('Reason (EN)','السبب (AR)'));
+      html+=listBlock('Reviews','reviews',[{k:'text_en',ph:'Review (EN)',textarea:true},{k:'text_ar',ph:'المراجعة (AR)',ar:true,textarea:true},{k:'name',ph:'Name'},{k:'meta_en',ph:'Tag (EN)'},{k:'meta_ar',ph:'وسم (AR)',ar:true},{k:'date_en',ph:'Date (EN)'},{k:'date_ar',ph:'التاريخ (AR)',ar:true},{k:'rating',ph:'Rating 1-5',type:'number'}],'grid');
+      html+=listBlock('Recommended doctors','doctors',[{k:'name_en',ph:'Name (EN)'},{k:'name_ar',ph:'الاسم (AR)',ar:true},{k:'role_en',ph:'Role (EN)'},{k:'role_ar',ph:'الدور (AR)',ar:true},{k:'slug',ph:'doctor file slug (dr-rana-safwat)'},{k:'image_url',ph:'or full photo URL'},{k:'profile_url',ph:'or full profile URL'}],'grid');
+      html+=listBlock('Gallery videos (YouTube)','galvid',[{k:'id',ph:'YouTube link or id'},{k:'cap_en',ph:'Caption (EN)'},{k:'cap_ar',ph:'التعليق (AR)',ar:true}],'grid');
+      html+='<h4>Gallery images</h4><div class="svc-imgrow" id="svc-gallery-list"></div><div class="svc-img" style="margin-top:.7rem"><label style="font-size:.74rem;color:var(--muted);font-weight:600;display:block">Add a gallery image</label><input type="file" accept="image/*" data-svcgallery style="font-size:.78rem;margin-top:.4rem"><div class="st"></div></div>';
+      html+='<div class="svc-actions"><button class="add-btn" id="svcSave">Save & publish</button><button class="svc-cancel" id="svcCancelForm">Cancel</button><span class="svc-msg" id="svcMsg"></span></div>';
+      html+='</div>';
+      box.innerHTML=html;
+
+      // hydrate single fields
+      function setK(k,v){ var el=box.querySelector('[data-k="'+k+'"]'); if(el!=null&&v!=null) el.value=v; }
+      if(rec){
+        setK('hero_image_url',rec.hero_image_url||c.hero_image_url); setK('hero_mobile_url',c.hero_mobile_url);
+        setK('ba_before_url',c.ba_before_url); setK('ba_after_url',c.ba_after_url);
+        setK('ba2_before_url',c.ba2_before_url); setK('ba2_after_url',c.ba2_after_url); setK('video_id',c.video_id);
+        ['name_en','name_ar'].forEach(function(k){ setK(k, rec[k]); });
+        var map={tag1:'tag1',tag2:'tag2',tag3:'tag3',video_title:'video_title',video_note:'video_note',about_title:'about_title',benefits_title:'benefits_title',about_short:'about_short',about_body:'about_body',ba_cap1:'ba_cap1',ba_cap2:'ba_cap2',contra_intro:'contra_intro'};
+        Object.keys(map).forEach(function(m){ setK(map[m]+'_en', E[m]); setK(map[m]+'_ar', A[m]); });
+        // images preview
+        ['hero_image_url','hero_mobile_url','ba_before_url','ba_after_url','ba2_before_url','ba2_after_url'].forEach(function(k){ var v=box.querySelector('[data-k="'+k+'"]').value; if(v){ var box2=box.querySelector('[data-imgk="'+k+'"]'); var im=box2&&box2.querySelector('img'); if(im){im.src=v;im.style.display='block';} } });
+        (c.gallery||[]).forEach(function(u){ addGalleryThumb(u); });
+      }
+      // fill lists
+      function zipPair(en,ar){ var n=Math.max((en||[]).length,(ar||[]).length); var out=[]; for(var i=0;i<n;i++) out.push({en:(en||[])[i]||'',ar:(ar||[])[i]||''}); return out; }
+      fillList('benefits',pairCols(),'pair', zipPair(E.benefits,A.benefits));
+      fillList('process',[{k:'en'},{k:'ar'}],'pair', zipPair(E.process,A.process));
+      fillList('who',pairCols(),'pair', zipPair(E.who,A.who));
+      fillList('contra',[{k:'en'},{k:'ar'}],'pair', zipPair(E.contra,A.contra));
+      fillList('tech',pairCols(),'pair', zipPair(E.tech,A.tech));
+      fillList('why',pairCols(),'pair', zipPair(E.why,A.why));
+      var cmpCols=[{k:'label_en'},{k:'text_en',textarea:true},{k:'label_ar',ar:true},{k:'text_ar',ar:true,textarea:true}];
+      fillList('compare',cmpCols,'grid', ((E.compare||[]).map(function(x,i){var y=(A.compare||[])[i]||{};return {label_en:x.label,text_en:x.text,label_ar:y.label,text_ar:y.text};})));
+      var faqCols=[{k:'q_en'},{k:'a_en',textarea:true},{k:'q_ar',ar:true},{k:'a_ar',ar:true,textarea:true}];
+      fillList('faq',faqCols,'grid', ((E.faq||[]).map(function(x,i){var y=(A.faq||[])[i]||{};return {q_en:x.q,a_en:x.a,q_ar:y.q,a_ar:y.a};})));
+      fillList('galvid',[{k:'id'},{k:'cap_en'},{k:'cap_ar',ar:true}],'grid', (c.gallery_videos||[]));
+      var rvCols=[{k:'text_en',textarea:true},{k:'text_ar',ar:true,textarea:true},{k:'name'},{k:'meta_en'},{k:'meta_ar',ar:true},{k:'date_en'},{k:'date_ar',ar:true},{k:'rating',type:'number'}];
+      fillList('reviews',rvCols,'grid', ((E.reviews||[]).map(function(x,i){var y=(A.reviews||[])[i]||{};return {text_en:x.text,text_ar:y.text,name:x.name,meta_en:x.meta,meta_ar:y.meta,date_en:x.date,date_ar:y.date,rating:x.rating};})));
+      var docCols=[{k:'name_en'},{k:'name_ar',ar:true},{k:'role_en'},{k:'role_ar',ar:true},{k:'slug'},{k:'image_url'},{k:'profile_url'}];
+      fillList('doctors',docCols,'grid', (c.doctors||[]));
+    }
+
+    function addGalleryThumb(url){ var list=document.getElementById('svc-gallery-list'); if(!list) return;
+      var d=document.createElement('div'); d.className='svc-img'; d.innerHTML='<img src="'+esc(url)+'" style="display:block"><input type="hidden" class="gurl" value="'+esc(url)+'"><button type="button" class="rm" data-rmthumb style="position:static;margin-top:.3rem">Remove</button>'; list.appendChild(d); }
+
+    function colsFor(id){ var el=document.getElementById('svc-l-'+id); try{ return JSON.parse(el.getAttribute('data-cols')); }catch(e){ return [{k:'en'},{k:'ar'}]; } }
+    function readList(id){ var c=document.getElementById('svc-l-'+id); if(!c) return []; var out=[];
+      c.querySelectorAll('.svc-row').forEach(function(row){ var o={}, any=false; row.querySelectorAll('[data-col]').forEach(function(inp){ var v=inp.value.trim(); o[inp.getAttribute('data-col')]=v; if(v) any=true; }); if(any) out.push(o); }); return out; }
+    function pairEN(id){ return readList(id).map(function(r){return r.en;}).filter(function(x){return x;}); }
+    function pairAR(id){ return readList(id).map(function(r){return r.ar;}).filter(function(x){return x;}); }
+
+    async function svcSave(){
+      var box=document.getElementById('content'); var msg=document.getElementById('svcMsg'); msg.className='svc-msg'; msg.textContent='';
+      function k(n){ var el=box.querySelector('[data-k="'+n+'"]'); return el?el.value.trim():''; }
+      if(!k('name_en')){ msg.className='svc-msg bad'; msg.textContent='Name (EN) is required.'; return; }
+      // the url id is derived from the English name — admins never have to think about it.
+      // an existing service keeps the id it was published with, so its links don't break.
+      function toSlug(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+      var slug=k('slug') || toSlug(k('name_en'));
+      if(!slug) slug='service-'+Date.now();
+      if(!k('slug')){
+        // make sure it's not already taken
+        var taken=await db.from('service_pages').select('slug').eq('slug',slug);
+        var conflict=(taken.data||[]).length>0;
+        if(!conflict){
+          var built=await db.from('treatments').select('slug').eq('slug',slug);
+          conflict=(built.data||[]).length>0;
+        }
+        if(conflict) slug=slug+'-'+String(Date.now()).slice(-4);
+      }
+      var cmp=readList('compare'), faq=readList('faq'), rv=readList('reviews');
+      var content={
+        hero_image_url:k('hero_image_url'), hero_mobile_url:k('hero_mobile_url'),
+        ba_before_url:k('ba_before_url'), ba_after_url:k('ba_after_url'),
+        ba2_before_url:k('ba2_before_url'), ba2_after_url:k('ba2_after_url'), video_id:k('video_id'),
+        doctors: readList('doctors').filter(function(d){return d.name_en||d.name_ar;}),
+        gallery: [].slice.call(box.querySelectorAll('.gurl')).map(function(i){return i.value;}).filter(Boolean),
+        gallery_videos: readList('galvid').map(function(r){
+          var v=(r.id||'').trim(); if(!v) return null;
+          return { id:(v.match(/(?:v=|be\/|shorts\/|embed\/)([A-Za-z0-9_-]{6,})/)||[0,v])[1],
+                   cap_en:r.cap_en||'', cap_ar:r.cap_ar||'' };
+        }).filter(Boolean),
+        en:{ name:k('name_en'), tag1:k('tag1_en'),tag2:k('tag2_en'),tag3:k('tag3_en'), video_title:k('video_title_en'),video_note:k('video_note_en'),
+          about_title:k('about_title_en'), about_short:k('about_short_en'), about_body:k('about_body_en'), benefits_title:k('benefits_title_en'),
+          benefits:pairEN('benefits'), process:pairEN('process'), who:pairEN('who'), contra_intro:k('contra_intro_en'), contra:pairEN('contra'),
+          tech:pairEN('tech'), compare:cmp.map(function(r){return {label:r.label_en,text:r.text_en};}).filter(function(x){return x.label||x.text;}),
+          faq:faq.map(function(r){return {q:r.q_en,a:r.a_en};}).filter(function(x){return x.q;}), why:pairEN('why'),
+          reviews:rv.map(function(r){return {text:r.text_en,name:r.name,meta:r.meta_en,date:r.date_en,rating:+r.rating||5};}).filter(function(x){return x.text;}),
+          ba_cap1:k('ba_cap1_en'), ba_cap2:k('ba_cap2_en'), gallery_title:k('benefits_title_en')?'' : '' },
+        ar:{ name:k('name_ar')||k('name_en'), tag1:k('tag1_ar'),tag2:k('tag2_ar'),tag3:k('tag3_ar'), video_title:k('video_title_ar'),video_note:k('video_note_ar'),
+          about_title:k('about_title_ar'), about_short:k('about_short_ar'), about_body:k('about_body_ar'), benefits_title:k('benefits_title_ar'),
+          benefits:pairAR('benefits'), process:pairAR('process'), who:pairAR('who'), contra_intro:k('contra_intro_ar'), contra:pairAR('contra'),
+          tech:pairAR('tech'), compare:cmp.map(function(r){return {label:r.label_ar,text:r.text_ar};}).filter(function(x){return x.label||x.text;}),
+          faq:faq.map(function(r){return {q:r.q_ar,a:r.a_ar};}).filter(function(x){return x.q;}), why:pairAR('why'),
+          reviews:rv.map(function(r){return {text:r.text_ar,name:r.name,meta:r.meta_ar,date:r.date_ar,rating:+r.rating||5};}).filter(function(x){return x.text;}),
+          ba_cap1:k('ba_cap1_ar'), ba_cap2:k('ba_cap2_ar'), gallery_title:'' }
+      };
+      // gallery titles
+      content.en.gallery_title=(k('name_en')+' Gallery'); content.ar.gallery_title=(k('name_ar')||k('name_en'))+' — معرض';
+      var payload={ slug:slug, category:k('category'), name_en:k('name_en'), name_ar:k('name_ar'), hero_image_url:k('hero_image_url'),
+        content:content, is_active:(k('is_active')!=='false') };
+      msg.textContent='Saving…';
+      var res;
+      if(svcEditing){ res=await db.from('service_pages').update(payload).eq('id',svcEditing.id); }
+      else{ res=await db.from('service_pages').insert(payload); }
+      if(res.error){ msg.className='svc-msg bad'; msg.textContent='Save failed: '+res.error.message; return; }
+      // also upsert a listing card in `treatments` so it appears in catalogue pages
+      try{
+        await db.from('treatments').upsert({ slug:slug, category:k('category'), parent_slug:k('category'),
+          name_en:k('name_en'), name_ar:k('name_ar'), tagline_en:k('tag1_en'), tagline_ar:k('tag1_ar'),
+          description_en:k('about_short_en'), description_ar:k('about_short_ar'), image_url:k('hero_image_url'),
+          page_url:'treatments/service.html?slug='+slug, is_active:(k('is_active')!=='false') }, { onConflict:'slug' });
+      }catch(e){ /* listing is best-effort */ }
+      msg.className='svc-msg ok'; msg.textContent='Saved ✓ Published at /treatments/service.html?slug='+slug;
+      setTimeout(svcLoadList, 900);
+    }
+
+    // service-images upload (single fields + gallery)
+    document.addEventListener('change', async function(e){
+      var single=e.target.closest('[data-svcfile]'); var galInput=e.target.closest('[data-svcgallery]');
+      if(!single && !galInput) return;
+      var fi=single||galInput; var file=fi.files&&fi.files[0]; if(!file) return;
+      var boxEl=fi.closest('.svc-img'); var st=boxEl.querySelector('.st'); st.className='st'; st.textContent='Optimizing…';
+      try{
+        var blob=await resizeImage(file, 1400, 0.82);
+        st.textContent='Uploading…';
+        var base=file.name.replace(/\.[^.]+$/,'').replace(/[^a-zA-Z0-9._-]/g,'_');
+        var ext=(blob.type==='image/jpeg')?'jpg':(file.name.split('.').pop()||'img').toLowerCase();
+        var path='services/'+Date.now()+'_'+base+'.'+ext;
+        var up=await db.storage.from('service-images').upload(path,blob,{upsert:true,cacheControl:'3600',contentType:blob.type||file.type});
+        if(up.error){ st.className='st bad'; st.textContent='Upload failed: '+up.error.message; return; }
+        var url=db.storage.from('service-images').getPublicUrl(path).data.publicUrl;
+        if(galInput){ addGalleryThumb(url); fi.value=''; st.className='st ok'; st.textContent='Added ✓'; }
+        else{ boxEl.querySelector('[data-k]').value=url; var im=boxEl.querySelector('img'); im.src=url; im.style.display='block'; st.className='st ok'; st.textContent='Uploaded ✓'; }
+      }catch(err){ st.className='st bad'; st.textContent='Upload error'; console.error(err); }
+    });
+
+    // service form clicks (add row / remove / save / cancel / edit / delete / add new)
+    document.addEventListener('click', async function(e){
+      var add=e.target.closest('[data-add]');
+      if(add){ var id=add.getAttribute('data-add'); var cols=colsFor(id); var grid=document.getElementById('svc-l-'+id).getAttribute('data-grid')||'pair'; document.getElementById('svc-l-'+id).insertAdjacentHTML('beforeend', svcRowHtml(cols,grid,{})); return; }
+      var rm=e.target.closest('[data-rm]'); if(rm){ var row=rm.closest('.svc-row'); if(row) row.remove(); return; }
+      var rmt=e.target.closest('[data-rmthumb]'); if(rmt){ var t=rmt.closest('.svc-img'); if(t) t.remove(); return; }
+      if(e.target.id==='svcAddNew'){ openServiceForm(null); return; }
+      if(e.target.id==='svcSave'){ svcSave(); return; }
+      if(e.target.id==='svcCancelForm'){ svcLoadList(); return; }
+      // ── reorder a service: swap with its neighbour, then renumber sort_order 0..n ──
+      var mv=e.target.closest('[data-svcmove]');
+      if(mv){
+        var kind=mv.getAttribute('data-svcmove');
+        var grp=mv.getAttribute('data-grp');
+        var i=parseInt(mv.getAttribute('data-i'),10), dir=parseInt(mv.getAttribute('data-dir'),10);
+        var tbl=(kind==='added'?'service_pages':'treatments');
+        var full=(kind==='added'?svcAdded:svcBuiltin).slice();
+        // when the row belongs to a department group, reorder only inside that group so the
+        // arrows always swap with the neighbour the visitor actually sees on the page
+        var list=grp ? full.filter(function(t){return (t.category||'other')===grp;}) : full;
+        var j=i+dir;
+        if(i<0 || j<0 || j>=list.length) return;
+        var tmp=list[i]; list[i]=list[j]; list[j]=tmp;
+        mv.disabled=true;
+        // reuse this group's own sort_order values so nothing outside it shifts
+        var slots=list.map(function(t){return t.sort_order;})
+                      .filter(function(v){return v!=null;})
+                      .sort(function(a,b){return a-b;});
+        if(slots.length!==list.length) slots=list.map(function(_,k){return k;});
+        for(var k=0;k<list.length;k++){
+          if(list[k].sort_order!==slots[k]){
+            var up=await db.from(tbl).update({sort_order:slots[k]}).eq('id',list[k].id);
+            if(up.error){ alert('Reorder failed: '+up.error.message); return; }
+          }
+        }
+        svcLoadList(); return;
+      }
+      var ed=e.target.closest('[data-svcedit]'); if(ed){ var r=await db.from('service_pages').select('*').eq('id',ed.getAttribute('data-svcedit')).single(); if(!r.error) openServiceForm(r.data); return; }
+      var tg=e.target.closest('[data-svctoggle]'); if(tg){ var slug=tg.getAttribute('data-svctoggle'); var to=tg.getAttribute('data-to')==='1';
+        tg.disabled=true; var u=await db.from('treatments').update({is_active:to}).eq('slug',slug);
+        if(u.error){ alert('Update failed: '+u.error.message); tg.disabled=false; return; } svcLoadList(); return; }
+      var del=e.target.closest('[data-svcdel]'); if(del){ if(!confirm('Delete “'+del.getAttribute('data-slug')+'”? This removes the live page.')) return;
+        var d=await db.from('service_pages').delete().eq('id',del.getAttribute('data-svcdel')); if(d.error){ alert('Delete failed: '+d.error.message); return; }
+        try{ await db.from('treatments').delete().eq('slug',del.getAttribute('data-slug')); }catch(e2){}
+        svcLoadList(); return; }
+    });
+
+    (async function(){
+      await waitForDB();
+      if(!window.HC||!window.HC.db){ document.getElementById('gate').innerHTML=
+        'Connection not ready.<br>Set the anon key in supabase-config.js, then reload.'; return; }
+      db=window.HC.db;
+      var u=await window.HC.auth.user();
+      if(!u||!u.data||!u.data.user){ window.location.href='login.html'; return; }
+      var isAdmin=await window.HC.auth.isAdmin();
+      if(!isAdmin){ await window.HC.auth.signOut(); window.location.href='login.html'; return; }
+      currentUser=u.data.user;
+      document.getElementById('whoEmail').textContent=currentUser.email||'—';
+      document.getElementById('gate').style.display='none';
+      document.getElementById('rail').style.display='flex';
+      document.getElementById('main').style.display='block';
+      switchSection('bookings');
+    })();
+  })();
+  </script>
+</body>
+</html>

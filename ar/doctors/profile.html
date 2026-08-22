@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/icons/icon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180.png">
+  <meta name="description" content="Meet our specialist at Hollywood Clinic Cairo.">
+  <meta name="theme-color" content="#0B1D3A">
+  <title>Doctor — Hollywood Clinic</title>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+  <style>
+    .doctor-profile-hero{display:grid;gap:2.5rem;align-items:center;grid-template-columns:1fr;max-width:1100px;margin:0 auto}
+    @media(min-width:900px){.doctor-profile-hero{grid-template-columns:1fr 1.3fr;gap:4rem}}
+    .doctor-profile-photo{aspect-ratio:3/4;border-radius:1.5rem;overflow:hidden;box-shadow:0 30px 60px -20px rgba(11,29,58,.25);background:#e8edf4}
+    .doctor-profile-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .doctor-profile-info h1{font-size:clamp(2rem,4.5vw,2.75rem);margin:.5rem 0 .75rem}
+    .doctor-credentials{list-style:none;padding:0;margin:1.5rem 0}
+    .doctor-credentials li{padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.9375rem;color:var(--body);display:flex;gap:.75rem;align-items:center}
+    .doctor-credentials li::before{content:'★';color:var(--gold)}
+
+    .info-grid{display:grid;gap:1.25rem;grid-template-columns:1fr;max-width:900px;margin:0 auto}
+    @media(min-width:768px){.info-grid{grid-template-columns:repeat(2,1fr)}}
+    .info-pill{background:var(--white);border:1px solid var(--sky-dark);border-radius:1rem;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:all .3s ease}
+    .info-pill:hover{border-color:rgba(201,168,76,.3);transform:translateY(-2px)}
+    .info-pill-icon{flex-shrink:0;min-width:40px;height:40px;padding:0 .5rem;background:rgba(201,168,76,.1);border-radius:.625rem;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700}
+    .info-pill h4{font-family:var(--font-body);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
+    .info-pill p{font-size:.9375rem;color:var(--heading);font-weight:500}
+    .tech-grid{display:grid;gap:1rem;grid-template-columns:1fr;max-width:900px;margin:0 auto}
+    @media(min-width:640px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.tech-grid{grid-template-columns:repeat(3,1fr)}}
+    .tech-card{background:var(--white);border:1px solid var(--sky-dark);border-radius:.875rem;padding:1.25rem;transition:all .3s ease}
+    .tech-card:hover{border-color:var(--gold)}
+    .tech-card h4{font-family:var(--font-heading);font-size:1.0625rem;color:var(--navy);margin-bottom:.25rem}
+    .tech-card p{font-size:.8125rem;color:var(--body)}
+    .faq-list{max-width:760px;margin:0 auto}
+    .faq-item{background:var(--white);border:1px solid var(--sky-dark);border-radius:.875rem;margin-bottom:.75rem;overflow:hidden}
+    .faq-item summary{padding:1.25rem 1.5rem;cursor:pointer;font-family:var(--font-heading);font-size:1.0625rem;color:var(--navy);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary::after{content:'+';font-size:1.5rem;color:var(--gold);flex-shrink:0;transition:transform .3s ease}
+    .faq-item[open] summary::after{transform:rotate(45deg)}
+    .faq-item p{padding:0 1.5rem 1.25rem;font-size:.9375rem;color:var(--body);line-height:1.7}
+  </style>
+  <!-- Analytics: GTM / GA4 / Google Ads — configure IDs in assets/js/analytics.js -->
+  <script src="/assets/js/analytics.js" defer=""></script>
+<link rel="canonical" href="https://www.hollywoodclinics.net/ar/doctors/profile"><link rel="alternate" hreflang="x-default" href="https://www.hollywoodclinics.net/doctors/profile"><link rel="alternate" hreflang="ar-EG" href="https://www.hollywoodclinics.net/ar/doctors/profile"><link rel="alternate" hreflang="en" href="https://www.hollywoodclinics.net/doctors/profile"></head>
+<body dir="rtl">
+ <!--NAV-->
+
+ <section class="section" style="padding-top:7rem;background:linear-gradient(180deg,#DEE7F1 0%,#F0F5FB 100%)">
+ <div class="container">
+ <div class="breadcrumb" style="justify-content:flex-start;margin-bottom:2rem;color:var(--muted)">
+ <a href="/ar" data-i18n="nav.home">الرئيسية</a>
+ <span style="margin:0.5rem">/</span>
+ <a href="/ar#doctors" data-i18n="nav.doctors">الأطباء</a>
+ <span style="margin:0.5rem">/</span>
+ <span id="dCrumb"></span>
+ </div>
+ <div class="doctor-profile-hero">
+ <div class="doctor-profile-photo fade-up"><img id="dPhoto" src="" alt="" loading="eager"></div>
+ <div class="doctor-profile-info fade-up d1">
+ <p class="eyebrow" id="dEyebrow"></p>
+ <h1 id="dName"></h1>
+ <p id="dTagline" style="font-size:1.0625rem;color:var(--body);line-height:1.7"></p>
+ <ul class="doctor-credentials" id="dCreds"></ul>
+ <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem">
+ <a href="/ar/booking" class="btn btn-primary" id="dBook">Book a Consultation</a>
+ <a href="https://wa.me/201000007176" class="btn btn-outline" id="dWhatsapp">WhatsApp</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <section class="section bg-cream" id="dAboutSec" style="display:none">
+ <div class="container" style="max-width:820px">
+ <div class="text-center mb-14">
+ <div class="lux-line"></div>
+ <p class="eyebrow" id="dAboutEyebrow">About</p>
+ <h2 class="section-title" id="dAboutTitle"></h2>
+ </div>
+ <div id="dBio"></div>
+ </div>
+ </section>
+
+ 
+ <!-- Why choose -->
+ <section class="section bg-sky" id="dWhySec" style="display:none">
+ <div class="container">
+ <div class="text-center mb-14 fade-up">
+ <div class="lux-line"></div>
+ <p class="eyebrow" id="dWhyEyebrow">Why Choose</p>
+ <h2 class="section-title" id="dWhyTitle"></h2>
+ </div>
+ <div class="info-grid" id="dWhy"></div>
+ </div>
+ </section>
+
+ <!-- Areas of expertise -->
+ <section class="section bg-cream" id="dSvcSec" style="display:none">
+ <div class="container">
+ <div class="text-center mb-14 fade-up">
+ <div class="lux-line"></div>
+ <p class="eyebrow" id="dSvcEyebrow">Services</p>
+ <h2 class="section-title" id="dSvcTitle">Areas of Expertise</h2>
+ </div>
+ <div style="max-width:840px;margin:0 auto">
+ <ul class="doctor-credentials fade-up" style="font-size:.9375rem" id="dSvc"></ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- Technologies -->
+ <section class="section bg-sky" id="dTechSec" style="display:none">
+ <div class="container">
+ <div class="text-center mb-14 fade-up">
+ <div class="lux-line"></div>
+ <p class="eyebrow" id="dTechEyebrow">Advanced Technology</p>
+ <h2 class="section-title" id="dTechTitle"></h2>
+ </div>
+ <div class="tech-grid" id="dTech"></div>
+ </div>
+ </section>
+
+ <!-- FAQ -->
+ <section class="section bg-cream" id="dFaqSec" style="display:none">
+ <div class="container">
+ <div class="text-center mb-14 fade-up">
+ <div class="lux-line"></div>
+ <p class="eyebrow" id="dFaqEyebrow">FAQ</p>
+ <h2 class="section-title" id="dFaqTitle">Frequently Asked Questions</h2>
+ </div>
+ <div class="faq-list" id="dFaq"></div>
+ </div>
+ </section>
+
+<!--FOOTER-->
+
+ <script src="/assets/js/i18n-core.js"></script>
+ <script src="/assets/js/main.js"></script>
+ <script src="/assets/js/dynamic-content.js"></script>
+ <script src="/assets/js/supabase-config.js"></script>
+ <script>
+  (function(){
+    'use strict';
+    function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function lang(){ return (window.I18N&&window.I18N.current&&window.I18N.current())||'en'; }
+    function resolveImg(u){ if(u && !/^https?:|^\//.test(u)) u='/'+u; return u; }  // root-absolute: works at /ar depth too
+    // stored URLs sometimes end .png/.webp for files that are really .jpg — retry once before giving up
+    function photoSrc(d){
+      var u=d.image_url||('assets/images/doctors/'+d.slug+'.jpg');
+      return { src:resolveImg(u), alt:resolveImg(u.replace(/\.(png|webp)$/i,'.jpg')) };
+    }
+    var slug=new URLSearchParams(location.search).get('slug');
+    var D=null;
+
+    function pick(en,ar){ return (lang()==='ar'&&ar)?ar:(en||''); }
+    function render(){
+      if(!D){ document.getElementById('dName').textContent='Doctor not found';
+        document.getElementById('dCrumb').textContent='—'; return; }
+      var name=pick(D.name_en,D.name_ar);
+      var ar=lang()==='ar';
+      document.getElementById('dBook').textContent = ar?'احجزي استشارة':'Book a Consultation';
+      document.getElementById('dWhatsapp').textContent = ar?'واتساب':'WhatsApp';
+      document.getElementById('dAboutEyebrow').textContent = ar?'نبذة':'About';
+      var ph=photoSrc(D), pEl=document.getElementById('dPhoto');
+      pEl.onerror=function(){ if(this.src!==ph.alt && ph.alt!==ph.src){ this.src=ph.alt; } else { this.onerror=null; } };
+      pEl.src=ph.src;
+      pEl.alt=name;
+      document.getElementById('dEyebrow').textContent=pick(D.specialty_en,D.specialty_ar);
+      document.getElementById('dName').textContent=name;
+      document.getElementById('dCrumb').textContent=name;
+      document.title=name+' — Hollywood Clinic';
+      var tag=pick(D.tagline_en,D.tagline_ar);
+      var tagEl=document.getElementById('dTagline'); tagEl.textContent=tag; tagEl.style.display=tag?'':'none';
+      var creds=pick(D.credentials_en,D.credentials_ar).split(/\r?\n/).map(function(s){return s.trim();}).filter(Boolean);
+      document.getElementById('dCreds').innerHTML=creds.map(function(c){return '<li>'+esc(c)+'</li>';}).join('');
+      var bio=pick(D.bio_en,D.bio_ar);
+      if(bio){ document.getElementById('dAboutSec').style.display='';
+        document.getElementById('dAboutTitle').textContent=name;
+        document.getElementById('dBio').innerHTML=bio.split(/\n\s*\n|\r?\n/).map(function(p){return p.trim();}).filter(Boolean)
+          .map(function(p){return '<p style="font-size:1.0625rem;line-height:1.85;color:var(--body);margin-bottom:1.1rem">'+esc(p)+'</p>';}).join('');
+      } else { document.getElementById('dAboutSec').style.display='none'; }
+
+      // ── optional sections: each appears only when the dashboard has content for it ──
+      // rows are one per line; "|" splits a line into its parts
+      function rows(v){ return String(v||'').split(/\r?\n/).map(function(s){return s.trim();}).filter(Boolean)
+        .map(function(s){ return s.split('|').map(function(x){return x.trim();}); }); }
+      function toggle(secId, has){ document.getElementById(secId).style.display = has?'':'none'; return has; }
+
+      // Why choose — "badge | label | text"
+      var why=rows(pick(D.why_en,D.why_ar));
+      if(toggle('dWhySec', why.length)){
+        document.getElementById('dWhyEyebrow').textContent = ar?'ليه تختاري':'Why Choose';
+        document.getElementById('dWhyTitle').textContent = ar?('ليه بيثقوا في '+name):('Why Patients Trust '+name);
+        document.getElementById('dWhy').innerHTML=why.map(function(c){
+          var badge=c.length>2?c[0]:'★', label=c.length>2?c[1]:c[0], text=c.length>2?c.slice(2).join(' | '):(c[1]||'');
+          return '<div class="info-pill fade-up visible"><div class="info-pill-icon">'+esc(badge)+'</div>'+
+                 '<div><h4>'+esc(label)+'</h4><p>'+esc(text)+'</p></div></div>'; }).join('');
+      }
+      // Areas of expertise — one per line
+      var svc=rows(pick(D.services_en,D.services_ar));
+      if(toggle('dSvcSec', svc.length)){
+        document.getElementById('dSvcEyebrow').textContent = ar?'الخدمات':'Services';
+        document.getElementById('dSvcTitle').textContent = ar?'مجالات الخبرة':'Areas of Expertise';
+        document.getElementById('dSvc').innerHTML=svc.map(function(c){ return '<li>'+esc(c.join(' | '))+'</li>'; }).join('');
+      }
+      // Technologies — "device | what it does"
+      var tech=rows(pick(D.tech_en,D.tech_ar));
+      if(toggle('dTechSec', tech.length)){
+        document.getElementById('dTechEyebrow').textContent = ar?'تقنيات متقدمة':'Advanced Technology';
+        document.getElementById('dTechTitle').textContent = ar?('التقنيات اللي بتستخدمها '+name):('Technologies '+name+' Uses');
+        document.getElementById('dTech').innerHTML=tech.map(function(c){
+          return '<div class="tech-card fade-up visible"><h4>'+esc(c[0])+'</h4>'+
+                 (c[1]?'<p>'+esc(c.slice(1).join(' | '))+'</p>':'')+'</div>'; }).join('');
+      }
+      // FAQ — "question | answer"
+      var faq=rows(pick(D.faq_en,D.faq_ar));
+      if(toggle('dFaqSec', faq.length)){
+        document.getElementById('dFaqEyebrow').textContent = ar?'أسئلة شائعة':'FAQ';
+        document.getElementById('dFaqTitle').textContent = ar?'الأسئلة الشائعة':'Frequently Asked Questions';
+        document.getElementById('dFaq').innerHTML=faq.map(function(c){
+          return '<details class="faq-item fade-up visible"><summary>'+esc(c[0])+'</summary>'+
+                 (c[1]?'<p>'+esc(c.slice(1).join(' | '))+'</p>':'')+'</details>'; }).join('');
+      }
+    }
+    function load(){
+      if(!slug){ render(); return; }
+      if(!(window.HC&&window.HC.db)) return;
+      window.HC.db.from('doctors').select('*').eq('slug',slug).limit(1).then(function(r){
+        if(r.error||!r.data||!r.data.length){ D=null; render(); return; }
+        D=r.data[0]; render();
+      });
+    }
+    if(window.HC&&window.HC.db) load();
+    document.addEventListener('hc:db-ready', load);
+    document.addEventListener('i18n:applied', function(){ if(D) render(); });
+  })();
+  </script>
+
+
+</body></html>

@@ -1,0 +1,549 @@
+{
+  "_instructions": "To add a new blog post or video, add an entry to the 'posts' array below. For articles, create a matching .md file in /posts/. For videos, set 'type' to 'video' and add a 'videoUrl' (YouTube embed URL or direct .mp4). Newest posts first. 'file' can be a single filename (one language) OR an object like { en: 'post.md', ar: 'post.ar.md' } to serve different versions per language; if the Arabic file is missing the English one is used as fallback.",
+  "posts": [
+    {
+      "slug": "exosomes-hair-breakthrough",
+      "type": "article",
+      "title": {
+        "en": "Exosomes for Hair — The Biggest Breakthrough in Non-Surgical Hair Restoration",
+        "ar": "إكسوسومز للشعر — أكبر تطور في علاج الشعر بدون جراحة"
+      },
+      "excerpt": {
+        "en": "Authentic Korean exosomes are reshaping what's possible for hereditary hair loss. Here's the honest, unhyped explanation of what they actually do.",
+        "ar": "تقنية الإكسوسومز الكورية الأصلية تعيد رسم حدود ما يمكن تحقيقه لعلاج الصلع الوراثي. إليكِ الشرح الصادق بدون مبالغة لما تفعله فعلاً."
+      },
+      "date": "2026-05-20",
+      "author": "Dr. Rana Safwat",
+      "category": "Hair",
+      "readMinutes": 9,
+      "cover": "assets/images/blog/exosomes-hair-breakthrough.jpg",
+      "file": {
+        "en": "exosomes-hair-breakthrough.md",
+        "ar": "exosomes-hair-breakthrough.ar.md"
+      }
+    },
+    {
+      "slug": "growth-factor-hair-explained",
+      "type": "article",
+      "title": {
+        "en": "Growth Factor for Hair — The Maintenance Treatment Every Woman Should Know About",
+        "ar": "حقن Growth Factor للشعر — العلاج الذي يجب أن تعرفه كل امرأة"
+      },
+      "excerpt": {
+        "en": "Why scalp injections outperform oral hair vitamins by a factor of 10 — and who benefits most from a Growth Factor course.",
+        "ar": "لماذا تتفوق حقن فروة الرأس على فيتامينات الشعر الفموية بعشرة أضعاف — ومن يستفيد أكثر من جلسات Growth Factor."
+      },
+      "date": "2026-05-18",
+      "author": "Dr. Nesma Samir",
+      "category": "Hair",
+      "readMinutes": 7,
+      "cover": "assets/images/blog/growth-factor-hair-explained.jpg",
+      "file": {
+        "en": "growth-factor-hair-explained.md",
+        "ar": "growth-factor-hair-explained.ar.md"
+      }
+    },
+    {
+      "slug": "postpartum-hair-loss-guide",
+      "type": "article",
+      "title": {
+        "en": "Postpartum Hair Loss — Why It Happens and How to Stop It",
+        "ar": "تساقط الشعر بعد الولادة — لماذا يحدث وكيف توقفينه"
+      },
+      "excerpt": {
+        "en": "Three months after birth, your hair starts falling out in clumps. Here's why it's normal, when to worry, and what actually helps.",
+        "ar": "بعد ثلاثة أشهر من الولادة، يبدأ الشعر بالتساقط بكثافة. إليكِ لماذا هذا طبيعي، ومتى يجب القلق، وما الذي يساعد فعلاً."
+      },
+      "date": "2026-05-12",
+      "author": "Dr. Marwa Magdy",
+      "category": "Hair",
+      "readMinutes": 8,
+      "cover": "assets/images/blog/postpartum-hair-loss-guide.jpg",
+      "file": {
+        "en": "postpartum-hair-loss-guide.md",
+        "ar": "postpartum-hair-loss-guide.ar.md"
+      }
+    },
+    {
+      "slug": "lip-fillers-guide-2026",
+      "type": "article",
+      "title": {
+        "en": "The Complete Guide to Natural Lip Fillers in 2026",
+        "ar": "الدليل الكامل لفيلر الشفاه الطبيعي 2026"
+      },
+      "excerpt": {
+        "en": "Everything you need to know before your first lip filler appointment — from product choice to aftercare.",
+        "ar": "كل ما تحتاجين معرفته قبل أول جلسة فيلر شفاه — من اختيار المنتج إلى العناية بعد الجلسة."
+      },
+      "date": "2026-04-22",
+      "author": "Dr. Layla Hassan",
+      "category": "Treatments",
+      "readMinutes": 7,
+      "cover": "assets/images/blog/lip-fillers-guide-2026.jpg",
+      "file": {
+        "en": "lip-fillers-guide-2026.md",
+        "ar": "lip-fillers-guide-2026.ar.md"
+      }
+    },
+    {
+      "slug": "behind-the-scenes-clinic-tour",
+      "type": "video",
+      "title": {
+        "en": "Behind the Scenes — A Tour of Hollywood Clinic",
+        "ar": "خلف الكواليس — جولة في هوليوود كلينك"
+      },
+      "excerpt": {
+        "en": "Take a fast tour inside our Heliopolis clinic — meet the team, see the technology, and explore every treatment room.",
+        "ar": "خدي جولة سريعة جوه عيادتنا في مصر الجديدة — اتعرفي على الفريق، شوفي الأجهزة، واتفرجي على كل غرف العلاج."
+      },
+      "date": "2026-04-10",
+      "author": "Hollywood Clinic",
+      "category": "Behind The Scenes",
+      "duration": "4:32",
+      "cover": "assets/images/blog/behind-the-scenes-clinic-tour.jpg",
+      "videoUrl": "https://www.youtube.com/embed/5hTz-PbcZfY",
+      "file": {
+        "en": "behind-the-scenes-clinic-tour.md",
+        "ar": "behind-the-scenes-clinic-tour.ar.md"
+      },
+      "gallery": [
+        {
+          "youtube": "VkvXyA4_s2k",
+          "alt": "Inside Hollywood Clinic — video tour"
+        },
+        {
+          "youtube": "RYg6Luwu-Fg",
+          "alt": "Hollywood Clinic — treatment in action"
+        },
+        {
+          "youtube": "qehRynUzkyY",
+          "alt": "Hollywood Clinic — body shaping technology"
+        },
+        {
+          "youtube": "4rG2aMzGkM8",
+          "alt": "Hollywood Clinic — our devices and rooms"
+        },
+        {
+          "youtube": "uNCrEUGENFs",
+          "alt": "Hollywood Clinic — a look at a session"
+        },
+        {
+          "youtube": "X8FcHHgFoaM",
+          "alt": "Hollywood Clinic — meet the team"
+        },
+        {
+          "src": "assets/images/bodyfx/bodyfx-01.jpg",
+          "alt": "Our Body FX (InMode) unit in the Heliopolis clinic"
+        },
+        {
+          "src": "assets/images/bodyfx/bodyfx-02.jpg",
+          "alt": "Body FX applicator treating the abdomen"
+        },
+        {
+          "src": "assets/images/bodyfx/bodyfx-03.jpg",
+          "alt": "Body FX treatment areas — abdomen, flanks and thighs"
+        },
+        {
+          "src": "assets/images/bodyfx/bodyfx-04.jpg",
+          "alt": "Smooth, contoured abdomen after body shaping"
+        },
+        {
+          "src": "assets/images/clatuu/clatuu-01.jpg",
+          "alt": "Our Clatuu Alpha unit in the Heliopolis clinic"
+        },
+        {
+          "src": "assets/images/clatuu/clatuu-02.jpg",
+          "alt": "Clatuu Alpha applicator treating the abdomen"
+        },
+        {
+          "src": "assets/images/clatuu/clatuu-03.jpg",
+          "alt": "Clatuu Alpha session in progress"
+        },
+        {
+          "src": "assets/images/clatuu/clatuu-04.jpg",
+          "alt": "Dual Clatuu Alpha applicators treating the abdomen"
+        },
+        {
+          "src": "assets/images/clatuu/clatuu-05.jpg",
+          "alt": "Relaxed Clatuu Alpha fat-freezing session"
+        },
+        {
+          "src": "assets/images/emtone/emtone-01.jpg",
+          "alt": "The EMTONE unit in our Heliopolis clinic"
+        },
+        {
+          "src": "assets/images/emtone/emtone-02.jpg",
+          "alt": "EMTONE applicator treating the thigh"
+        },
+        {
+          "src": "assets/images/emtone/emtone-03.jpg",
+          "alt": "EMTONE session in progress"
+        },
+        {
+          "src": "assets/images/emtone/emtone-04.jpg",
+          "alt": "EMTONE handpiece and console"
+        },
+        {
+          "src": "assets/images/emtone/emtone-05.jpg",
+          "alt": "EMTONE treatment of the leg"
+        },
+        {
+          "src": "assets/images/hifu-body/hifub-02.jpg",
+          "alt": "HIFU Body applicator treating the abdomen"
+        },
+        {
+          "src": "assets/images/hifu-body/hifub-03.jpg",
+          "alt": "HIFU Body treatment areas — arms, abdomen and buttocks"
+        },
+        {
+          "src": "assets/images/morpheus8-body/m8b-01.jpg",
+          "alt": "Our Morpheus8 Body unit in the Heliopolis clinic"
+        },
+        {
+          "src": "assets/images/morpheus8-body/m8b-02.jpg",
+          "alt": "Morpheus8 Body applicator treating the abdomen"
+        },
+        {
+          "src": "assets/images/morpheus8-body/m8b-03.jpg",
+          "alt": "Morpheus8 Body microneedling applicator in use"
+        },
+        {
+          "src": "assets/images/tesla/tesla-01.jpg",
+          "alt": "Tesla Former by Iskra Medical — the FMS body-sculpting system"
+        },
+        {
+          "src": "assets/images/tesla/tesla-02.jpg",
+          "alt": "The Tesla Former unit in our Heliopolis clinic"
+        },
+        {
+          "src": "assets/images/tesla/tesla-03.jpg",
+          "alt": "Tesla Former applicator shaping the abdomen"
+        },
+        {
+          "src": "assets/images/tesla/tesla-04.jpg",
+          "alt": "Seated Tesla Former session"
+        },
+        {
+          "src": "assets/images/tesla/tesla-05.jpg",
+          "alt": "Dual Tesla Former applicators treating abdomen and thigh"
+        },
+        {
+          "src": "assets/images/tesla/tesla-06.jpg",
+          "alt": "Tesla Former session targeting the glutes and thighs"
+        },
+        {
+          "src": "assets/images/tesla/tesla-07.jpg",
+          "alt": "Tesla Former console with applicator stand"
+        },
+        {
+          "src": "assets/images/exosomes-gallery/exo-diagram-1.jpg",
+          "alt": "Exosome scalp injection for hair restoration at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/exosomes-gallery/exo-diagram-2.jpg",
+          "alt": "Exosome therapy for hairline and density"
+        },
+        {
+          "src": "assets/images/exosomes-gallery/exo-diagram-3.jpg",
+          "alt": "Exosome treatment on the crown for thicker hair"
+        },
+        {
+          "src": "assets/images/growthfactor-gallery/gf-diagram-1.jpg",
+          "alt": "Growth factor microneedling on the scalp at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/growthfactor-gallery/gf-diagram-2.jpg",
+          "alt": "Growth factor hair restoration treatment"
+        },
+        {
+          "src": "assets/images/laser-gallery/laser-machine.jpg",
+          "alt": "The InMode diode laser device at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/biostim-gallery/biostim-diagram-1.jpg",
+          "alt": "Collagen-stimulating treatment illustration"
+        },
+        {
+          "src": "assets/images/biostim-gallery/biostim-diagram-2.jpg",
+          "alt": "Biostimulator injection with lifting direction guides"
+        },
+        {
+          "src": "assets/images/biostim-gallery/biostim-diagram-3.jpg",
+          "alt": "Biostimulator injection for facial rejuvenation at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/bodyfiller-gallery/bf-diagram-1.jpg",
+          "alt": "Body contouring result illustration at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/bodyfiller-gallery/bf-diagram-2.jpg",
+          "alt": "Body filler injection for shaping at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/bodyfiller-gallery/bf-diagram-3.jpg",
+          "alt": "Body sculpting and contouring treatment areas"
+        },
+        {
+          "src": "assets/images/botox-gallery/botox-diagram-1.jpg",
+          "alt": "Botox before and after — smoother, refreshed facial appearance"
+        },
+        {
+          "src": "assets/images/botox-gallery/botox-diagram-2.jpg",
+          "alt": "Botox anti-wrinkle injection placement map — forehead, frown, crows feet, and more"
+        },
+        {
+          "src": "assets/images/botox-gallery/botox-diagram-3.jpg",
+          "alt": "Facial Botox injection points diagram"
+        },
+        {
+          "src": "assets/images/botox-gallery/botox-diagram-4.jpg",
+          "alt": "Botox forehead injection at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/botox-gallery/botox-diagram-5.jpg",
+          "alt": "Facial rejuvenation treatment areas illustration"
+        },
+        {
+          "src": "assets/images/filler-gallery/filler-diagram-1.jpg",
+          "alt": "Dermal filler injection at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/filler-gallery/filler-diagram-2.jpg",
+          "alt": "Chin and jawline filler treatment"
+        },
+        {
+          "src": "assets/images/filler-gallery/filler-diagram-3.jpg",
+          "alt": "Lip filler injection for natural definition"
+        },
+        {
+          "src": "assets/images/filler-gallery/filler-diagram-4.jpg",
+          "alt": "Lip enhancement with dermal filler"
+        },
+        {
+          "src": "assets/images/forma-gallery/forma-diagram-1.jpg",
+          "alt": "Forma radiofrequency treatment on the face at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/forma-gallery/forma-diagram-2.jpg",
+          "alt": "Forma applicator gliding across the cheek"
+        },
+        {
+          "src": "assets/images/forma-gallery/forma-diagram-3.jpg",
+          "alt": "Facial contour and lifting direction map"
+        },
+        {
+          "src": "assets/images/hifuface-gallery/hifuface-diagram-1.jpg",
+          "alt": "HIFU applicator treating the face at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/hifuface-gallery/hifuface-diagram-2.jpg",
+          "alt": "HIFU non-surgical face lift treatment"
+        },
+        {
+          "src": "assets/images/hydrafacial-gallery/hf-diagram-1.jpg",
+          "alt": "HydraFacial extraction step at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/hydrafacial-gallery/hf-diagram-2.jpg",
+          "alt": "HydraFacial hydration treatment on the face"
+        },
+        {
+          "src": "assets/images/hydrafacial-gallery/hf-diagram-3.jpg",
+          "alt": "HydraFacial cleansing and resurfacing step"
+        },
+        {
+          "src": "assets/images/hydrafacial-gallery/hf-diagram-4.jpg",
+          "alt": "HydraFacial treatment on the neck and décolletage"
+        },
+        {
+          "src": "assets/images/hydrafacial-gallery/hf-machine.jpg",
+          "alt": "The HydraFacial device at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/morpheus8-gallery/m8-diagram-1.jpg",
+          "alt": "Morpheus8 microneedling treatment on the face at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/morpheus8-gallery/m8-diagram-2.jpg",
+          "alt": "Morpheus8 applicator on the cheek for skin remodeling"
+        },
+        {
+          "src": "assets/images/morpheus8-gallery/m8-machine.jpg",
+          "alt": "The Morpheus8 device at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/skinbooster-gallery/sb-diagram-1.jpg",
+          "alt": "Skin booster injection for glowing skin at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/skinbooster-gallery/sb-diagram-2.jpg",
+          "alt": "Skin booster micro-droplet technique on the cheek"
+        },
+        {
+          "src": "assets/images/skinbooster-gallery/sb-diagram-3.jpg",
+          "alt": "Skin booster injection for hydration and radiance"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-02.jpg",
+          "alt": "Hollywood Clinic marble reception desk"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-01.jpg",
+          "alt": "Private treatment room with the backlit Hollywood Clinic lotus emblem"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-03.jpg",
+          "alt": "Treatment room with massage bed and branded towels"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-04.jpg",
+          "alt": "Body-contouring treatment room with Clatuu Alpha device"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-05.jpg",
+          "alt": "Specialist consultation office with crystal chandelier"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-06.jpg",
+          "alt": "Patient lounge with gold velvet sofas"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-07.jpg",
+          "alt": "HydraFacial treatment room"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-08.jpg",
+          "alt": "Front reception and waiting area"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-09.jpg",
+          "alt": "Lounge beneath cascading crystal chandeliers"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-10.jpg",
+          "alt": "Alpha body-sculpting device in a treatment room"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-11.jpg",
+          "alt": "Waiting lounge with teal and gold seating"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-12.jpg",
+          "alt": "Spacious lounge with designer lighting"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-13.jpg",
+          "alt": "Consultation office at Hollywood Clinic"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-14.jpg",
+          "alt": "Marilyn Monroe portrait above gold velvet armchairs"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-15.jpg",
+          "alt": "Marble coffee-table styling detail"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-16.jpg",
+          "alt": "Gold decorative accents on the reception counter"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-17.jpg",
+          "alt": "Lounge seating with marble coffee table"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-18.jpg",
+          "alt": "Branded Hollywood Clinic towels at the front desk"
+        },
+        {
+          "src": "assets/images/blog/clinic-tour/clinic-19.jpg",
+          "alt": "Hollywood Clinic branded towels and signage"
+        }
+      ]
+    },
+    {
+      "slug": "client-story-noha",
+      "type": "article",
+      "title": {
+        "en": "Noha's Story — 6 Months After Body Shaping",
+        "ar": "قصة نهى — بعد 6 أشهر من نحت الجسم"
+      },
+      "excerpt": {
+        "en": "Meet Noha. She lost 18cm without surgery. Watch her honest review and full transformation.",
+        "ar": "تعرفي على نهى. خسرت 18 سم بدون جراحة. شاهدي مراجعتها الصادقة وتحولها الكامل."
+      },
+      "date": "2026-02-20",
+      "author": "Hollywood Clinic",
+      "category": "Client Stories",
+      "readMinutes": 3,
+      "cover": "assets/images/blog/client-story-noha.jpg",
+      "file": {
+        "en": "client-story-noha.md",
+        "ar": "client-story-noha.ar.md"
+      }
+    },
+    {
+      "slug": "botox-myths-debunked",
+      "type": "article",
+      "title": {
+        "en": "5 Botox Myths That Need to Go Away",
+        "ar": "5 خرافات عن البوتوكس يجب أن نتخلص منها"
+      },
+      "excerpt": {
+        "en": "No, Botox doesn't freeze your face. Yes, it's safe. Our specialist debunks the most common misconceptions.",
+        "ar": "لا، البوتوكس لا يجمد وجهكِ. نعم، إنه آمن. أخصائيتنا تفند أكثر المفاهيم الخاطئة شيوعاً."
+      },
+      "date": "2026-03-28",
+      "author": "Dr. Karim Salem",
+      "category": "Treatments",
+      "readMinutes": 5,
+      "cover": "assets/images/blog/botox-myths-debunked.jpg",
+      "file": {
+        "en": "botox-myths-debunked.md",
+        "ar": "botox-myths-debunked.ar.md"
+      }
+    },
+    {
+      "slug": "skincare-routine-30s",
+      "type": "article",
+      "title": {
+        "en": "The Skincare Routine Every Woman in Her 30s Needs",
+        "ar": "روتين العناية بالبشرة لكل امرأة في الثلاثينات"
+      },
+      "excerpt": {
+        "en": "Anti-aging starts earlier than you think. Here's the science-backed routine our dermatologists recommend.",
+        "ar": "مكافحة الشيخوخة تبدأ أبكر مما تظنين. إليكِ الروتين العلمي الذي يوصي به أطباؤنا."
+      },
+      "date": "2026-03-15",
+      "author": "Dr. Nadia Farouk",
+      "category": "Skincare",
+      "readMinutes": 6,
+      "cover": "assets/images/blog/skincare-routine-30s.jpg",
+      "file": {
+        "en": "skincare-routine-30s.md",
+        "ar": "skincare-routine-30s.ar.md"
+      }
+    },
+    {
+      "slug": "hair-loss-women-egypt",
+      "type": "article",
+      "title": {
+        "en": "Why Hair Loss in Women Is Rising in Egypt",
+        "ar": "لماذا يتزايد تساقط الشعر عند النساء في مصر"
+      },
+      "excerpt": {
+        "en": "Climate, diet, stress, and hormones — our trichologist explains the causes and proven treatments.",
+        "ar": "المناخ، الغذاء، التوتر، والهرمونات — خبيرنا يشرح الأسباب والعلاجات المثبتة."
+      },
+      "date": "2026-02-05",
+      "author": "Dr. Ahmed Mostafa",
+      "category": "Hair",
+      "readMinutes": 8,
+      "cover": "assets/images/blog/hair-loss-women-egypt.jpg",
+      "file": {
+        "en": "hair-loss-women-egypt.md",
+        "ar": "hair-loss-women-egypt.ar.md"
+      }
+    }
+  ]
+}

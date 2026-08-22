@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Nightly report — Hollywood Clinic</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon-48.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1D3A; --navy-2:#14294b; --gold:#C9A84C; --gold-soft:#EAD9A6;
+  --cream:#FAFBFD; --sky:#F0F5FB; --line:#E3E9F2;
+  --ink:#1B2436; --muted:#6C7A91;
+  --up:#2F7D52; --down:#B03A48;
+  --shadow:0 1px 2px rgba(11,29,58,.05), 0 8px 24px rgba(11,29,58,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--cream); color:var(--ink);
+  font:15px/1.55 Inter,system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 72px}
+
+/* ---------- masthead ---------- */
+.top{background:var(--navy);color:#fff;padding:26px 0 22px;margin-bottom:28px}
+.top .wrap{padding-bottom:0}
+.top-row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:34px;height:34px;border-radius:50%}
+.brand b{font:600 19px/1 'Playfair Display',serif;letter-spacing:.2px}
+.brand span{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.top h1{margin:16px 0 2px;font:500 30px/1.15 'Playfair Display',serif}
+.top .sub{color:#A9B7CC;font-size:13.5px}
+.top-actions{display:flex;gap:8px;align-items:center}
+.btn{
+  border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;
+  padding:8px 14px;border-radius:999px;font:500 13px Inter,sans-serif;cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+.btn:hover{background:rgba(255,255,255,.09)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.btn.solid{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:600}
+.btn.solid:hover{background:#d8b95f}
+
+/* ---------- range tabs ---------- */
+.ranges{display:flex;gap:6px;background:rgba(255,255,255,.08);padding:4px;border-radius:999px}
+.ranges button{
+  border:0;background:transparent;color:#C6D2E4;padding:7px 15px;border-radius:999px;
+  font:500 13px Inter,sans-serif;cursor:pointer
+}
+.ranges button[aria-pressed="true"]{background:#fff;color:var(--navy);font-weight:600}
+.ranges button:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+
+/* ---------- section ---------- */
+section{margin-top:34px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
+.sec-head h2{margin:0;font:600 13px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--navy)}
+.sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-soft),transparent)}
+.sec-head .note{font-size:12px;color:var(--muted)}
+
+/* ---------- stat cards ---------- */
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;box-shadow:var(--shadow)}
+.card .label{font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.card .num{font:500 40px/1.05 'Playfair Display',serif;color:var(--navy);margin:10px 0 4px;font-variant-numeric:tabular-nums}
+.card .num.sm{font-size:29px}
+.delta{font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+.delta.up{color:var(--up)} .delta.down{color:var(--down)} .delta.flat{color:var(--muted)}
+.card .foot{font-size:12px;color:var(--muted);margin-top:2px}
+.card.accent{background:linear-gradient(160deg,var(--navy),var(--navy-2));border-color:var(--navy)}
+.card.accent .label{color:var(--gold)}
+.card.accent .num{color:#fff}
+.card.accent .foot{color:#A9B7CC}
+
+/* ---------- tables ---------- */
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th{
+  text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;padding:11px 16px;background:var(--sky);border-bottom:1px solid var(--line)
+}
+td{padding:11px 16px;border-bottom:1px solid #EEF2F7;font-size:14px;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--navy);white-space:nowrap}
+td.q{color:var(--ink)}
+.bar{height:5px;border-radius:3px;background:var(--gold);opacity:.75;min-width:2px}
+.barcell{width:34%;padding-right:20px}
+
+/* ---------- feed ---------- */
+.feed-item{display:flex;gap:14px;padding:13px 16px;border-bottom:1px solid #EEF2F7}
+.feed-item:last-child{border-bottom:0}
+.feed-when{width:74px;flex:0 0 74px;font-size:11.5px;color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums}
+.feed-body{flex:1;min-width:0}
+.feed-title{font-weight:600;font-size:14px;color:var(--navy)}
+.feed-meta{font-size:12.5px;color:var(--muted);margin-top:2px;word-break:break-word}
+.pill{display:inline-block;background:var(--sky);border:1px solid var(--line);color:var(--navy);
+  border-radius:999px;padding:2px 9px;font-size:11.5px;font-weight:600;margin-left:6px}
+
+/* ---------- states ---------- */
+.empty{padding:26px 18px;text-align:center;color:var(--muted);font-size:13.5px}
+.empty b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:5px;font-weight:600}
+.empty code{background:var(--sky);padding:2px 6px;border-radius:5px;font-size:12px}
+.skel{height:13px;border-radius:6px;background:linear-gradient(90deg,#EEF2F7,#F7FAFD,#EEF2F7);
+  background-size:200% 100%;animation:sh 1.2s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.err{background:#FDF3F4;border:1px solid #F3D7DA;color:var(--down);padding:12px 16px;
+  border-radius:10px;font-size:13px;margin-top:12px}
+
+/* ---------- toast ---------- */
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);opacity:0;pointer-events:none;
+  background:var(--navy);color:#fff;padding:11px 20px;border-radius:999px;font-size:13.5px;font-weight:500;
+  transition:opacity .2s,transform .2s;z-index:60;box-shadow:0 10px 30px rgba(11,29,58,.25)}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){ .g4{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:1fr} .g2{grid-template-columns:1fr} }
+@media (max-width:700px){
+  .top-row{align-items:stretch}
+  .top-actions{width:100%;flex-wrap:wrap}
+  .ranges{flex:1 1 100%;justify-content:space-between}
+  .ranges button{flex:1}
+  .top-actions .btn{flex:1 1 auto;white-space:nowrap}
+}
+@media (max-width:560px){
+  .g4{grid-template-columns:1fr}
+  .top h1{font-size:24px}
+  .card .num{font-size:33px}
+  .barcell{display:none}
+  .feed-when{width:58px;flex:0 0 58px}
+}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
+@media print{
+  .top{background:#fff;color:#000;border-bottom:2px solid var(--navy)}
+  .top h1,.brand b{color:var(--navy)} .top .sub{color:#555}
+  .top-actions,.ranges{display:none} .card,.panel{box-shadow:none} body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <div class="brand">
+        <img src="../assets/images/logo.png" alt="">
+        <div><b>Hollywood Clinic</b><span>Nightly report</span></div>
+      </div>
+      <div class="top-actions">
+        <div class="ranges" role="group" aria-label="Date range">
+          <button data-range="1"  aria-pressed="false">Today</button>
+          <button data-range="7"  aria-pressed="true">7 days</button>
+          <button data-range="30" aria-pressed="false">30 days</button>
+        </div>
+        <button class="btn" id="copyBtn">Copy summary</button>
+        <button class="btn" onclick="window.print()">Print</button>
+        <button class="btn solid" onclick="location.href='dashboard.html'">Dashboard</button>
+      </div>
+    </div>
+    <h1 id="hTitle">Last 7 days</h1>
+    <div class="sub" id="hSub">Loading…</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ENQUIRIES ------------------------------------------------ -->
+  <section>
+    <div class="sec-head">
+      <h2>What came in</h2><div class="rule"></div>
+      <div class="note">from the website</div>
+    </div>
+    <div class="grid g4">
+      <div class="card accent"><div class="label">Bookings</div><div class="num" id="kBook">–</div><div id="dBook"></div></div>
+      <div class="card"><div class="label">Messages</div><div class="num" id="kMsg">–</div><div id="dMsg"></div></div>
+      <div class="card"><div class="label">Reviews left</div><div class="num" id="kRev">–</div><div class="foot" id="fRev"></div></div>
+      <div class="card"><div class="label">Busiest day</div><div class="num sm" id="kPeak">–</div><div class="foot" id="fPeak"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Most requested</h2><div class="rule"></div></div>
+    <div class="grid g2">
+      <div class="panel"><table><thead><tr><th>Treatment</th><th class="barcell"></th><th style="text-align:right">Bookings</th></tr></thead><tbody id="tTreat"><tr><td colspan="3"><div class="skel"></div></td></tr></tbody></table></div>
+      <div class="panel"><table><thead><tr><th>Latest bookings</th></tr></thead><tbody><tr><td style="padding:0"><div id="feedBook"><div class="empty"><div class="skel"></div></div></div></td></tr></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- TRAFFIC -------------------------------------------------- -->
+  <section>
+    <div class="sec-head">
+      <h2>Who visited</h2><div class="rule"></div>
+      <div class="note">Google Analytics</div>
+    </div>
+    <div class="grid g4">
+      <div class="card"><div class="label">Visitors</div><div class="num" id="kUsers">–</div><div id="dUsers"></div></div>
+      <div class="card"><div class="label">New visitors</div><div class="num" id="kNew">–</div><div class="foot" id="fNew"></div></div>
+      <div class="card"><div class="label">Sessions</div><div class="num" id="kSess">–</div><div class="foot" id="fSess"></div></div>
+      <div class="card"><div class="label">Avg. time</div><div class="num sm" id="kDur">–</div><div class="foot">per session</div></div>
+    </div>
+    <div class="grid g3" style="margin-top:14px">
+      <div class="panel"><table><thead><tr><th>Where they came from</th><th style="text-align:right">Visitors</th></tr></thead><tbody id="tSrc"></tbody></table></div>
+      <div class="panel"><table><thead><tr><th>Most-read pages</th><th style="text-align:right">Views</th></tr></thead><tbody id="tPages"></tbody></table></div>
+      <div class="panel"><table><thead><tr><th>Device</th><th style="text-align:right">Visitors</th></tr></thead><tbody id="tDev"></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- ACTIONS -------------------------------------------------- -->
+  <section>
+    <div class="sec-head"><h2>What they did</h2><div class="rule"></div><div class="note">tracked events</div></div>
+    <div class="grid g3">
+      <div class="card"><div class="label">Booking submitted</div><div class="num" id="kEvBook">–</div><div class="foot">quiz completed</div></div>
+      <div class="card"><div class="label">WhatsApp clicks</div><div class="num" id="kEvWa">–</div><div class="foot">handoff to chat</div></div>
+      <div class="card"><div class="label">Phone clicks</div><div class="num" id="kEvTel">–</div><div class="foot">tapped to call</div></div>
+    </div>
+  </section>
+
+  <!-- SEARCH --------------------------------------------------- -->
+  <section>
+    <div class="sec-head">
+      <h2>Found on Google</h2><div class="rule"></div>
+      <div class="note">Search Console · data lags ~2 days</div>
+    </div>
+    <div class="grid g4">
+      <div class="card"><div class="label">Clicks</div><div class="num" id="kClicks">–</div><div id="dClicks"></div></div>
+      <div class="card"><div class="label">Impressions</div><div class="num" id="kImpr">–</div><div id="dImpr"></div></div>
+      <div class="card"><div class="label">Click rate</div><div class="num sm" id="kCtr">–</div><div class="foot">of people who saw us</div></div>
+      <div class="card"><div class="label">Avg. position</div><div class="num sm" id="kPos">–</div><div class="foot">lower is better</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="panel"><table><thead><tr><th>What they searched</th><th class="barcell"></th><th style="text-align:right">Clicks</th></tr></thead><tbody id="tQ"></tbody></table></div>
+      <div class="panel"><table><thead><tr><th>Pages Google sent them to</th><th style="text-align:right">Clicks</th></tr></thead><tbody id="tGP"></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- HEALTH --------------------------------------------------- -->
+  <section>
+    <div class="sec-head"><h2>Site health</h2><div class="rule"></div></div>
+    <div class="grid g2">
+      <div class="card"><div class="label">Pages indexed</div><div class="num" id="kIdx">–</div><div class="foot" id="fIdx">of pages Google knows</div></div>
+      <div class="card"><div class="label">Not indexed</div><div class="num" id="kNidx">–</div><div class="foot">redirects and duplicates are normal</div></div>
+    </div>
+    <div id="setupHint"></div>
+  </section>
+
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="../assets/js/supabase-config.js"></script>
+<script>
+(function(){
+  var db, RANGE = 7, DATA = {};
+
+  var $  = function(s){ return document.querySelector(s); };
+  var el = function(id){ return document.getElementById(id); };
+
+  function toast(m){ var t=el('toast'); t.textContent=m; t.classList.add('on'); setTimeout(function(){t.classList.remove('on');},2200); }
+  function nf(n){ return (n==null||isNaN(n))?'–':Number(n).toLocaleString('en-US'); }
+  function iso(d){ return d.toISOString().slice(0,10); }
+  function daysAgo(n){ var d=new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()-n); return d; }
+  function mmss(s){ if(!s) return '–'; var m=Math.floor(s/60); return m+'m '+String(Math.round(s%60)).padStart(2,'0')+'s'; }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function delta(node, now, prev, invert){
+    if(prev==null || prev===0 || now==null){ node.innerHTML=''; return; }
+    var pct = Math.round(((now-prev)/prev)*100);
+    var dir = pct>0?'up':(pct<0?'down':'flat');
+    if(invert && dir!=='flat') dir = dir==='up'?'down':'up';
+    var arrow = pct>0?'↑':(pct<0?'↓':'→');
+    node.innerHTML = '<span class="delta '+dir+'">'+arrow+' '+Math.abs(pct)+'%</span>'+
+                     '<span class="foot" style="margin-left:6px">vs previous period</span>';
+  }
+
+  function rows(tbody, list, keyName, valName, withBar){
+    var t = el(tbody); if(!t) return;
+    if(!list || !list.length){ t.innerHTML='<tr><td colspan="3" class="empty">Nothing yet for this period.</td></tr>'; return; }
+    var max = Math.max.apply(null, list.map(function(r){ return Number(r[valName])||0; })) || 1;
+    t.innerHTML = list.slice(0,8).map(function(r){
+      var v = Number(r[valName])||0;
+      var bar = withBar ? '<td class="barcell"><div class="bar" style="width:'+Math.max(2,(v/max)*100)+'%"></div></td>' : '';
+      return '<tr><td class="q">'+esc(r[keyName])+'</td>'+bar+'<td class="n">'+nf(v)+'</td></tr>';
+    }).join('');
+  }
+
+  /* ---------- Supabase: bookings, messages, reviews ---------- */
+  async function loadEnquiries(){
+    var from = iso(daysAgo(RANGE-1)), prevFrom = iso(daysAgo(RANGE*2-1));
+    var out = { bookings:[], messages:0, reviews:0, prevBookings:0, prevMessages:0 };
+
+    var b = await db.from('bookings').select('*').gte('created_at', prevFrom).order('created_at',{ascending:false});
+    if(b.error) throw new Error('bookings: '+b.error.message);
+    (b.data||[]).forEach(function(r){
+      if(String(r.created_at).slice(0,10) >= from) out.bookings.push(r); else out.prevBookings++;
+    });
+
+    var m = await db.from('contact_messages').select('created_at').gte('created_at', prevFrom);
+    if(!m.error) (m.data||[]).forEach(function(r){
+      if(String(r.created_at).slice(0,10) >= from) out.messages++; else out.prevMessages++;
+    });
+
+    var v = await db.from('reviews').select('created_at,rating').gte('created_at', from);
+    if(!v.error){ out.reviews = (v.data||[]).length;
+      var rs=(v.data||[]).map(function(r){return Number(r.rating)||0;}).filter(Boolean);
+      out.avgRating = rs.length ? (rs.reduce(function(a,c){return a+c;},0)/rs.length).toFixed(1) : null;
+    }
+    return out;
+  }
+
+  function renderEnquiries(d){
+    el('kBook').textContent = nf(d.bookings.length);
+    delta(el('dBook'), d.bookings.length, d.prevBookings);
+    el('kMsg').textContent  = nf(d.messages);
+    delta(el('dMsg'), d.messages, d.prevMessages);
+    el('kRev').textContent  = nf(d.reviews);
+    el('fRev').textContent  = d.avgRating ? ('avg ' + d.avgRating + ' out of 5') : 'no new ratings';
+
+    // busiest day
+    var byDay = {};
+    d.bookings.forEach(function(r){ var k=String(r.created_at).slice(0,10); byDay[k]=(byDay[k]||0)+1; });
+    var best = Object.keys(byDay).sort(function(a,b){ return byDay[b]-byDay[a]; })[0];
+    if(best){
+      el('kPeak').textContent = new Date(best+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+      el('fPeak').textContent = byDay[best] + (byDay[best]===1?' booking':' bookings');
+    } else { el('kPeak').textContent='–'; el('fPeak').textContent='no bookings yet'; }
+
+    // treatments
+    var byT={};
+    d.bookings.forEach(function(r){ var k=(r.treatment||'Not specified').trim(); byT[k]=(byT[k]||0)+1; });
+    rows('tTreat', Object.keys(byT).map(function(k){return {name:k,c:byT[k]};})
+         .sort(function(a,b){return b.c-a.c;}), 'name','c', true);
+
+    // feed
+    var f = el('feedBook');
+    if(!d.bookings.length){ f.innerHTML='<div class="empty"><b>No bookings in this period</b>New bookings from the quiz appear here.</div>'; }
+    else f.innerHTML = d.bookings.slice(0,7).map(function(r){
+      var dt = new Date(r.created_at);
+      var when = dt.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+'<br>'+dt.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+      var slot = [r.preferred_date, r.preferred_time].filter(Boolean).join(' · ');
+      return '<div class="feed-item"><div class="feed-when">'+when+'</div><div class="feed-body">'+
+             '<div class="feed-title">'+esc(r.full_name||'—')+
+             (r.treatment?'<span class="pill">'+esc(r.treatment)+'</span>':'')+'</div>'+
+             '<div class="feed-meta">'+esc(r.phone||'')+(slot?' — wants '+esc(slot):'')+'</div></div></div>';
+    }).join('');
+  }
+
+  /* ---------- Supabase: daily_stats (written nightly by n8n) ---------- */
+  async function loadStats(){
+    var from = iso(daysAgo(RANGE-1)), prevFrom = iso(daysAgo(RANGE*2-1));
+    var r = await db.from('daily_stats').select('*').gte('stat_date', prevFrom).order('stat_date',{ascending:false});
+    if(r.error) return { missing:true, message:r.error.message };
+    var cur=[], prev=[];
+    (r.data||[]).forEach(function(row){ (row.stat_date>=from?cur:prev).push(row); });
+    return { cur:cur, prev:prev, empty:cur.length===0 };
+  }
+
+  function sum(list,k){ return list.reduce(function(a,r){ return a + (Number(r[k])||0); },0); }
+  function avg(list,k){ var v=list.filter(function(r){return Number(r[k]);}); return v.length? sum(v,k)/v.length : 0; }
+
+  function mergeJson(list, key, nameField, valField){
+    var m={};
+    list.forEach(function(row){
+      var arr = row[key]; if(typeof arr==='string'){ try{ arr=JSON.parse(arr); }catch(e){ arr=[]; } }
+      (arr||[]).forEach(function(o){
+        var n=o[nameField]; if(!n) return;
+        m[n]=(m[n]||0)+(Number(o[valField])||0);
+      });
+    });
+    return Object.keys(m).map(function(k){ var o={}; o[nameField]=k; o[valField]=m[k]; return o; })
+           .sort(function(a,b){ return b[valField]-a[valField]; });
+  }
+
+  function renderStats(s){
+    if(s.missing || s.empty){
+      ['kUsers','kNew','kSess','kDur','kEvBook','kEvWa','kEvTel','kClicks','kImpr','kCtr','kPos','kIdx','kNidx']
+        .forEach(function(id){ var n=el(id); if(n) n.textContent='–'; });
+      ['tSrc','tPages','tDev','tQ','tGP'].forEach(function(id){
+        el(id).innerHTML='<tr><td colspan="3" class="empty">Waiting for the first nightly run.</td></tr>';
+      });
+      el('setupHint').innerHTML = '<div class="err"><b>Analytics not connected yet.</b><br>' +
+        (s.missing
+          ? 'The <code>daily_stats</code> table is missing or not readable. Run <code>daily_stats.sql</code> in Supabase → SQL Editor.'
+          : 'The table exists but has no rows yet. The n8n workflow writes one row each night at 23:30.') +
+        '<br>Bookings and messages above are live and unaffected.</div>';
+      return;
+    }
+    el('setupHint').innerHTML='';
+    var c=s.cur, p=s.prev;
+
+    el('kUsers').textContent = nf(sum(c,'ga_users'));  delta(el('dUsers'), sum(c,'ga_users'), sum(p,'ga_users'));
+    el('kNew').textContent   = nf(sum(c,'ga_new_users'));
+    el('fNew').textContent   = sum(c,'ga_users') ? Math.round(sum(c,'ga_new_users')/sum(c,'ga_users')*100)+'% of all visitors' : '';
+    el('kSess').textContent  = nf(sum(c,'ga_sessions'));
+    el('fSess').textContent  = 'engagement ' + Math.round(avg(c,'ga_engagement_rate')) + '%';
+    el('kDur').textContent   = mmss(avg(c,'ga_avg_duration'));
+
+    el('kEvBook').textContent = nf(sum(c,'ev_booking_submitted'));
+    el('kEvWa').textContent   = nf(sum(c,'ev_whatsapp_click'));
+    el('kEvTel').textContent  = nf(sum(c,'ev_phone_click'));
+
+    el('kClicks').textContent = nf(sum(c,'gsc_clicks'));  delta(el('dClicks'), sum(c,'gsc_clicks'), sum(p,'gsc_clicks'));
+    el('kImpr').textContent   = nf(sum(c,'gsc_impressions')); delta(el('dImpr'), sum(c,'gsc_impressions'), sum(p,'gsc_impressions'));
+    var imp=sum(c,'gsc_impressions');
+    el('kCtr').textContent    = imp ? (sum(c,'gsc_clicks')/imp*100).toFixed(1)+'%' : '–';
+    el('kPos').textContent    = avg(c,'gsc_position') ? avg(c,'gsc_position').toFixed(1) : '–';
+
+    var latest = c[0]||{};
+    el('kIdx').textContent  = nf(latest.idx_indexed);
+    el('kNidx').textContent = nf(latest.idx_not_indexed);
+    var tot=(Number(latest.idx_indexed)||0)+(Number(latest.idx_not_indexed)||0);
+    el('fIdx').textContent  = tot ? Math.round(latest.idx_indexed/tot*100)+'% of pages Google knows' : 'of pages Google knows';
+
+    rows('tSrc',   mergeJson(c,'ga_sources','source','users'), 'source','users', false);
+    rows('tPages', mergeJson(c,'ga_top_pages','path','views'), 'path','views', false);
+    rows('tDev',   mergeJson(c,'ga_devices','device','users'), 'device','users', false);
+    rows('tQ',     mergeJson(c,'gsc_top_queries','query','clicks'), 'query','clicks', true);
+    rows('tGP',    mergeJson(c,'gsc_top_pages','page','clicks'),   'page','clicks', false);
+    DATA.stats = c;
+  }
+
+  /* ---------- copy summary for the manager ---------- */
+  function buildSummary(){
+    var d=DATA.enq||{}, c=(DATA.stats||[]);
+    var label = RANGE===1?'Today':('Last '+RANGE+' days');
+    var L = ['Hollywood Clinic — '+label, new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}), ''];
+    L.push('Bookings: '+(d.bookings?d.bookings.length:0));
+    L.push('Messages: '+(d.messages||0));
+    L.push('New reviews: '+(d.reviews||0));
+    if(c.length){
+      L.push('');
+      L.push('Visitors: '+sum(c,'ga_users')+'  (new: '+sum(c,'ga_new_users')+')');
+      L.push('WhatsApp clicks: '+sum(c,'ev_whatsapp_click')+'   Phone clicks: '+sum(c,'ev_phone_click'));
+      L.push('Google clicks: '+sum(c,'gsc_clicks')+'   impressions: '+sum(c,'gsc_impressions'));
+      var q=mergeJson(c,'gsc_top_queries','query','clicks').slice(0,3);
+      if(q.length) L.push('Top searches: '+q.map(function(x){return x.query+' ('+x.clicks+')';}).join(', '));
+    }
+    if(d.bookings && d.bookings.length){
+      var byT={}; d.bookings.forEach(function(r){ var k=(r.treatment||'Not specified'); byT[k]=(byT[k]||0)+1; });
+      var top=Object.keys(byT).sort(function(a,b){return byT[b]-byT[a];}).slice(0,3);
+      L.push(''); L.push('Most requested: '+top.map(function(k){return k+' ('+byT[k]+')';}).join(', '));
+    }
+    return L.join('\n');
+  }
+
+  /* ---------- boot ---------- */
+  async function refresh(){
+    var label = RANGE===1?'Today':('Last '+RANGE+' days');
+    el('hTitle').textContent = label;
+    el('hSub').textContent = 'Generated ' + new Date().toLocaleString('en-GB',{dateStyle:'full',timeStyle:'short'});
+    try{
+      DATA.enq = await loadEnquiries();
+      renderEnquiries(DATA.enq);
+    }catch(e){
+      el('setupHint').innerHTML = '<div class="err"><b>Could not read the bookings table.</b><br>'+esc(e.message)+'</div>';
+    }
+    renderStats(await loadStats());
+  }
+
+  function start(){
+    db = window.HC && window.HC.db;
+    if(!db){ document.body.insertAdjacentHTML('beforeend','<div class="wrap"><div class="err">Supabase did not load. Check that the anon key is set in assets/js/supabase-config.js.</div></div>'); return; }
+    window.HC.auth.user().then(async function(u){
+      if(!u || !u.data || !u.data.user){ location.href='login.html'; return; }
+      if(!(await window.HC.auth.isAdmin())){ await window.HC.auth.signOut(); location.href='login.html'; return; }
+      refresh();
+    });
+
+    document.addEventListener('click', function(ev){
+      var r = ev.target.closest('[data-range]');
+      if(r){
+        RANGE = Number(r.getAttribute('data-range'));
+        document.querySelectorAll('[data-range]').forEach(function(b){ b.setAttribute('aria-pressed', b===r?'true':'false'); });
+        refresh();
+        return;
+      }
+      if(ev.target.id==='copyBtn'){
+        var txt = buildSummary();
+        navigator.clipboard.writeText(txt)
+          .then(function(){ toast('Summary copied — paste it to your manager'); })
+          .catch(function(){ toast('Copy failed. Use Print instead.'); });
+      }
+    });
+  }
+
+  if(window.HC && window.HC.ready) start();
+  else document.addEventListener('hc:db-ready', start);
+})();
+</script>
+</body>
+</html>
