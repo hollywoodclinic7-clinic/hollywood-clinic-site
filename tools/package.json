@@ -1,0 +1,19 @@
+{
+  "name": "hollywood-clinic-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build tooling for hollywoodclinics.net. Kept out of the site root so Vercel continues to treat the project as a plain static site.",
+  "scripts": {
+    "faq": "node add-faq-schema.mjs",
+    "seo:ar": "node localise-ar-seo.mjs",
+    "check:seo": "node localise-ar-seo.mjs --check",
+    "build:ar": "node build-ar.mjs",
+    "check:ar": "node build-ar.mjs --check",
+    "split": "node split-i18n.mjs",
+    "verify": "node verify.mjs",
+    "build": "node add-faq-schema.mjs && node build-ar.mjs && node split-i18n.mjs && node verify.mjs"
+  },
+  "dependencies": {
+    "jsdom": "^24.0.0"
+  }
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/icons/icon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/icon-180.png">
+  <title data-seo-ar="المدونة والفيديوهات | هوليوود كلينك مصر">Blog &amp; Vlog — Hollywood Clinic Cairo</title>
+  <meta name="description" content="Expert advice, treatment guides, and behind-the-scenes videos from our specialists." data-seo-ar="نصائح ومقالات وفيديوهات من أطباء هوليوود كلينك — دليلك لعالم التجميل والعناية بالبشرة والشعر في مصر الجديدة.">
+  <meta name="theme-color" content="#0B1D3A">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- SEO -->
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Hollywood Clinic Egypt">
+  <link rel="canonical" href="https://www.hollywoodclinics.net/blog"><link rel="alternate" hreflang="x-default" href="https://www.hollywoodclinics.net/blog"><link rel="alternate" hreflang="ar-EG" href="https://www.hollywoodclinics.net/ar/blog"><link rel="alternate" hreflang="en" href="https://www.hollywoodclinics.net/blog">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hollywood Clinic Egypt">
+  <meta property="og:title" content="Blog &amp; Vlog — Hollywood Clinic Cairo" data-seo-ar="المدونة والفيديوهات | هوليوود كلينك مصر">
+  <meta property="og:description" content="Expert advice, treatment guides, and behind-the-scenes videos from our specialists." data-seo-ar="نصائح ومقالات وفيديوهات من أطباء هوليوود كلينك — دليلك لعالم التجميل والعناية بالبشرة والشعر في مصر الجديدة.">
+  <meta property="og:url" content="https://www.hollywoodclinics.net/blog">
+  <meta property="og:image" content="https://www.hollywoodclinics.net/assets/images/hero-bg.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ar_EG">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog &amp; Vlog — Hollywood Clinic Cairo" data-seo-ar="المدونة والفيديوهات | هوليوود كلينك مصر">
+  <meta name="twitter:description" content="Expert advice, treatment guides, and behind-the-scenes videos from our specialists." data-seo-ar="نصائح ومقالات وفيديوهات من أطباء هوليوود كلينك — دليلك لعالم التجميل والعناية بالبشرة والشعر في مصر الجديدة.">
+  <meta name="twitter:image" content="https://www.hollywoodclinics.net/assets/images/hero-bg.jpg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    .filter-tabs { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem; flex-wrap: wrap; }
+    .filter-tabs.subtle { margin-bottom: 2.5rem; }
+    .filter-tab {
+      padding: 0.6rem 1.25rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--body);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-tab:hover { color: var(--gold); border-color: var(--gold); }
+    .filter-tab.active { background: var(--navy); color: var(--gold); border-color: var(--navy); }
+    .filter-tabs.subtle .filter-tab {
+      font-size: 0.625rem;
+      padding: 0.45rem 0.95rem;
+      letter-spacing: 0.1em;
+      background: transparent;
+    }
+    .filter-tabs.subtle .filter-tab.active {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+    }
+    .filter-label {
+      text-align: center;
+      font-size: 0.625rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .posts-grid { min-height: 200px; }
+    .post-thumb-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .post-thumb-icon svg { color: rgba(201, 168, 76, 0.4); }
+    .post-category-tag {
+      position: absolute;
+      top: 0.875rem;
+      right: 0.875rem;
+      padding: 0.3rem 0.7rem;
+      background: rgba(11, 29, 58, 0.85);
+      color: var(--white);
+      font-size: 0.5625rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-radius: 999px;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+    body[dir="rtl"] .post-category-tag { right: auto; left: 0.875rem; }
+  </style>
+  <!-- Analytics: GTM / GA4 / Google Ads — configure IDs in assets/js/analytics.js -->
+  <script src="assets/js/analytics.js" defer=""></script>
+</head>
+<body>
+
+ <!--NAV-->
+
+
+ <section class="page-hero">
+ <div class="container">
+ <div class="lux-line"></div>
+ <p class="eyebrow" data-i18n="blog.eyebrow">Insights &amp; Stories</p>
+ <h1 data-i18n="blog.title">Blog &amp; Vlog</h1>
+ <p data-i18n="blog.subtitle">Expert advice, treatment guides, and behind-the-scenes videos from our specialists.</p>
+ </div>
+ </section>
+
+ <section class="section bg-cream">
+ <div class="container">
+ <!-- Type filter: All / Articles / Videos -->
+ <div class="filter-tabs" id="typeFilters">
+ <button class="filter-tab active" data-filter="all" data-i18n="blog.filter.all">All</button>
+ <button class="filter-tab" data-filter="article" data-i18n="blog.filter.articles">Articles</button>
+ <button class="filter-tab" data-filter="video" data-i18n="blog.filter.videos">Videos</button>
+ </div>
+
+ <!-- Category filter row — populated by JS from the unique categories in posts.json -->
+ <p class="filter-label" data-i18n="blog.filter.topic">Filter by topic</p>
+ <div class="filter-tabs subtle" id="categoryFilters"></div>
+
+ <div class="grid grid-3 posts-grid" id="postsGrid">
+ <p style="text-align:center;color:var(--muted);grid-column:1/-1;padding:3rem 0">Loading posts...</p>
+ </div>
+ </div>
+ </section>
+
+ <!--FOOTER-->
+
+
+ <script src="assets/js/i18n-core.js"></script>
+ <script src="assets/js/main.js"></script>
+ <script src="assets/js/dynamic-content.js"></script>
+ <script src="assets/js/supabase-config.js"></script>
+ <script>
+  // Arabic twins live under /ar/, so blog cards must link to the post page
+  // in the language the visitor is currently reading. Declared at script
+  // scope so the card renderer can see it.
+  const BASE_LANG = /^\/ar(\/|$)/.test(location.pathname) ? '/ar/' : '/';
+    (async function() {
+      const grid = document.getElementById('postsGrid');
+      const typeFilters = document.getElementById('typeFilters');
+      const categoryFilters = document.getElementById('categoryFilters');
+      let currentType = 'all';
+      let currentCategory = 'all';
+      let allPosts = [];
+
+      const articleSVG = '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>';
+      const videoSVG = '<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><circle cx="12" cy="12" r="9"/></svg>';
+
+      function getLang() { return (window.I18N && window.I18N.current()) || 'en'; }
+      function readMore() { return getLang() === 'ar' ? 'اقرئي المزيد' : 'Read more'; }
+      function watchLabel() { return getLang() === 'ar' ? 'شاهدي' : 'Watch'; }
+      function minLabel() { return getLang() === 'ar' ? 'دقيقة قراءة' : 'min read'; }
+      function allLabel() { return getLang() === 'ar' ? 'الكل' : 'All Topics'; }
+
+      function formatDate(d) {
+        const date = new Date(d);
+        const locale = getLang() === 'ar' ? 'ar-EG' : 'en-US';
+        return date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+
+      // Translation map for category names — extend this as you add new categories
+      const CATEGORY_TRANSLATIONS = {
+        'Treatments':         { ar: 'العلاجات' },
+        'Skincare':           { ar: 'العناية بالبشرة' },
+        'Hair':               { ar: 'الشعر' },
+        'Body':               { ar: 'الجسم' },
+        'Client Stories':     { ar: 'قصص العملاء' },
+        'Behind The Scenes':  { ar: 'خلف الكواليس' }
+      };
+      function translateCategory(cat) {
+        const lang = getLang();
+        if (lang === 'ar' && CATEGORY_TRANSLATIONS[cat] && CATEGORY_TRANSLATIONS[cat].ar) {
+          return CATEGORY_TRANSLATIONS[cat].ar;
+        }
+        return cat;
+      }
+
+      function renderCategoryFilters() {
+        // Collect unique categories from posts, preserving the order they first appear
+        const seen = new Set();
+        const cats = [];
+        for (const p of allPosts) {
+          if (p.category && !seen.has(p.category)) {
+            seen.add(p.category);
+            cats.push(p.category);
+          }
+        }
+        // Always include "All" first
+        const buttons = ['<button class="filter-tab active" data-cat="all">' + allLabel() + '</button>']
+          .concat(cats.map(c =>
+            `<button class="filter-tab" data-cat="${c}">${translateCategory(c)}</button>`
+          ));
+        categoryFilters.innerHTML = buttons.join('');
+      }
+
+      function render() {
+        const lang = getLang();
+        const filtered = allPosts.filter(p => {
+          const typeOk = currentType === 'all' || p.type === currentType;
+          const catOk = currentCategory === 'all' || p.category === currentCategory;
+          return typeOk && catOk;
+        });
+        if (filtered.length === 0) {
+          const emptyMsg = lang === 'ar' ? 'لا توجد مقالات بهذه المعايير.' : 'No posts found.';
+          grid.innerHTML = `<p style="text-align:center;color:var(--muted);grid-column:1/-1;padding:3rem 0">${emptyMsg}</p>`;
+          return;
+        }
+        grid.innerHTML = filtered.map(post => {
+          const title = post.title[lang] || post.title.en;
+          const excerpt = post.excerpt[lang] || post.excerpt.en;
+          const meta = post.type === 'video'
+            ? `${formatDate(post.date)} · ${post.duration}`
+            : `${formatDate(post.date)} · ${post.readMinutes} ${minLabel()}`;
+          const action = post.type === 'video' ? watchLabel() : readMore();
+          const playIcon = post.type === 'video'
+            ? `<div class="video-play-icon"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>`
+            : '';
+          const isAR = BASE_LANG === '/ar/';
+          const typeTag = post.type === 'video'
+            ? (isAR ? 'فيديو' : 'VIDEO')
+            : (isAR ? 'مقال' : 'ARTICLE');
+          const bgIcon = post.type === 'video' ? videoSVG : articleSVG;
+
+          // Cover image (if set) takes priority; otherwise show the placeholder SVG icon
+          const thumbContent = post.cover
+            ? `<img src="${post.cover.startsWith('http') || post.cover.startsWith('/') ? post.cover : '/' + post.cover}" alt="" loading="lazy" onerror="this.style.display='none';this.parentNode.querySelector('.post-thumb-icon').style.display='flex'">
+               <div class="post-thumb-icon" style="display:none">${bgIcon}</div>`
+            : `<div class="post-thumb-icon">${bgIcon}</div>`;
+
+          // Category tag in top-right of thumb (omit on videos to leave room for play icon)
+          const categoryTag = (post.category && post.type !== 'video')
+            ? `<div class="post-category-tag">${translateCategory(post.category)}</div>`
+            : '';
+
+          return `
+            <a href="${BASE_LANG}blog/post?slug=${post.slug}" class="post-card">
+              <div class="post-thumb">
+                <div class="post-type">${typeTag}</div>
+                ${categoryTag}
+                ${thumbContent}
+                ${playIcon}
+              </div>
+              <div class="post-body">
+                <p class="post-meta">${meta}</p>
+                <h3>${title}</h3>
+                <p class="post-excerpt">${excerpt}</p>
+                <span class="card-link" style="margin-top:1rem;display:inline-flex">${action}</span>
+              </div>
+            </a>
+          `;
+        }).join('');
+      }
+
+      // Type filter buttons (All / Articles / Videos)
+      typeFilters.addEventListener('click', e => {
+        const btn = e.target.closest('.filter-tab');
+        if (!btn) return;
+        typeFilters.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        currentType = btn.dataset.filter;
+        render();
+      });
+
+      // Category filter buttons (delegated since they're rendered dynamically)
+      categoryFilters.addEventListener('click', e => {
+        const btn = e.target.closest('.filter-tab');
+        if (!btn) return;
+        categoryFilters.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.dataset.cat;
+        render();
+      });
+
+      // Re-render when language changes (re-render category labels too)
+      const langBtn = document.querySelector('[data-lang-toggle]');
+      if (langBtn) langBtn.addEventListener('click', () => setTimeout(() => {
+        renderCategoryFilters();
+        // Restore active state
+        const activeBtn = categoryFilters.querySelector(`[data-cat="${currentCategory}"]`);
+        if (activeBtn) {
+          categoryFilters.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+          activeBtn.classList.add('active');
+        }
+        render();
+      }, 50));
+
+      try {
+        const res = await fetch('/posts/posts.json');
+        const data = await res.json();
+        allPosts = data.posts || [];
+        renderCategoryFilters();
+        render();
+
+        // Merge in posts published from the dashboard (Supabase).
+        (function mergeDbPosts(){
+          function go(){
+            if(!(window.HC&&window.HC.db)) return;
+            window.HC.db.from('blog_posts').select('*').eq('is_published',true)
+              .order('published_at',{ascending:false}).then(function(r){
+                if(r.error||!r.data||!r.data.length) return;
+                var byslug={}; allPosts.forEach(function(p){ byslug[p.slug]=p; });
+                r.data.forEach(function(d){
+                  if(d.hidden===true) return;   // auto-generated SEO articles: live page + sitemap, but not shown in the Blog list
+                  byslug[d.slug]={ slug:d.slug, type:'article', category:(byslug[d.slug]&&byslug[d.slug].category)||'',
+                    title:{en:d.title_en, ar:d.title_ar||d.title_en},
+                    excerpt:{en:d.excerpt_en||'', ar:d.excerpt_ar||d.excerpt_en||''},
+                    cover:d.cover_image_url||'', date:(d.published_at||'').slice(0,10),
+                    readMinutes:(byslug[d.slug]&&byslug[d.slug].readMinutes)||3 };
+                });
+                allPosts=Object.keys(byslug).map(function(k){return byslug[k];})
+                  .sort(function(a,b){ return String(b.date||'').localeCompare(String(a.date||'')); });
+                render();
+              });
+          }
+          if(window.HC&&window.HC.db) go();
+          document.addEventListener('hc:db-ready', go);
+        })();
+      } catch (err) {
+        grid.innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;padding:3rem 0">Could not load posts. Please run on a web server.</p>';
+        console.error(err);
+      }
+    })();
+  </script>
+
+
+</body></html>

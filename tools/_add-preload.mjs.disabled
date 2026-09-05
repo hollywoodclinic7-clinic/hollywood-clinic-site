@@ -1,0 +1,89 @@
+#!/usr/bin/env node
+/* ══════════════════════════════════════════════════════════════════════
+   add-preload.mjs — let the browser find the LCP image immediately
+
+   PROBLEM
+   The hero is a CSS background-image, not an <img>. The browser's preload
+   scanner reads HTML and starts fetching images before CSS is even parsed —
+   but it cannot see inside a stylesheet. So the largest element on the page
+   is discovered last:
+
+       HTML → main.css → parse CSS → discover hero-bg.jpg → fetch it
+
+   Lighthouse reports this as "LCP request discovery". On the live homepage
+   LCP measured 5.8 s while TBT was a healthy 130 ms — the delay is almost
+   entirely waiting to find the image.
+
+   FIX
+   A <link rel="preload" as="image" fetchpriority="high"> in <head>, so the
+   fetch starts with the HTML instead of after the CSS.
+
+   Nothing visible changes. Same image, same styling, same markup — it just
+   starts downloading about a second earlier.
+
+   Each page gets the hero its own CSS actually references, so treatment
+   pages preload their own hero rather than the homepage one.
+
+     node add-preload.mjs            # apply
+     node add-preload.mjs --check    # report only
+   ══════════════════════════════════════════════════════════════════════ */
+
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const CHECK_ONLY = process.argv.includes('--check');
+const SKIP_DIRS = ['.git', 'admin', 'node_modules', 'tools', 'backend', 'templates', 'seo-autoblog', 'ar'];
+
+const MARKER = 'data-lcp-preload';
+
+function collect(dir = ROOT, acc = []) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.name.startsWith('.') || e.name.startsWith('_')) continue;
+    const abs = path.join(dir, e.name);
+    if (e.isDirectory()) { if (!SKIP_DIRS.includes(e.name)) collect(abs, acc); }
+    else if (e.name.endsWith('.html')) acc.push(abs);
+  }
+  return acc;
+}
+
+/** The hero image this page actually paints, from its own inline CSS first,
+ *  falling back to the shared hero in main.css. */
+function heroFor(html) {
+  // Inline <style> blocks: the per-page hero (.svc-hero, .tf-hero, .page-hero)
+  const inline = html.match(/url\(['"]?((?:\.\.\/)*assets\/images\/[^'")]+\.(?:jpg|jpeg|png|webp))['"]?\)/i);
+  if (inline) return '/' + inline[1].replace(/^(\.\.\/)+/, '');
+  return null;
+}
+
+const MAIN_CSS = fs.readFileSync(path.join(ROOT, 'assets/css/main.css'), 'utf8');
+const siteHero = (MAIN_CSS.match(/\.hero\{[^}]*url\(['"]?\.\.\/images\/([^'")]+)['"]?\)/) || [])[1];
+
+let changed = 0, skipped = 0;
+for (const file of collect()) {
+  let html = fs.readFileSync(file, 'utf8');
+  if (html.includes(MARKER)) { skipped++; continue; }
+
+  const rel = path.relative(ROOT, file).split(path.sep).join('/');
+  // Homepage paints the shared .hero; interior pages paint their own.
+  const img = rel === 'index.html'
+    ? (siteHero ? '/assets/images/' + siteHero : null)
+    : heroFor(html);
+  if (!img) { skipped++; continue; }
+
+  const tag = `  <link rel="preload" as="image" href="${img}" fetchpriority="high" ${MARKER}>\n`;
+  // Place it as early as possible — right after <head> — so the scanner sees
+  // it before the stylesheets it is meant to beat.
+  const out = html.replace(/(<head[^>]*>\s*\n?)/i, `$1${tag}`);
+  if (out === html) { skipped++; continue; }
+
+  console.log(`  ${rel.padEnd(48)} ${img}`);
+  if (!CHECK_ONLY) fs.writeFileSync(file, out, 'utf8');
+  changed++;
+}
+
+console.log(`\n${'─'.repeat(58)}`);
+console.log(`preload added : ${changed} pages`);
+console.log(`skipped       : ${skipped} (no hero image found, or already present)`);
+console.log(CHECK_ONLY ? '\nCheck only. Nothing written.' : '\nDone. Re-run build:ar so the Arabic twins pick it up.');

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/icons/icon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180.png">
+<title data-seo-ar="احجزي استشارتك | هوليوود كلينك مصر الجديدة">احجزي استشارتك | هوليوود كلينك مصر الجديدة</title>
+<meta name="description" content="احجزي استشارتك المجانية في هوليوود كلينك، مصر الجديدة. جاوبي على كام سؤال سريع وهيتواصل معاكِ متخصص لتحديد الموعد المناسب ليكِ." data-seo-ar="احجزي استشارتك المجانية في هوليوود كلينك، مصر الجديدة. جاوبي على كام سؤال سريع وهيتواصل معاكِ متخصص لتحديد الموعد المناسب ليكِ.">
+<meta name="theme-color" content="#0B1D3A">
+<link rel="canonical" href="https://www.hollywoodclinics.net/ar/booking"><link rel="alternate" hreflang="x-default" href="https://www.hollywoodclinics.net/booking"><link rel="alternate" hreflang="ar-EG" href="https://www.hollywoodclinics.net/ar/booking"><link rel="alternate" hreflang="en" href="https://www.hollywoodclinics.net/booking">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hollywood Clinic Egypt">
+<meta property="og:title" content="Book Your Consultation — Hollywood Clinic Cairo">
+<meta property="og:description" content="Answer a few quick questions and a specialist confirms on WhatsApp within 2 hours.">
+<meta property="og:url" content="https://www.hollywoodclinics.net/ar/booking">
+<meta property="og:image" content="https://www.hollywoodclinics.net/assets/images/hero-bg.jpg">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:locale:alternate" content="en_US">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+<style>
+:root{
+  --navy:#0B1D3A; --navy-soft:#14284a; --navy-2:#0e2444;
+  --gold:#C9A84C; --gold-soft:#e2c979;
+  --cream:#FAFBFD; --mist:#EEF2F7; --mist-2:#F4F6FA;
+  --ink:#4A5568; --muted:#8896A6; --line:#E2E7EF; --white:#fff;
+  --serif:'Playfair Display',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+  --shadow:0 18px 50px -20px rgba(11,29,58,.28); --shadow-sm:0 6px 22px -12px rgba(11,29,58,.30);
+  --nav-h:87px;
+}
+/* Offset content below the shared fixed site nav + tune the shared footer to 4 columns */
+body{padding-top:var(--nav-h)}
+.stage{scroll-margin-top:calc(var(--nav-h) + 12px)}
+@media(max-width:1023px){:root{--nav-h:67px}}
+.footer .footer-grid{grid-template-columns:1fr}
+@media(min-width:768px){.footer .footer-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.footer .footer-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr}}
+html[dir="rtl"]{ --sans:'Tajawal',system-ui,sans-serif; --serif:'Tajawal',serif; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* NAV: uses the shared Hollywood site header (main.css + i18n.js) */
+
+/* ---------------- QUIZ SHELL ---------------- */
+.shell{display:grid;grid-template-columns:360px 1fr;min-height:calc(100vh - var(--nav-h));
+  background:radial-gradient(900px 520px at 88% -12%, rgba(201,168,76,.07), transparent 60%), linear-gradient(180deg,#FFFFFF 0%, var(--cream) 55%, #F1F4F8 100%)}
+.rail{background:linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);color:#fff;
+  padding:46px 38px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.rail::after{content:"";position:absolute;inset:auto -70px -90px auto;width:280px;height:280px;
+  background:radial-gradient(circle,rgba(201,168,76,.20),transparent 70%)}
+.rail .eyebrow-r{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px}
+.rail h2{font-family:var(--serif);font-size:29px;line-height:1.2;font-weight:600;margin-bottom:14px}
+.rail h2 em{font-style:italic;color:var(--gold-soft)}
+.rail .lede{font-size:14.5px;line-height:1.65;color:#c6d2e6;max-width:280px}
+.rail-progress{margin-top:34px}
+.rail-progress .lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9fb0cc;margin-bottom:11px}
+.bar{height:5px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden}
+.bar>i{display:block;height:100%;width:12%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-soft));transition:width .5s cubic-bezier(.4,0,.2,1)}
+.rail-progress .cnt{font-size:12.5px;color:#c6d2e6;margin-top:11px}
+.trust{margin-top:auto;position:relative;z-index:1}
+.trust .rating{display:flex;align-items:baseline;gap:9px;margin-bottom:16px}
+.trust .rating b{font-family:var(--serif);font-size:29px;color:var(--gold-soft)}
+.trust .rating .st{color:var(--gold);letter-spacing:2px;font-size:13px}
+.trust .rating small{color:#9fb0cc;font-size:12px}
+.trust ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.trust li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:#e4ebf6}
+.trust li svg{flex:none;color:var(--gold)}
+
+.stage{display:flex;align-items:center;justify-content:center;padding:52px 40px}
+.qz-card{width:100%;max-width:660px}
+.qz-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px}
+.qz-eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+.q{font-family:var(--serif);font-size:clamp(26px,3.6vw,38px);line-height:1.16;color:var(--navy);font-weight:600;margin-bottom:11px}
+.q em{font-style:italic;color:var(--gold)}
+.sub{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:28px;max-width:82%}
+
+.options{display:grid;gap:13px}
+.options.two{grid-template-columns:1fr 1fr}
+.opt{display:flex;align-items:center;gap:15px;background:var(--white);border:1.5px solid var(--line);
+  border-radius:15px;padding:17px 19px;cursor:pointer;text-align:start;width:100%;font-family:var(--sans);
+  color:var(--ink);transition:border-color .18s,box-shadow .18s,transform .18s;position:relative}
+.opt:hover{border-color:var(--gold-soft);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.opt.sel{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.18)}
+.opt .ic{width:44px;height:44px;flex:none;border-radius:11px;background:var(--mist);display:grid;place-items:center;color:var(--navy)}
+.opt.sel .ic{background:var(--gold);color:#fff}
+.opt .txt b{display:block;font-size:15.5px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.opt .txt span{font-size:12.5px;color:var(--muted);line-height:1.4}
+.opt .chk{margin-inline-start:auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);
+  display:grid;place-items:center;flex:none;color:#fff}
+.opt.sel .chk{background:var(--gold);border-color:var(--gold)}
+.opt .chk svg{opacity:0;transition:opacity .15s}
+.opt.sel .chk svg{opacity:1}
+.opt .tag{margin-inline-start:auto;font-size:11px;font-weight:600;color:var(--gold);
+  background:rgba(201,168,76,.12);padding:4px 10px;border-radius:99px}
+.opt.sel .tag{background:var(--gold);color:#fff}
+.opt.rec{border-color:var(--gold-soft)}
+
+.general-link{margin-top:18px;font-size:14px;color:var(--muted)}
+.general-link button{background:none;border:none;color:var(--navy);font-weight:600;font-family:var(--sans);
+  font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.general-link button:hover{color:var(--gold)}
+
+.fields{display:grid;gap:17px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:7px}
+.field input,.field select{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;
+  font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--white);transition:border-color .18s,box-shadow .18s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.16)}
+.field .err{color:#c0392b;font-size:12.5px;margin-top:6px;display:none}
+.field.invalid input{border-color:#c0392b}
+.field.invalid .err{display:block}
+.phone-row{display:grid;grid-template-columns:92px 1fr;gap:10px}
+.phone-row .cc{display:flex;align-items:center;justify-content:center;background:var(--mist);
+  border:1.5px solid var(--line);border-radius:12px;font-weight:600;color:var(--navy)}
+.seg{display:flex;gap:8px}
+.seg button{flex:1;padding:11px;border:1.5px solid var(--line);background:var(--white);border-radius:11px;
+  font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;transition:.18s}
+.seg button.on{border-color:var(--gold);background:rgba(201,168,76,.10);color:var(--navy)}
+.reassure{display:flex;gap:10px;align-items:flex-start;background:rgba(201,168,76,.09);
+  border:1px solid rgba(201,168,76,.28);border-radius:12px;padding:12px 15px;font-size:13px;color:#7a6a34;line-height:1.5}
+.reassure svg{flex:none;color:var(--gold);margin-top:1px}
+.datetime{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+.nav-btns{display:flex;align-items:center;gap:14px;margin-top:28px}
+.qz-btn{font-family:var(--sans);font-weight:600;font-size:15px;cursor:pointer;border-radius:99px;
+  padding:15px 34px;border:none;transition:transform .15s,box-shadow .2s,background .2s}
+.qz-btn-next{background:var(--navy);color:#fff;box-shadow:var(--shadow-sm)}
+.qz-btn-next:hover{background:var(--navy-soft);transform:translateY(-2px)}
+.qz-btn-back{background:transparent;color:var(--muted);padding:15px 6px}
+.qz-btn-back:hover{color:var(--navy)}
+.arw{display:inline-block;margin-inline-start:8px}
+html[dir="rtl"] .arw{transform:scaleX(-1)}
+
+.done{text-align:center;padding:12px 0}
+.done .seal{width:86px;height:86px;border-radius:50%;margin:0 auto 24px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));display:grid;place-items:center;color:#fff;
+  box-shadow:0 14px 40px -12px rgba(201,168,76,.6);animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.done h2{font-family:var(--serif);font-size:32px;color:var(--navy);margin-bottom:11px}
+.done p{color:var(--muted);font-size:15px;line-height:1.6;max-width:440px;margin:0 auto 24px}
+.summary{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:0 auto 24px;max-width:440px;text-align:start}
+.summary .row{display:flex;justify-content:space-between;gap:20px;padding:9px 0;font-size:14px;border-bottom:1px dashed var(--line)}
+.summary .row:last-child{border-bottom:none}
+.summary .row span{color:var(--muted)}
+.summary .row b{color:var(--navy);font-weight:600;text-align:end}
+.wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:600;
+  border-radius:99px;padding:16px 30px;font-size:15.5px;box-shadow:0 12px 30px -14px rgba(37,211,102,.7);border:none;cursor:pointer}
+.wa:hover{background:#20bd5b}
+.done .alt{display:block;margin-top:16px;font-size:13.5px;color:var(--muted)}
+.done .alt a{color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+.step{animation:fade .42s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* FOOTER: uses the shared Hollywood footer style (main.css) */
+
+@media(max-width:820px){
+  .shell{grid-template-columns:1fr}
+  .rail{padding:26px 24px;flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px}
+  .rail::after{display:none}
+  .rail h2,.rail .lede,.rail .eyebrow-r{display:none}
+  .rail-progress{margin:0;flex:1;min-width:180px}
+  .trust{margin:0;display:none}
+  .stage{padding:32px 20px 96px;align-items:flex-start}
+  .sub{max-width:100%}
+  .options.two{grid-template-columns:1fr}
+  .datetime{grid-template-columns:1fr}
+  .nav-btns{position:sticky;bottom:0;background:linear-gradient(transparent,var(--cream) 32%);padding:14px 0 18px;margin-top:22px}
+  .qz-btn-next{flex:1}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.done .team-note{display:flex;align-items:flex-start;gap:11px;max-width:440px;text-align:start;margin:14px auto 22px;padding:14px 15px 15px;background:#0B1D3A;border-radius:14px;box-shadow:0 10px 26px rgba(11,29,58,.22);animation:teamNoteIn .5s ease both}
+.done .team-note .tn-ico{flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,.16);border:1px solid rgba(201,168,76,.45);color:var(--gold)}
+.done .team-note .tn-ico svg{width:21px;height:21px}
+.done .team-note .tn-body{flex:1;min-width:0}
+.done .team-note .tn-title{margin:0 0 4px;font-family:'Playfair Display',Georgia,serif;font-size:15px;color:#C9A84C}
+.done .team-note .tn-msg{margin:0;font-size:13.5px;line-height:1.55;color:#e7ebf2;font-weight:400}
+.done .team-note .tn-pills{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap}
+.done .team-note .tn-pill{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:5px 11px;border-radius:20px;white-space:nowrap}
+.done .team-note .tn-pill svg{width:14px;height:14px}
+.done .team-note .tn-wa{background:#C9A84C;color:#0B1D3A}
+.done .team-note .tn-call{border:1px solid #C9A84C;color:#C9A84C}
+@keyframes teamNoteIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes tnRing{0%,88%,100%{transform:rotate(0)}91%{transform:rotate(-13deg)}94%{transform:rotate(13deg)}97%{transform:rotate(-7deg)}}
+</style>
+  <!-- Analytics: GTM / GA4 / Google Ads — configure IDs in assets/js/analytics.js -->
+  <script src="/assets/js/analytics.js" defer=""></script>
+</head>
+<body dir="rtl">
+
+<!--NAV-->
+
+<!-- ===== QUIZ ===== -->
+<section class="shell">
+ <aside class="rail">
+ <div>
+ <div class="eyebrow-r" data-qz="railEy">استشارة مجانية</div>
+ <h2 data-qz="railH">خلينا نبني <em>خطتك</em> مع بعض.</h2>
+ <p class="lede" data-qz="railL">كام سؤال سريع عشان الدكتورة تكون جاهزة قبل ما توصلي.</p>
+ </div>
+ <div class="rail-progress">
+ <div class="lbl" data-qz="railProg">استشارتك</div>
+ <div class="bar"><i id="bar"></i></div>
+ <div class="cnt"><span id="pNow">1</span> <span data-qz="of">من</span> <span id="pTot">5</span></div>
+ </div>
+ <div class="trust">
+ <div class="rating"><b>4.9</b><div><div class="st">★★★★★</div><small data-qz="revs">128 تقييم</small></div></div>
+ <ul>
+ <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"></path></svg><span data-qz="tr1">أكتر من 100,000 نتيجة</span></li>
+ <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"></path></svg><span data-qz="tr2">أول استشارة مجانية</span></li>
+ <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"></path></svg><span data-qz="tr3">سرية تامة 100%</span></li>
+ </ul>
+ </div>
+ </aside>
+ <main class="stage"><div class="qz-card" id="card"></div></main>
+</section>
+
+<!--FOOTER-->
+
+<!-- Shared site header/footer injection + nav interactions -->
+<script src="/assets/js/i18n-core.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/dynamic-content.js"></script>
+<!-- Shared Supabase client (populates window.HC.db). Paste your anon key inside this file after deploy. -->
+<script src="/assets/js/supabase-config.js"></script>
+<script>
+/* ================= CONFIG ================= */
+const WHATSAPP = '201000007176';   // clinic WhatsApp (no +)
+
+/* ================= UI STRINGS ================= */
+const S = {
+ en:{
+  brand:"Hollywood Clinic",
+  nHome:"Home",nTreat:"Treatments",nDocs:"Doctors",nResults:"Results",nBlog:"Blog",nContact:"Contact",nBook:"Book Now",
+  railEy:"Free consultation", railH:"Let's build your <em>plan</em>, together.",
+  railL:"A few quick questions so your specialist is ready before you even arrive.",
+  railProg:"Your consultation", of:"of", revs:"128 reviews",
+  tr1:"130,000+ transformations", tr2:"Free first consultation", tr3:"100% confidential",
+  eyebrow:"Free consultation", back:"Back", next:"Continue", finish:"Confirm my booking",
+  matchTag:"Recommended",
+  q1:"What would you love to <em>change</em>?", q1s:"Tap what feels closest — there are no wrong answers.",
+  general:"Not sure where to start?", generalCta:"Book a general consultation →",
+  q2:"Which is <em>closest</em> to your goal?", q2s:"This helps us match you with the right specialist.",
+  q3:"Would you like a <em>specific</em> specialist?", q3s:"All our doctors are internationally trained. Not sure? We'll match you.",
+  noPref:["No preference","Match me with the best specialist"],
+  q4:"Lovely — where should we send your <em>confirmation</em>?", q4s:"A specialist will call you personally to plan your visit.",
+  fName:"Your name", fNamePh:"e.g. Farida", fNameErr:"Please add your name",
+  fPhone:"WhatsApp number", fPhonePh:"100 000 7176", fPhoneErr:"Please add a valid number",
+  firstQ:"Is this your first visit?", first:["First time","Been before"],
+  reassure:"We'll confirm within 2 hours. No spam, ever — your details stay private.",
+  q5:"Almost done — when suits you <em>best</em>?", q5s:"We're open Sat–Thu, 10 AM–10 PM. Closed Fridays.",
+  fDate:"Preferred date", fTime:"Preferred time", fDateErr:"We're closed on Fridays — please pick another day.",
+  anytime:"Any time — you choose",
+  times:["Midday · 12 PM","Afternoon · 2 PM","Afternoon · 4 PM","Evening · 6 PM"],
+  doneTitle:"You're all set, <span></span>!",
+  doneMsg:"Tap below to send your booking on WhatsApp — everything's pre-filled. A specialist confirms within 2 hours.",
+  waBtn:"Send my booking on WhatsApp",
+  teamNote:"One of our team will contact you on WhatsApp or by phone to confirm your consultation reservation.",
+  teamNoteTitle:"We'll confirm your visit", callLabel:"Call",
+  altCall:"Prefer to call? ", altLink:"+20 100 000 7176",
+  sGoal:"Goal", sTreat:"Treatment", sDoc:"Specialist", sWhen:"Preferred", sName:"Name", none:"—", matchMe:"Match me with the best",
+  waMsg:"Hi Hollywood Clinic! I'd like to book a consultation.",
+  waName:"Name", waGoal:"Goal", waTreat:"Treatment", waDoc:"Specialist", waWhen:"Preferred", waFirst:"First visit",
+  fTag:"A women's aesthetic clinic for body shaping, skin rejuvenation, hair restoration and cosmetic surgery — personalized care by specialist doctors using the latest medical devices.",
+  fExplore:"Explore", fSlim:"Slimming & Body", fSkin:"Skin Care", fHair:"Hair Care", fSurg:"Surgery",
+  fVisit:"Visit", fAddr:"47 El Nozha St, Heliopolis, Cairo", fFloor:"5th floor, above Kia Motors",
+  fHours:"Sat – Thu · 10 AM – 10 PM", fClosed:"Friday closed",
+  fContact:"Contact", fWa:"WhatsApp us", fDir:"Get directions",
+  fRights:"Free valet parking · Private entrance · Wheelchair accessible"
+ },
+ ar:{
+  brand:"هوليوود كلينك",
+  nHome:"الرئيسية",nTreat:"العلاجات",nDocs:"الأطباء",nResults:"النتائج",nBlog:"المدونة",nContact:"تواصلي",nBook:"احجزي",
+  railEy:"استشارة مجانية", railH:"خلينا نبني <em>خطتك</em> مع بعض.",
+  railL:"كام سؤال سريع عشان الدكتورة تكون جاهزة قبل ما توصلي.",
+  railProg:"استشارتك", of:"من", revs:"128 تقييم",
+  tr1:"أكتر من 100,000 نتيجة", tr2:"أول استشارة مجانية", tr3:"سرية تامة 100%",
+  eyebrow:"استشارة مجانية", back:"رجوع", next:"كمّلي", finish:"أكّدي حجزي",
+  matchTag:"مُرشّحة",
+  q1:"إيه اللي نفسك <em>تغيّريه</em>؟", q1s:"دوسي على أقرب حاجة ليكي — مفيش إجابة غلط.",
+  general:"مش عارفة تبدأي منين؟", generalCta:"احجزي استشارة عامة →",
+  q2:"أنهي حاجة <em>أقرب</em> لهدفك؟", q2s:"ده بيساعدنا نرشّحلك الدكتورة المناسبة.",
+  q3:"تحبي دكتورة <em>معيّنة</em>؟", q3s:"كل دكاترتنا مدرّبين عالمياً. مش متأكدة؟ إحنا هنرشّحلك.",
+  noPref:["مفيش تفضيل","رشّحولي أحسن دكتورة"],
+  q4:"جميل — نبعتلك <em>التأكيد</em> فين؟", q4s:"دكتورة متخصصة هتكلمك بنفسها عشان نرتّب زيارتك.",
+  fName:"اسمك", fNamePh:"مثلاً: فريدة", fNameErr:"اكتبي اسمك من فضلك",
+  fPhone:"رقم الواتساب", fPhonePh:"100 000 7176", fPhoneErr:"اكتبي رقم صحيح من فضلك",
+  firstQ:"دي أول زيارة ليكي؟", first:["أول مرة","جيت قبل كده"],
+  reassure:"هنأكّدلك خلال ساعتين. بياناتك سرية تماماً ومش هنزعجك أبداً.",
+  q5:"فاضل حاجة بسيطة — إمتى <em>يناسبك</em>؟", q5s:"إحنا فاتحين من السبت للخميس، 10ص–10م. الجمعة أجازة.",
+  fDate:"اليوم المفضّل", fTime:"الوقت المفضّل", fDateErr:"إحنا مقفولين يوم الجمعة — اختاري يوم تاني.",
+  anytime:"أي وقت — إنتوا تختاروا",
+  times:["الضهر · 12م","بعد الضهر · 2م","بعد الضهر · 4م","بالليل · 6م"],
+  doneTitle:"تمام يا <span></span>! 💛",
+  doneMsg:"دوسي تحت عشان تبعتي حجزك على الواتساب — كل حاجة متكتبة. دكتورة هتأكّدلك خلال ساعتين.",
+  waBtn:"ابعتي حجزي على الواتساب",
+  teamNote:"حد من فريقنا هيتواصل معاكِ على الواتساب أو بمكالمة عشان يأكّد حجز استشارتك.",
+  teamNoteTitle:"هنأكّد حجزك", callLabel:"مكالمة",
+  altCall:"تحبي تتصلي؟ ", altLink:"+20 100 000 7176",
+  sGoal:"الهدف", sTreat:"العلاج", sDoc:"الدكتورة", sWhen:"الميعاد", sName:"الاسم", none:"—", matchMe:"رشّحولي أحسن دكتورة",
+  waMsg:"أهلاً هوليوود كلينك! حابة أحجز استشارة.",
+  waName:"الاسم", waGoal:"الهدف", waTreat:"العلاج", waDoc:"الدكتورة", waWhen:"الميعاد المفضّل", waFirst:"أول زيارة",
+  fTag:"عيادة تجميل متخصصة في نحت الجسم، تجديد البشرة، زراعة الشعر وجراحات التجميل — رعاية مخصصة على إيد دكاترة متخصصين وبأحدث الأجهزة الطبية.",
+  fExplore:"استكشفي", fSlim:"التخسيس والجسم", fSkin:"العناية بالبشرة", fHair:"العناية بالشعر", fSurg:"الجراحة",
+  fVisit:"زورينا", fAddr:"47 شارع النزهة، مصر الجديدة، القاهرة", fFloor:"الدور الخامس، فوق كيا موتورز",
+  fHours:"السبت – الخميس · 10ص – 10م", fClosed:"الجمعة أجازة",
+  fContact:"تواصلي", fWa:"كلّمينا واتساب", fDir:"احصلي على الاتجاهات",
+  fRights:"صفّ سيارات مجاني · مدخل خاص · مناسب لذوي الاحتياجات"
+ }
+};
+
+/* ================= REAL CLINIC DATA ================= */
+// Departments (step 1)
+const DEPTS = {
+  en:[
+    ['body','Sculpt my body','Fat reduction, contouring & tightening'],
+    ['cellulite','Cellulite Treatment','EMTONE · Body FX · Morpheus8'],
+    ['skin','Glowing, younger skin','Facials, Botox, filler & laser'],
+    ['facetighten','Face Tightening','Forma · HIFU · Morpheus8'],
+    ['hair','Fuller, healthier hair','PRP, transplant & regrowth'],
+    ['surgery','Plastic Surgery','With our consultant surgeon']
+  ],
+  ar:[
+    ['body','نحت جسمي','تقليل الدهون والنحت والشدّ'],
+    ['cellulite','علاج السيلوليت','EMTONE · Body FX · Morpheus8'],
+    ['skin','بشرة أنضر وأصغر','فيشل، بوتوكس، فيلر وليزر'],
+    ['facetighten','شدّ الوجه','Forma · HIFU · Morpheus8'],
+    ['hair','شعر أكتف وأصح','PRP، زراعة وإعادة إنبات'],
+    ['surgery','جراحات التجميل','مع استشاري الجراحة']
+  ]
+};
+// Treatments (step 2) — bold concern + real device names as subtitle
+const TREAT = {
+  body:{ en:[
+    ['Freeze away stubborn fat','Clatuu Alpha · fat freezing'],
+    ['Build muscle & sculpt','Tesla Former'],
+    ['Smooth cellulite','EMTONE · Body FX'],
+    ['Tighten & contour','Morpheus8 Body'],
+    ['Non-surgical body lift','HIFU Body'],
+    ["Not sure — help me choose",'A specialist will advise']
+  ], ar:[
+    ['أذيب الدهون العنيدة','Clatuu Alpha · تجميد الدهون'],
+    ['أبني عضلاتي وأنحت','Tesla Former'],
+    ['أتخلص من السيلوليت','EMTONE · Body FX'],
+    ['شدّ ونحت','Morpheus8 Body'],
+    ['شدّ الجسم بدون جراحة','HIFU Body'],
+    ['مش متأكدة — رشّحولي','الدكتورة هتنصحني']
+  ]},
+  skin:{ en:[
+    ['Soften lines & wrinkles','Botox'],
+    ['Restore volume','Filler · lips, cheeks, jawline'],
+    ['Deep glow & hydration','Hydrafacial · iFace'],
+    ['Firm & tighten','Forma · HIFU · Morpheus8'],
+    ['Boost & rebuild collagen','Skin Boosters · Biostimulators'],
+    ['Laser & pigmentation','Laser Treatments'],
+    ["Not sure — help me choose",'A specialist will advise']
+  ], ar:[
+    ['أخفف الخطوط والتجاعيد','Botox'],
+    ['أرجّع الامتلاء','Filler · شفايف، خدود، فك'],
+    ['نضارة وترطيب عميق','Hydrafacial · iFace'],
+    ['شدّ وتماسك','Forma · HIFU · Morpheus8'],
+    ['تحفيز الكولاجين','Skin Boosters · Biostimulators'],
+    ['ليزر وتصبغات','Laser Treatments'],
+    ['مش متأكدة — رشّحولي','الدكتورة هتنصحني']
+  ]},
+  hair:{ en:[
+    ['Thinning & shedding','Growth Factor · PRP'],
+    ['Restore bald areas','FUE Transplant'],
+    ['Latest regrowth tech','Exosomes'],
+    ['Strengthen & nourish','Mesotherapy'],
+    ["Not sure — help me choose",'A specialist will advise']
+  ], ar:[
+    ['خفّة وتساقط','Growth Factor · PRP'],
+    ['أعالج الفراغات','زراعة FUE'],
+    ['أحدث تقنيات الإنبات','Exosomes'],
+    ['تقوية وتغذية','Mesotherapy'],
+    ['مش متأكدة — رشّحولي','الدكتورة هتنصحني']
+  ]},
+  cellulite:{ en:[
+    ['Smooth cellulite','EMTONE · Body FX'],
+    ['Firm & tighten skin','Morpheus8 Body'],
+    ['Non-surgical body lift','HIFU Body'],
+    ["Not sure — help me choose",'A specialist will advise']
+  ], ar:[
+    ['أتخلص من السيلوليت','EMTONE · Body FX'],
+    ['شدّ وتماسك الجلد','Morpheus8 Body'],
+    ['شدّ الجسم بدون جراحة','HIFU Body'],
+    ['مش متأكدة — رشّحولي','الدكتورة هتنصحني']
+  ]},
+  facetighten:{ en:[
+    ['Firm & tighten','Forma · Morpheus8'],
+    ['Non-surgical lift','HIFU'],
+    ['Deep glow & lift','iFace'],
+    ["Not sure — help me choose",'A specialist will advise']
+  ], ar:[
+    ['شدّ وتماسك','Forma · Morpheus8'],
+    ['رفع بدون جراحة','HIFU'],
+    ['نضارة ورفع','iFace'],
+    ['مش متأكدة — رشّحولي','الدكتورة هتنصحني']
+  ]},
+  surgery:{ en:[
+    ['Liposuction','Body contouring surgery'],
+    ['Rhinoplasty','Nose reshaping'],
+    ['Face or body lift','Lifts & tightening'],
+    ['Another procedure','Tell us on the call'],
+    ["Not sure — help me choose",'A specialist will advise']
+  ], ar:[
+    ['شفط الدهون','جراحة نحت الجسم'],
+    ['تجميل الأنف','إعادة تشكيل الأنف'],
+    ['شدّ الوش أو الجسم','رفع وشدّ'],
+    ['إجراء تاني','قوليلنا في المكالمة'],
+    ['مش متأكدة — رشّحولي','الدكتورة هتنصحني']
+  ]}
+};
+// Doctors (step 3) routed by department
+let ROUTE = { body:['sara','ranaI','ehssan'], skin:['ranaS','marwa','nesma'], hair:['ranaS','nesma','marwa'], surgery:['hadeel'], cellulite:['sara','ranaI','ehssan'], facetighten:['ranaS','marwa','nesma'] };
+let DOCS = {
+  sara:{ en:['Dr. Sara Abdelhameed','Body Contouring Specialist'], ar:['د. سارة عبدالحميد','أخصائية نحت الجسم'] },
+  ranaI:{ en:['Dr. Rana Ibrahim Sultan','Clinical Nutrition & Body Sculpting'], ar:['د. رنا إبراهيم سلطان','تغذية إكلينيكية ونحت الجسم'] },
+  ehssan:{ en:['Dr. Ehssan Rabie','Clinical Nutrition Specialist'], ar:['د. إحسان ربيع','أخصائية التغذية الإكلينيكية'] },
+  ranaS:{ en:['Dr. Rana Safwat','Dermatology, Laser & Aesthetic'], ar:['د. رنا صفوت','جلدية وليزر وتجميل'] },
+  marwa:{ en:['Dr. Marwa Magdy','Consultant Dermatologist & Aesthetic Medicine'], ar:['د. مروة مجدي','استشاري جلدية وطب تجميلي'] },
+  nesma:{ en:['Dr. Nesma Samir','Laser Aesthetic Dermatology'], ar:['د. نسمة سمير','جلدية وليزر تجميلي'] },
+  hadeel:{ en:['Dr. Hadeel Hanee','Consultant Plastic & Reconstructive Surgeon'], ar:['د. هديل هاني','استشاري جراحة التجميل والترميم'] }
+};
+
+/* ── Doctors from the dashboard ──────────────────────────────────────
+   The lists above are the fallback. When the database is reachable we rebuild
+   them from it, so a doctor added in the dashboard shows up here automatically,
+   in the departments they were assigned to. */
+(function(){
+  var DEPT_OF={ body:'body', skin:'skin', hair:'hair', surgery:'surgical',
+                cellulite:'body', facetighten:'skin' };
+  function loadDocs(){
+    if(!(window.HC&&window.HC.db)) return;
+    var q=window.HC.db.from('doctors').select('*').order('sort_order',{ascending:true}).then(function(r){
+      if(r.error||!r.data||!r.data.length) return;          // keep the fallback
+      var rows=r.data.filter(function(d){ return d.is_active!==false && d.slug; });
+      if(!rows.length) return;
+      var D={}, R={};
+      Object.keys(DEPT_OF).forEach(function(k){ R[k]=[]; });
+      rows.forEach(function(d){
+        var id=d.slug;
+        D[id]={ en:[d.name_en||id, d.specialty_en||''],
+                ar:[d.name_ar||d.name_en||id, d.specialty_ar||d.specialty_en||''] };
+        var dep=d.department;
+        if(typeof dep==='string'){ try{ dep=JSON.parse(dep); }catch(e){ dep=[dep]; } }
+        if(!Array.isArray(dep)) dep=[];
+        Object.keys(DEPT_OF).forEach(function(k){
+          if(dep.indexOf(DEPT_OF[k])>=0) R[k].push(id);
+        });
+      });
+      // only swap in departments that actually have someone, so no step goes empty
+      Object.keys(R).forEach(function(k){ if(!R[k].length) delete R[k]; });
+      DOCS=D; ROUTE=Object.assign({}, ROUTE, R);
+      if(st.doc && !DOCS[st.doc] && st.doc!=='nopref'){ st.doc='nopref'; st.docLabel=''; }
+      if(typeof render==='function' && flow[pos]==='doc') render();
+    });
+    if(q&&q.catch) q.catch(function(){});
+  }
+  if(window.HC&&window.HC.db) loadDocs();
+  document.addEventListener('hc:db-ready', loadDocs);
+})();
+
+/* icons */
+const IC={
+ body:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="5" r="2.4"/><path d="M12 8v6m0 0-3 6m3-6 3 6M8 11h8"/></svg>',
+ skin:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c4 0 7 3 7 7 0 5-4 8.5-7 11-3-2.5-7-6-7-11 0-4 3-7 7-7Z"/><circle cx="12" cy="10" r="2.3"/></svg>',
+ hair:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15c0-6 3.5-10 8-10s8 4 8 10M7 15c0-4 2-7 5-7s5 3 5 7M12 15v5"/></svg>',
+ surgery:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4l6 6-9 9-6 1 1-6 8-8Z"/><path d="M13 5l6 6"/></svg>',
+ cellulite:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 8c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0M4 13c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0M4 18c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/></svg>',
+ facetighten:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 4c4 0 6.5 3 6.5 7s-2.5 8-6.5 8-6.5-4-6.5-8 2.5-7 6.5-7Z"/><path d="M8 21l1.5-2M16 21l-1.5-2M9.5 10l-1.5-1.5M14.5 10l1.5-1.5"/></svg>',
+ spark:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>',
+ doc:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg>',
+ star:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6L12 17.8 6.6 20.6l1-6L3.3 9.4l6-.9L12 3Z"/></svg>'
+};
+const CHK='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>';
+
+/* ================= STATE ================= */
+let lang='en';
+const st={ dept:null, deptLabel:'', treat:null, treatLabel:'', doc:'nopref', docLabel:'', first:'first',
+           name:'', phone:'', date:'', time:'' };
+let flow=['dept','treat','doc','details','datetime'];
+let pos=0;
+const t=()=>S[lang];
+const card=document.getElementById('card');
+
+function computeFlow(){
+  flow = st.dept==='general' ? ['dept','details','datetime'] : ['dept','treat','doc','details','datetime'];
+}
+
+/* ================= RENDER ================= */
+function render(){
+  const cur = flow[pos];
+  document.getElementById('bar').style.width = ((pos)/flow.length*100+12)+'%';
+  document.getElementById('pNow').textContent = pos+1;
+  document.getElementById('pTot').textContent = flow.length;
+
+  let h='';
+  if(cur==='dept'){
+    h=head(t().q1,t().q1s)+'<div class="options">'+
+      DEPTS[lang].map((d,i)=>optCard(d[0],iconFor(d[0]),d[1],d[2],st.dept===d[0])).join('')+'</div>'+
+      `<p class="general-link">${t().general} <button data-general>${t().generalCta}</button></p>`;
+  }
+  else if(cur==='treat'){
+    const list=TREAT[st.dept][lang];
+    h=head(t().q2,t().q2s)+'<div class="options two">'+
+      list.map((o,i)=>optCard('t'+i,IC.spark,o[0],o[1],st.treat===('t'+i))).join('')+'</div>';
+  }
+  else if(cur==='doc'){
+    const ids=ROUTE[st.dept]||[];
+    let opts=optCard('nopref',IC.star,t().noPref[0],t().noPref[1],st.doc==='nopref',t().matchTag);
+    opts+=ids.map(id=>optCard(id,IC.doc,DOCS[id][lang][0],DOCS[id][lang][1],st.doc===id)).join('');
+    h=head(t().q3,t().q3s)+'<div class="options">'+opts+'</div>';
+  }
+  else if(cur==='details'){
+    h=head(t().q4,t().q4s)+
+      '<div class="fields">'+
+      `<div class="field" id="wName"><label>${t().fName}</label><input id="fName" value="${esc(st.name)}" placeholder="${t().fNamePh}" autocomplete="name"><div class="err">${t().fNameErr}</div></div>`+
+      `<div class="field" id="wPhone"><label>${t().fPhone}</label><div class="phone-row"><div class="cc" dir="ltr">🇪🇬 +20</div><input id="fPhone" dir="ltr" value="${esc(st.phone)}" placeholder="${t().fPhonePh}" inputmode="tel" autocomplete="tel"></div><div class="err">${t().fPhoneErr}</div></div>`+
+      `<div class="field"><label>${t().firstQ}</label><div class="seg">
+         <button data-first="first" class="${st.first==='first'?'on':''}">${t().first[0]}</button>
+         <button data-first="return" class="${st.first==='return'?'on':''}">${t().first[1]}</button></div></div>`+
+      `<div class="reassure"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>${t().reassure}</span></div>`+
+      '</div>';
+  }
+  else if(cur==='datetime'){
+    const today=new Date().toISOString().split('T')[0];
+    h=head(t().q5,t().q5s)+
+      '<div class="fields"><div class="datetime">'+
+      `<div class="field" id="wDate"><label>${t().fDate}</label><input id="fDate" type="date" min="${today}" value="${st.date}"><div class="err">${t().fDateErr}</div></div>`+
+      `<div class="field"><label>${t().fTime}</label><select id="fTime"><option value="">${t().anytime}</option>${t().times.map(x=>`<option${st.time===x?' selected':''}>${x}</option>`).join('')}</select></div>`+
+      '</div></div>';
+  }
+  h+=navButtons(cur);
+  card.className='qz-card step';
+  card.innerHTML=h;
+}
+function head(q,sub){return `<div class="qz-eyebrow">${IC.spark}${t().eyebrow}</div><h1 class="q">${q}</h1><p class="sub">${sub}</p>`}
+function iconFor(k){return IC[k]||IC.spark}
+function optCard(val,icon,title,sub,sel,tag){
+  return `<button class="opt${sel?' sel':''}${tag?' rec':''}" data-opt="${val}">
+    <span class="ic">${icon}</span>
+    <span class="txt"><b>${title}</b><span>${sub}</span></span>
+    ${tag?`<span class="tag">${tag}</span>`:`<span class="chk">${CHK}</span>`}</button>`;
+}
+function navButtons(cur){
+  const showBack=pos>0;
+  const isForm=(cur==='details'||cur==='datetime');
+  const last=(pos===flow.length-1);
+  const label=last?t().finish:t().next;
+  return `<div class="nav-btns">
+    ${showBack?`<button class="qz-btn qz-btn-back" data-back>${t().back}</button>`:''}
+    ${isForm?`<button class="qz-btn qz-btn-next" data-next>${label}<span class="arw">→</span></button>`:''}
+  </div>`;
+}
+function esc(s){return (s||'').replace(/"/g,'&quot;')}
+
+/* ================= EVENT DELEGATION (survives i18n body reset) ================= */
+document.addEventListener('click',(e)=>{
+  const opt=e.target.closest('.opt');
+  if(opt && card.contains(opt)){
+    const v=opt.dataset.opt; const cur=flow[pos];
+    if(cur==='dept'){
+      const d=DEPTS[lang].find(x=>x[0]===v);
+      st.dept=v; st.deptLabel=d?d[1]:v; st.treat=null; st.treatLabel=''; st.doc='nopref'; st.docLabel='';
+      computeFlow();
+    } else if(cur==='treat'){
+      const list=TREAT[st.dept][lang]; const idx=+v.slice(1);
+      st.treat=v; st.treatLabel=list[idx][0]+' — '+list[idx][1];
+    } else if(cur==='doc'){
+      st.doc=v; st.docLabel = v==='nopref'? t().matchMe : DOCS[v][lang][0];
+    }
+    pos++; render(); scrollTop(); return;
+  }
+  const gen=e.target.closest('[data-general]');
+  if(gen){ st.dept='general'; st.deptLabel=(lang==='ar'?'استشارة عامة':'General consultation');
+    st.treat=null; st.treatLabel=(lang==='ar'?'استشارة عامة':'General consultation'); st.doc='nopref';
+    computeFlow(); pos=1; render(); scrollTop(); return; }
+
+  if(e.target.closest('[data-back]')){ pos--; render(); scrollTop(); return; }
+
+  const seg=e.target.closest('[data-first]');
+  if(seg){ st.first=seg.dataset.first; render(); return; }
+
+  if(e.target.closest('[data-next]')){ handleNext(); return; }
+
+  if(e.target.closest('[data-wa]')){ sendWhatsApp(); return; }
+});
+
+/* live date validation (Friday closed) */
+document.addEventListener('change',(e)=>{
+  if(e.target.id==='fDate'){
+    const w=document.getElementById('wDate');
+    if(e.target.value){
+      const day=new Date(e.target.value+'T00:00').getDay(); // 5 = Friday
+      if(day===5){ w.classList.add('invalid'); e.target.value=''; st.date=''; return; }
+    }
+    w.classList.remove('invalid'); st.date=e.target.value;
+  }
+  if(e.target.id==='fTime'){ st.time=e.target.value; }
+});
+
+function handleNext(){
+  const cur=flow[pos];
+  if(cur==='details'){
+    st.name=(document.getElementById('fName').value||'').trim();
+    st.phone=(document.getElementById('fPhone').value||'').trim();
+    let ok=true;
+    const wN=document.getElementById('wName'), wP=document.getElementById('wPhone');
+    if(!st.name){ wN.classList.add('invalid'); ok=false; } else wN.classList.remove('invalid');
+    if(st.phone.replace(/\D/g,'').length<7){ wP.classList.add('invalid'); ok=false; } else wP.classList.remove('invalid');
+    if(!ok){ (document.getElementById(!st.name?'fName':'fPhone')).focus(); return; }
+  }
+  if(cur==='datetime'){
+    const dv=document.getElementById('fDate').value;
+    if(dv){ const day=new Date(dv+'T00:00').getDay(); if(day===5){ document.getElementById('wDate').classList.add('invalid'); return; } }
+    st.date=dv; st.time=document.getElementById('fTime').value;
+  }
+  if(pos===flow.length-1){ saveBooking(); renderDone(); scrollTop(); return; }
+  pos++; render(); scrollTop();
+}
+
+function whenLabel(){
+  if(!st.date && !st.time) return lang==='ar'?'أي وقت':'Flexible';
+  const d = st.date ? new Date(st.date+'T00:00').toLocaleDateString(lang==='ar'?'ar-EG':'en-GB',{weekday:'short',day:'numeric',month:'short'}) : '';
+  return [d, st.time].filter(Boolean).join(' · ') || (lang==='ar'?'أي وقت':'Flexible');
+}
+
+function renderDone(){
+  document.getElementById('bar').style.width='100%';
+  const name=st.name||(lang==='ar'?'يا قمر':'gorgeous');
+  const treat = st.treatLabel || (lang==='ar'?'استشارة عامة':'General consultation');
+  card.className='qz-card step';
+  card.innerHTML=`<div class="done">
+    <div class="seal"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div>
+    <h2>${t().doneTitle.replace('<span></span>',`<span>${name}</span>`)}</h2>
+    <p>${t().doneMsg}</p>
+    <div class="summary">
+      <div class="row"><span>${t().sGoal}</span><b>${st.deptLabel||t().none}</b></div>
+      <div class="row"><span>${t().sTreat}</span><b>${treat}</b></div>
+      <div class="row"><span>${t().sDoc}</span><b>${st.docLabel||t().matchMe}</b></div>
+      <div class="row"><span>${t().sWhen}</span><b>${whenLabel()}</b></div>
+      <div class="row"><span>${t().sName}</span><b>${name} · +20 ${st.phone}</b></div>
+    </div>
+    <div class="team-note"><span class="tn-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.4 12.4l2.5 2.5 4.7-5.3"/></svg></span><div class="tn-body"><p class="tn-title">${t().teamNoteTitle}</p><p class="tn-msg">${t().teamNote}</p><div class="tn-pills"><span class="tn-pill tn-wa"><svg viewBox="0 0 24 24" fill="#0B1D3A"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4 4.1-1.3A10 10 0 1 0 12 2Zm5.5 12.4c-.3.8-1.4 1.4-2 1.5-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4-4.9-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.9.8 2 .1.1.1.3 0 .5-.3.6-.6.8-.8 1-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.2 1.3 1.1 2.3 1.4 2.6 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.6.8 1.9.9.2.1.4.2.4.3.1.1.1.6-.2 1.4Z"/></svg> WhatsApp</span><span class="tn-pill tn-call"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2Z"/></svg> ${t().callLabel}</span></div></div></div>
+    <button class="wa" data-wa>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.25-.1-.45-.15-.65.15-.2.3-.75.95-.9 1.15-.15.2-.35.2-.65.05-.3-.15-1.25-.45-2.4-1.5-.9-.8-1.5-1.75-1.65-2.05-.15-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.1-.15-.65-1.6-.9-2.15-.25-.55-.5-.5-.65-.5h-.55c-.2 0-.5.05-.75.35-.25.3-1 1-1 2.4s1.05 2.8 1.2 3c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.65.7.2 1.35.2 1.85.1.55-.05 1.7-.7 1.95-1.35.25-.65.25-1.2.15-1.35-.1-.15-.3-.2-.6-.35Z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.85.5 3.6 1.4 5.15L2 22l4.95-1.35C8.45 21.5 10.15 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18c-1.65 0-3.2-.5-4.5-1.35l-.3-.2-2.95.8.8-2.85-.2-.3C4.05 14.65 3.5 13.35 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20 12 20Z"/></svg>
+      ${t().waBtn}</button>
+    <span class="alt">${t().altCall}<a href="tel:+201000007176" dir="ltr">${t().altLink}</a></span>
+  </div>`;
+}
+
+/* build the prefilled WhatsApp message and open it */
+function buildWaText(){
+  const L=t(); const nl='%0A';
+  const treat = st.treatLabel || (lang==='ar'?'استشارة عامة':'General consultation');
+  const parts=[
+    L.waMsg,'',
+    `${L.waName}: ${st.name}`,
+    `${L.waGoal}: ${st.deptLabel}`,
+    `${L.waTreat}: ${treat}`,
+    `${L.waDoc}: ${st.docLabel||L.matchMe}`,
+    `${L.waWhen}: ${whenLabel()}`,
+    `${L.waFirst}: ${st.first==='first'?L.first[0]:L.first[1]}`
+  ];
+  return parts.map(encodeURIComponent).join(nl);
+}
+function sendWhatsApp(){
+  const url=`https://wa.me/${WHATSAPP}?text=${buildWaText()}`;
+  window.open(url,'_blank','noopener');
+}
+
+/* Persist to the site's Supabase `bookings` table (columns: full_name, phone,
+   email, treatment, preferred_date, preferred_time, message). The quiz-only
+   answers (goal, specialist, first visit, language) are packed into `message`
+   so the admin dashboard shows the full context. Fails silently so the
+   WhatsApp handoff always works even if the DB is unreachable. */
+function saveBooking(){
+  try{
+    const treat = st.treatLabel || (lang==='ar'?'General consultation':'General consultation');
+    const noteLines=[
+      'Goal: '+(st.deptLabel||'—'),
+      'Specialist: '+(st.docLabel||'Match me with the best'),
+      'First visit: '+(st.first==='first'?'Yes':'No (returning)'),
+      'Submitted in: '+(lang==='ar'?'Arabic':'English')
+    ];
+    const payload={
+      full_name:      st.name,
+      phone:          '+20 '+st.phone,
+      email:          null,
+      treatment:      treat,
+      preferred_date: st.date||null,
+      preferred_time: st.time||null,
+      message:        noteLines.join('\n')
+    };
+    var db = window.HC && window.HC.db;                       // shared client from supabase-config.js
+    if(db){ db.from('bookings').insert(payload).then(function(r){
+      if(r && r.error) console.warn('[booking] save error', r.error);
+    }); }
+    else if(window.supabaseClient){ window.supabaseClient.from('bookings').insert(payload); }
+    console.log('[booking]',payload);
+  }catch(err){ console.warn('save skipped',err); }
+}
+
+function scrollTop(){ document.querySelector('.stage').scrollIntoView({behavior:'smooth',block:'start'}); }
+
+/* ================= LANGUAGE =================
+   The shared site header (i18n.js) owns the language toggle and the document
+   dir/lang. We read the current language from I18N, translate the quiz's own
+   strings (rail + footer, marked data-qz) and re-render the card. We stay in
+   sync by listening for the i18n:applied event that i18n.js dispatches. */
+function applyLang(){
+  lang = (window.I18N && typeof I18N.current === 'function') ? I18N.current() : lang;
+  document.querySelectorAll('[data-qz]').forEach(el=>{
+    const k=el.getAttribute('data-qz'); const v=t()[k];
+    if(v!==undefined) el.innerHTML=v;
+  });
+  render();
+}
+document.addEventListener('i18n:applied', function(e){
+  if(e && e.detail && e.detail.lang) lang = e.detail.lang;
+  applyLang();
+});
+
+/* init */
+applyLang();
+</script>
+
+
+</body></html>

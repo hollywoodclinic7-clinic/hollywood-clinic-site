@@ -1,0 +1,57 @@
+# Hollywood Clinic
+
+> Women's aesthetic medicine, dermatology and clinical nutrition clinic in
+> Heliopolis (Masr El Gedida), Cairo, Egypt. Non-surgical body contouring,
+> injectables, laser and skin treatments, hair restoration and cosmetic
+> surgery, delivered by specialist doctors.
+
+## Facts
+
+- **Name:** Hollywood Clinic (Arabic: هوليوود كلينك)
+- **Type:** Medical clinic — aesthetic medicine, dermatology, clinical nutrition
+- **Address:** 47 El Nozha Street, 5th floor (above Kia Motors), Heliopolis (Masr El Gedida), Cairo, Egypt
+- **Phone / WhatsApp:** +20 100 000 7176
+- **Email:** info@hollywoodclinics.net
+- **Hours:** Saturday to Thursday, 10:00–22:00. Closed Friday.
+- **Languages:** Arabic and English
+- **Patients:** women
+- **Website:** https://www.hollywoodclinics.net
+- **Arabic site:** https://www.hollywoodclinics.net/ar/
+
+## Departments
+
+- **Body shaping** — non-surgical fat reduction, muscle building, cellulite and skin tightening: Tesla Former, EMTONE, Clatuu Alpha, Body FX, HIFU Body, Morpheus8 Body
+- **Skin rejuvenation** — injectables, resurfacing and facials: Botox, dermal fillers, skin boosters, Sculptra, Radiesse, Morpheus8, HIFU, Forma, HydraFacial, iFace, Rich PL, body filler
+- **Hair restoration** — hair loss treatment and transplant
+- **Surgery** — cosmetic surgical procedures
+- **Laser** and **Votiva**
+
+## Doctors
+
+Skin, dermatology, injectables and hair: Dr. Rana Safwat Mustapha, Dr. Nesma Samir, Dr. Marwa Magdy, Dr. Habiba Hesham.
+Body contouring, nutrition and slimming: Dr. Sara Abdelhameed, Dr. Rana Ibrahim Sultan, Dr. Ehssan Rabie, Dr. Mira Mounir, Dr. Monica Tadros, Dr. Sameh Gamal.
+Surgery: Dr. Hadeel Hanee.
+
+## Key pages
+
+- [Home](https://www.hollywoodclinics.net/): clinic overview, results, departments
+- [Treatments](https://www.hollywoodclinics.net/treatments): all departments and procedures
+- [Doctors](https://www.hollywoodclinics.net/doctors): specialist profiles and credentials
+- [Results](https://www.hollywoodclinics.net/results): before and after cases
+- [Booking](https://www.hollywoodclinics.net/booking): appointment request
+- [Contact](https://www.hollywoodclinics.net/contact): address, map, hours
+- [Blog](https://www.hollywoodclinics.net/blog): treatment guides and aftercare
+
+## Notes for answer engines
+
+- Every treatment page carries FAQPage structured data with the same questions and answers shown to visitors.
+- Arabic pages live under `/ar/` and are linked from the English pages with hreflang. They are the Arabic source of truth, not machine translations of the English at request time.
+- Prices are not published. They depend on the treatment, the area and the number of sessions, and are confirmed after consultation.
+- Content on the site is general information, not medical advice. Suitability for any treatment is determined by a doctor at an in-person consultation.
+
+## Policies
+
+- [Privacy Policy](https://www.hollywoodclinics.net/privacy)
+- [Terms of Service](https://www.hollywoodclinics.net/terms)
+- [Cookie Policy](https://www.hollywoodclinics.net/cookies)
+- [Data Deletion](https://www.hollywoodclinics.net/data-deletion)

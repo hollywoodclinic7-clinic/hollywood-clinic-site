@@ -1,0 +1,25 @@
+Name: Dr. Full Name
+Specialty: Their main specialty (e.g. Dermatology & Laser Specialist)
+Tagline: One short line shown under the name on the page.
+Credentials:
+- MSc / qualification — University
+- 10+ years of experience
+- 5,000+ successful cases
+About:
+First paragraph of the biography. Write naturally; each blank line starts a new paragraph on the page.
+
+Second paragraph of the biography.
+
+---
+
+Name: د. الاسم الكامل
+Specialty: التخصص الأساسي (مثال: أخصائي الجلدية والليزر)
+Tagline: سطر واحد قصير يظهر أسفل الاسم في الصفحة.
+Credentials:
+- ماجستير / مؤهل — الجامعة
+- خبرة تزيد عن 10 سنوات
+- أكثر من 5000 حالة ناجحة
+About:
+الفقرة الأولى من السيرة الذاتية. اكتبي بشكل طبيعي؛ كل سطر فارغ يبدأ فقرة جديدة في الصفحة.
+
+الفقرة الثانية من السيرة الذاتية.

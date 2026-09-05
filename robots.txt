@@ -1,0 +1,68 @@
+# ── hollywoodclinics.net ────────────────────────────────────────────────
+# Search engines and AI answer engines are welcome. The admin dashboard and
+# build tooling are not useful to crawl.
+
+User-agent: *
+Disallow: /admin/
+Disallow: /tools/
+Allow: /
+
+# ── AI assistants and answer engines ────────────────────────────────────
+# Listed explicitly so there is no ambiguity about permission. Being
+# crawlable is what allows ChatGPT, Claude, Perplexity and Google's AI
+# results to cite the clinic when someone asks about aesthetic treatments
+# in Heliopolis.
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://www.hollywoodclinics.net/sitemap.xml

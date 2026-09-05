@@ -1,0 +1,11 @@
+Name: Dr. Full Name
+Specialty: Their main specialty (e.g. Dermatology & Laser Specialist)
+Tagline: One short line shown under the name on the page.
+Credentials:
+- MSc / qualification — University
+- 10+ years of experience
+- 5,000+ successful cases
+About:
+First paragraph of the biography. Write naturally; each blank line starts a new paragraph on the page.
+
+Second paragraph of the biography.
