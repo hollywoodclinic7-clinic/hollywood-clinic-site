@@ -47,15 +47,6 @@
     ADS_LABEL_CALL: '',       // fires on any phone-number click
     ADS_LABEL_CONTACT: '',    // fires on contact-form submit
 
-    /* ── 3b. OpenAI / ChatGPT Ads Measurement Pixel ────────────────────
-       From: ads.openai.com -> Tools -> Conversions -> Pixels
-       Looks like: '4YWNK7m7bQ6HPsEuBayTat'
-       Leave empty to disable the pixel completely.
-       Conversion events are created in OpenAI Ads Manager:
-         appointment_scheduled  <- booking sent
-         lead_created           <- WhatsApp / phone / contact form      */
-    OPENAI_PIXEL_ID: '4YWNK7m7bQ6HPsEuBayTat',
-
     /* ── 4. Performance ───────────────────────────────────────────────
        Google's tags are heavy. We wait until the visitor interacts, or
        until the page has finished loading + this delay, whichever comes
@@ -84,24 +75,6 @@
 
   var USE_GTM    = !!CFG.GTM_ID;
   var USE_DIRECT = !USE_GTM && (!!CFG.GA4_ID || !!CFG.ADS_ID);
-  var USE_OAI    = !!CFG.OPENAI_PIXEL_ID;
-
-  /* OpenAI Ads pixel: in-memory command queue only — no network cost.
-     The SDK itself is injected later by loadTags(), and replays this queue.
-     Which HC events map onto which OpenAI standard event:               */
-  var OAI_MAP = {
-    booking_submitted:   'appointment_scheduled',
-    whatsapp_click:      'lead_created',
-    phone_click:         'lead_created',
-    contact_form_submit: 'lead_created'
-  };
-
-  if (USE_OAI && !window.oaiq) {
-    var oaiQueue = function () { oaiQueue.q.push(arguments); };
-    oaiQueue.q = [];
-    window.oaiq = oaiQueue;
-    window.oaiq('init', { pixelId: CFG.OPENAI_PIXEL_ID });
-  }
 
   if (USE_GTM && CFG.GA4_ID && CFG.DEBUG) {
     console.warn('[HC Analytics] GTM_ID and GA4_ID are both set. GA4_ID is ignored ' +
@@ -143,11 +116,6 @@
     if (loaded) return;
     loaded = true;
 
-    if (USE_OAI) {
-      injectScript('https://bzrcdn.openai.com/sdk/oaiq.min.js');
-      log('OpenAI Ads pixel loaded:', CFG.OPENAI_PIXEL_ID);
-    }
-
     if (USE_GTM) {
       window.dataLayer.push({
         'gtm.start': new Date().getTime(),
@@ -165,7 +133,7 @@
   }
 
   function scheduleLoad() {
-    if (!USE_GTM && !USE_DIRECT && !USE_OAI) return;
+    if (!USE_GTM && !USE_DIRECT) return;
 
     if (CFG.LOAD_DELAY_MS <= 0) { loadTags(); return; }
 
@@ -227,15 +195,6 @@
       window.dataLayer.push(dl);
     } else {
       window.gtag('event', name, payload);
-    }
-
-    /* OpenAI / ChatGPT Ads. Only the four conversion events are forwarded;
-       everything else stays GA4-only so the pixel is not flooded.        */
-    if (USE_OAI && window.oaiq && OAI_MAP[name]) {
-      try {
-        window.oaiq('measure', OAI_MAP[name], { type: 'customer_action' });
-        log('OpenAI Ads ->', OAI_MAP[name]);
-      } catch (err) { /* never let tracking break the page */ }
     }
 
     log(name, payload);

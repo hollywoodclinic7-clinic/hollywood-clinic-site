@@ -13,11 +13,19 @@
     {
       "source": "/b",
       "destination": "https://n8n.srv1155688.hstgr.cloud/webhook/book-slot"
+    },
+    {
+      "source": "/r",
+      "destination": "https://n8n.srv1155688.hstgr.cloud/webhook/hw-review"
+    },
+    {
+      "source": "/r-submit",
+      "destination": "https://n8n.srv1155688.hstgr.cloud/webhook/hw-review-submit"
     }
   ],
   "headers": [
     {
-      "source": "/(c|b)",
+      "source": "/(c|b|r|r-submit)",
       "headers": [
         {
           "key": "X-Robots-Tag",

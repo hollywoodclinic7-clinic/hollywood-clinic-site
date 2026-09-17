@@ -2,7 +2,7 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- robots is set at runtime: index when this is the doctor's only page -->
+  <meta name="robots" content="noindex,follow">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
@@ -175,67 +175,6 @@
       document.getElementById('dName').textContent=name;
       document.getElementById('dCrumb').textContent=name;
       document.title=name+' — Hollywood Clinic';
-
-      /* ── SEO ────────────────────────────────────────────────────────────
-         This template is a real page for any doctor added through the
-         dashboard, so it has to describe whoever it just rendered.
-         If that doctor also has a hand-built page (page_url is set), the
-         canonical points there and this copy is marked as the duplicate —
-         which is what stops the two competing in search. */
-      (function seo(){
-        var base = 'https://www.hollywoodclinics.net';
-        var arPage = /^\/ar(\/|$)/.test(location.pathname);
-        var prefix = arPage ? '/ar' : '';
-        var staticUrl = String(D.page_url||'').replace(/\.html(?=$|[?#])/,'').replace(/^\/+/,'');
-        var self = base + prefix + '/doctors/profile?slug=' + encodeURIComponent(D.slug||'');
-        var canonical = staticUrl ? (base + prefix + '/' + staticUrl) : self;
-
-        function meta(sel, attr, val){
-          var m=document.head.querySelector(sel);
-          if(!m){ m=document.createElement('meta');
-            var a=sel.match(/\[(name|property)="([^"]+)"\]/);
-            if(a) m.setAttribute(a[1],a[2]);
-            document.head.appendChild(m); }
-          m.setAttribute(attr, val);
-        }
-
-        var spec = pick(D.specialty_en, D.specialty_ar) || (ar?'أخصائية':'Specialist');
-        var desc = (pick(D.tagline_en, D.tagline_ar) ||
-                    String(pick(D.bio_en, D.bio_ar)||'').split(/\n/)[0] || '').trim();
-        if(desc.length > 155) desc = desc.slice(0,152).replace(/\s+\S*$/,'') + '…';
-        if(!desc) desc = ar ? (name+' — '+spec+' في هوليوود كلينك، مصر الجديدة، القاهرة.')
-                            : (name+' — '+spec+' at Hollywood Clinic, Heliopolis, Cairo.');
-
-        meta('meta[name="description"]','content', desc);
-        meta('meta[property="og:title"]','content', name+' — Hollywood Clinic');
-        meta('meta[property="og:description"]','content', desc);
-        meta('meta[property="og:type"]','content','profile');
-        meta('meta[property="og:url"]','content', canonical);
-        var ph = photoSrc(D); if(ph && ph.src) meta('meta[property="og:image"]','content', ph.src);
-
-        var link = document.head.querySelector('link[rel="canonical"]');
-        if(!link){ link=document.createElement('link'); link.rel='canonical'; document.head.appendChild(link); }
-        link.href = canonical;
-
-        // Index this page only when it is the doctor's only page.
-        meta('meta[name="robots"]','content', staticUrl ? 'noindex,follow' : 'index,follow');
-
-        var old=document.getElementById('docSchema'); if(old) old.remove();
-        var s=document.createElement('script');
-        s.type='application/ld+json'; s.id='docSchema';
-        s.textContent=JSON.stringify({
-          "@context":"https://schema.org","@type":"Physician",
-          "name":name,"medicalSpecialty":spec,"description":desc,
-          "url":canonical, "image":(ph&&ph.src)||undefined,
-          "worksFor":{"@type":"MedicalClinic","name":"Hollywood Clinic",
-            "url":base+"/","telephone":"+201000007176",
-            "address":{"@type":"PostalAddress",
-              "streetAddress":"47 El Nozha Street, 5th floor",
-              "addressLocality":"Heliopolis","addressRegion":"Cairo",
-              "postalCode":"11736","addressCountry":"EG"}}
-        });
-        document.head.appendChild(s);
-      })();
       var tag=pick(D.tagline_en,D.tagline_ar);
       var tagEl=document.getElementById('dTagline'); tagEl.textContent=tag; tagEl.style.display=tag?'':'none';
       var creds=pick(D.credentials_en,D.credentials_ar).split(/\r?\n/).map(function(s){return s.trim();}).filter(Boolean);
