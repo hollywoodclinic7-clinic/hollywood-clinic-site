@@ -1,9 +1,9 @@
 /* Hollywood Clinic — department page styles (shared, extracted from umbrella pages) */
 
     /* ─── HERO (home-style full-bleed image + header text, no buttons) ─── */
-    .svc-hero{position:relative;min-height:clamp(300px,52vh,460px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../assets/images/skin-rejuvenation-hero.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../assets/images/skin-rejuvenation-hero.jpg');background-position:center left}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('../assets/images/skin-rejuvenation-hero.jpg');background-position:74% 24%;text-align:center}}
+    .svc-hero{position:relative;min-height:clamp(300px,52vh,460px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../images/skin-rejuvenation-hero.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../images/skin-rejuvenation-hero.jpg');background-position:center left}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('../images/skin-rejuvenation-hero.jpg');background-position:74% 24%;text-align:center}}
     .svc-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent)}
     .svc-hero .container{position:relative;z-index:2;width:100%}
     .svc-hero-inner{max-width:38rem}
@@ -16,9 +16,9 @@
     /* home-style hero animation hooks (this page) */
     .svc-hero{align-items:stretch;min-height:clamp(330px,42vh,440px);padding-top:clamp(4.6rem,8vh,5.8rem);padding-bottom:clamp(1rem,2.4vh,1.6rem)}
     .svc-hero .container{display:flex;flex-direction:column;justify-content:space-between;gap:1rem}
-    .svc-hero{background-color:#0a1830;background-image:linear-gradient(90deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('../assets/images/skin-rejuvenation-hero.jpg');background-position:center 12%}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('../assets/images/skin-rejuvenation-hero.jpg');background-position:center 12%}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(8,18,38,0.64) 0%,rgba(8,18,38,0.46) 42%,rgba(8,18,38,0.88) 100%),url('../assets/images/skin-rejuvenation-hero.jpg');background-position:74% 24%}}
+    .svc-hero{background-color:#0a1830;background-image:linear-gradient(90deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('../images/skin-rejuvenation-hero.jpg');background-position:center 12%}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('../images/skin-rejuvenation-hero.jpg');background-position:center 12%}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(8,18,38,0.64) 0%,rgba(8,18,38,0.46) 42%,rgba(8,18,38,0.88) 100%),url('../images/skin-rejuvenation-hero.jpg');background-position:74% 24%}}
     .svc-hero:hover .hero-cursor-glow{opacity:1}
     .svc-hero .hero-stats{margin-top:0;margin-bottom:0}
     @media (max-width:767px){.svc-hero .hero-stats{margin-left:auto;margin-right:auto}}
