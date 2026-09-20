@@ -1,9 +1,9 @@
 /* Premium service page styles (shared by static + dynamic service pages) */
 
     /* ─── Service hero (home-style image header, no buttons) ─── */
-    .svc-hero{position:relative;min-height:clamp(380px,62vh,560px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../../assets/images/sub-treatments/botox-hero.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../../assets/images/sub-treatments/botox-hero.jpg');background-position:center left}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('../../assets/images/sub-treatments/botox-hero.jpg');background-position:center center;text-align:center}}
+    .svc-hero{position:relative;min-height:clamp(380px,62vh,560px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../../assets/images/sub-treatments/botox-hero.jpg?v=2');background-size:cover;background-position:center right;background-repeat:no-repeat}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../../assets/images/sub-treatments/botox-hero.jpg?v=2');background-position:center left}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('../../assets/images/sub-treatments/botox-hero.jpg?v=2');background-position:center center;text-align:center}}
     .svc-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent)}
     .svc-hero .container{position:relative;z-index:2;width:100%}
     .svc-hero-inner{max-width:36rem}

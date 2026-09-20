@@ -32,9 +32,9 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <style>
     /* ─── HERO (home-style full-bleed image + header text, no buttons) ─── */
-    .svc-hero{position:relative;min-height:clamp(300px,52vh,460px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('/assets/images/hair-restoration-hero.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('/assets/images/hair-restoration-hero.jpg');background-position:center left}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('/assets/images/hair-restoration-hero.jpg');background-position:72% 34%;text-align:center}}
+    .svc-hero{position:relative;min-height:clamp(300px,52vh,460px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('/assets/images/hair-restoration-hero.jpg?v=2');background-size:cover;background-position:center right;background-repeat:no-repeat}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('/assets/images/hair-restoration-hero.jpg?v=2');background-position:center left}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('/assets/images/hair-restoration-hero.jpg?v=2');background-position:72% 34%;text-align:center}}
     .svc-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent)}
     .svc-hero .container{position:relative;z-index:2;width:100%}
     .svc-hero-inner{max-width:38rem}
@@ -47,9 +47,9 @@
     /* home-style hero animation hooks (this page) */
     .svc-hero{align-items:stretch;min-height:clamp(330px,42vh,440px);padding-top:clamp(4.6rem,8vh,5.8rem);padding-bottom:clamp(1rem,2.4vh,1.6rem)}
     .svc-hero .container{display:flex;flex-direction:column;justify-content:space-between;gap:1rem}
-    .svc-hero{background-color:#0a1830;background-image:linear-gradient(90deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('/assets/images/hair-restoration-hero.jpg');background-position:center 12%}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('/assets/images/hair-restoration-hero.jpg');background-position:center 12%}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(8,18,38,0.64) 0%,rgba(8,18,38,0.46) 42%,rgba(8,18,38,0.88) 100%),url('/assets/images/hair-restoration-hero.jpg');background-position:72% 34%}}
+    .svc-hero{background-color:#0a1830;background-image:linear-gradient(90deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('/assets/images/hair-restoration-hero.jpg?v=2');background-position:center 12%}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('/assets/images/hair-restoration-hero.jpg?v=2');background-position:center 12%}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(8,18,38,0.64) 0%,rgba(8,18,38,0.46) 42%,rgba(8,18,38,0.88) 100%),url('/assets/images/hair-restoration-hero.jpg?v=2');background-position:72% 34%}}
     .svc-hero:hover .hero-cursor-glow{opacity:1}
     .svc-hero .hero-stats{margin-top:0;margin-bottom:0}
     @media (max-width:767px){.svc-hero .hero-stats{margin-left:auto;margin-right:auto}}
@@ -233,8 +233,8 @@
  </div>
  <div class="tf-about-ba fade-up">
  <div class="ba-slider">
- <div class="ba-after"><img src="/assets/images/results/fue-transplant-1-after.jpg" alt="After"></div>
- <div class="ba-before"><img src="/assets/images/results/fue-transplant-1-before.jpg" alt="Before"></div>
+ <div class="ba-after"><img src="/assets/images/results/fue-transplant-1-after.jpg?v=2" alt="After"></div>
+ <div class="ba-before"><img src="/assets/images/results/fue-transplant-1-before.jpg?v=2" alt="Before"></div>
  <div class="ba-label before" data-i18n="bs.tesla.ba.label.before">قبل</div>
  <div class="ba-label after" data-i18n="bs.tesla.ba.label.after">بعد</div>
  <div class="ba-handle"></div>
@@ -256,7 +256,7 @@
  <div class="dept-services-grid">
 
  <a href="/ar/treatments/hair-restoration/exosomes" class="sub-card fade-up">
- <div class="sub-card-image"><img src="/assets/images/sub-treatments/exosomes.jpg" alt="Exosomes" loading="lazy"></div>
+ <div class="sub-card-image"><img src="/assets/images/sub-treatments/exosomes.jpg?v=2" alt="Exosomes" loading="lazy"></div>
  <div class="sub-card-body">
  <h3 data-i18n="hr.exosomes.name">Exosomes</h3>
  <p data-i18n="hr.exosomes.short">أحدث تكنولوجيا كورية لعلاج الصلع الوراثي وتساقط الشعر المزمن — إشارات تواصل خلوي بتعيد برمجة البصيلة لنمو شعر جديد وصحي.</p>
@@ -265,7 +265,7 @@
  </a>
 
  <a href="/ar/treatments/hair-restoration/growth-factor" class="sub-card fade-up d1">
- <div class="sub-card-image"><img src="/assets/images/sub-treatments/growth-factor.jpg" alt="Growth Factor" loading="lazy"></div>
+ <div class="sub-card-image"><img src="/assets/images/sub-treatments/growth-factor.jpg?v=2" alt="Growth Factor" loading="lazy"></div>
  <div class="sub-card-body">
  <h3 data-i18n="hr.gf.name">Growth Factor</h3>
  <p data-i18n="hr.gf.short">حقن فيتامينات وببتيدات مركزة — بتغذي البصيلة، بتوقف التساقط، بتملي فراغات التخفيف، وبترجع للشعر جودته الصحية.</p>
@@ -324,8 +324,8 @@
  <div class="tf-scroll fade-up">
  <div class="tf-baitem">
  <div class="ba-slider" style="aspect-ratio:283/346">
- <div class="ba-after"><img src="/assets/images/results/prp-hair-1-after.jpg" alt="After"></div>
- <div class="ba-before"><img src="/assets/images/results/prp-hair-1-before.jpg" alt="Before"></div>
+ <div class="ba-after"><img src="/assets/images/results/prp-hair-1-after.jpg?v=2" alt="After"></div>
+ <div class="ba-before"><img src="/assets/images/results/prp-hair-1-before.jpg?v=2" alt="Before"></div>
  <div class="ba-label before" data-i18n="bs.tesla.ba.label.before">قبل</div>
  <div class="ba-label after" data-i18n="bs.tesla.ba.label.after">بعد</div>
  <div class="ba-handle"></div>
@@ -412,19 +412,19 @@
  </div>
  <div class="tf-docs">
  <a class="tf-doc fade-up" href="/ar/doctors/dr-rana-safwat">
- <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-rana-safwat.jpg" alt="Dr. Rana Safwat" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-rana-safwat.jpg?v=2" alt="Dr. Rana Safwat" loading="lazy"></div>
  <h3 data-i18n="doctor.rana.name">د. رنا صفوت</h3>
  <span class="tf-doc-role" data-i18n="doctor.rana.role">أخصائي جلدية وليزر</span>
  <span class="tf-doc-link" data-i18n="bs.tesla.doc.view">الملف الشخصي</span>
  </a>
  <a class="tf-doc fade-up" href="/ar/doctors/dr-nesma-samir">
- <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-nesma-samir.jpg" alt="Dr. Nesma Samir" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-nesma-samir.jpg?v=2" alt="Dr. Nesma Samir" loading="lazy"></div>
  <h3 data-i18n="doctor.nesma.name">د. نسمة سمير</h3>
  <span class="tf-doc-role" data-i18n="doctor.nesma.role">استشاري جلدية وليزر وتجميل</span>
  <span class="tf-doc-link" data-i18n="bs.tesla.doc.view">الملف الشخصي</span>
  </a>
  <a class="tf-doc fade-up" href="/ar/doctors/dr-marwa-magdy">
- <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-marwa-magdy.jpg" alt="Dr. Marwa Magdy" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-marwa-magdy.jpg?v=2" alt="Dr. Marwa Magdy" loading="lazy"></div>
  <h3 data-i18n="doctor.marwa.name">د. مروة مجدي</h3>
  <span class="tf-doc-role" data-i18n="doctor.marwa.role">أخصائي جلدية وتجميل</span>
  <span class="tf-doc-link" data-i18n="bs.tesla.doc.view">الملف الشخصي</span>
@@ -443,31 +443,31 @@
  <p class="section-subtitle" data-i18n="svc.gallery.sub">نظرة من جوه هوليوود كلينك والتكنولوجيا المتقدمة ورا علاجاتنا.</p>
  </div>
  <div class="bts-gallery bts-bento is-collapsed fade-up">
- <button type="button" class="bts-gallery-item" data-yt="oz6XZly_g8U" data-full="../assets/images/exosomes-gallery/short-oz6XZly_g8U.jpg" aria-label="Exosomes hair treatment at Hollywood Clinic"><img src="/assets/images/exosomes-gallery/short-oz6XZly_g8U.jpg" alt="Exosomes hair treatment at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="h7Lqf4hlqCY" data-full="../assets/images/exosomes-gallery/short-h7Lqf4hlqCY.jpg" aria-label="Exosome session at Hollywood Clinic"><img src="/assets/images/exosomes-gallery/short-h7Lqf4hlqCY.jpg" alt="Exosome session at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="GsfsIeeJPao" data-full="../assets/images/growthfactor-gallery/short-GsfsIeeJPao.jpg" aria-label="Derma pen for hair growth at Hollywood Clinic"><img src="/assets/images/growthfactor-gallery/short-GsfsIeeJPao.jpg" alt="Derma pen for hair growth at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/exosomes-gallery/exo-diagram-1.jpg" aria-label="Exosome scalp injection for hair restoration at Hollywood Clinic"><img src="/assets/images/exosomes-gallery/exo-diagram-1.jpg" alt="Exosome scalp injection for hair restoration at Hollywood Clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/exosomes-gallery/exo-diagram-2.jpg" aria-label="Exosome therapy for hairline and density"><img src="/assets/images/exosomes-gallery/exo-diagram-2.jpg" alt="Exosome therapy for hairline and density" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/exosomes-gallery/exo-diagram-3.jpg" aria-label="Exosome treatment on the crown for thicker hair"><img src="/assets/images/exosomes-gallery/exo-diagram-3.jpg" alt="Exosome treatment on the crown for thicker hair" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/growthfactor-gallery/gf-diagram-1.jpg" aria-label="Growth factor microneedling on the scalp at Hollywood Clinic"><img src="/assets/images/growthfactor-gallery/gf-diagram-1.jpg" alt="Growth factor microneedling on the scalp at Hollywood Clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/growthfactor-gallery/gf-diagram-2.jpg" aria-label="Growth factor hair restoration treatment"><img src="/assets/images/growthfactor-gallery/gf-diagram-2.jpg" alt="Growth factor hair restoration treatment" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-01.jpg" aria-label="Private treatment room with the backlit Hollywood Clinic lotus emblem"><img src="/assets/images/blog/clinic-tour/clinic-01.jpg" alt="Private treatment room with the backlit Hollywood Clinic lotus emblem" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-02.jpg" aria-label="Hollywood Clinic marble reception desk"><img src="/assets/images/blog/clinic-tour/clinic-02.jpg" alt="Hollywood Clinic marble reception desk" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-03.jpg" aria-label="Treatment room with massage bed and branded towels"><img src="/assets/images/blog/clinic-tour/clinic-03.jpg" alt="Treatment room with massage bed and branded towels" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-04.jpg" aria-label="Body-contouring treatment room with Clatuu Alpha device"><img src="/assets/images/blog/clinic-tour/clinic-04.jpg" alt="Body-contouring treatment room with Clatuu Alpha device" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-05.jpg" aria-label="Specialist consultation office with crystal chandelier"><img src="/assets/images/blog/clinic-tour/clinic-05.jpg" alt="Specialist consultation office with crystal chandelier" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-06.jpg" aria-label="Patient lounge with gold velvet sofas"><img src="/assets/images/blog/clinic-tour/clinic-06.jpg" alt="Patient lounge with gold velvet sofas" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-07.jpg" aria-label="HydraFacial treatment room"><img src="/assets/images/blog/clinic-tour/clinic-07.jpg" alt="HydraFacial treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-08.jpg" aria-label="Front reception and waiting area"><img src="/assets/images/blog/clinic-tour/clinic-08.jpg" alt="Front reception and waiting area" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-09.jpg" aria-label="Lounge beneath cascading crystal chandeliers"><img src="/assets/images/blog/clinic-tour/clinic-09.jpg" alt="Lounge beneath cascading crystal chandeliers" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-10.jpg" aria-label="Alpha body-sculpting device in a treatment room"><img src="/assets/images/blog/clinic-tour/clinic-10.jpg" alt="Alpha body-sculpting device in a treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-11.jpg" aria-label="Waiting lounge with teal and gold seating"><img src="/assets/images/blog/clinic-tour/clinic-11.jpg" alt="Waiting lounge with teal and gold seating" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-12.jpg" aria-label="Spacious lounge with designer lighting"><img src="/assets/images/blog/clinic-tour/clinic-12.jpg" alt="Spacious lounge with designer lighting" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-20.jpg" aria-label="Treatment room with Ulfit body-contouring device and LED arc lamp"><img src="/assets/images/blog/clinic-tour/clinic-20.jpg" alt="Treatment room with Ulfit body-contouring device and LED arc lamp" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-21.jpg" aria-label="HydraFacial treatment room with full-length mirror and artwork"><img src="/assets/images/blog/clinic-tour/clinic-21.jpg" alt="HydraFacial treatment room with full-length mirror and artwork" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-22.jpg" aria-label="Laser treatment room with body-contouring device"><img src="/assets/images/blog/clinic-tour/clinic-22.jpg" alt="Laser treatment room with body-contouring device" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-23.jpg" aria-label="EMTONE and InMode treatment room"><img src="/assets/images/blog/clinic-tour/clinic-23.jpg" alt="EMTONE and InMode treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-24.jpg" aria-label="Morpheus8 and InMode treatment room with LED arc lamp"><img src="/assets/images/blog/clinic-tour/clinic-24.jpg" alt="Morpheus8 and InMode treatment room with LED arc lamp" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-yt="oz6XZly_g8U" data-full="../assets/images/exosomes-gallery/short-oz6XZly_g8U.jpg?v=2" aria-label="Exosomes hair treatment at Hollywood Clinic"><img src="/assets/images/exosomes-gallery/short-oz6XZly_g8U.jpg?v=2" alt="Exosomes hair treatment at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="h7Lqf4hlqCY" data-full="../assets/images/exosomes-gallery/short-h7Lqf4hlqCY.jpg?v=2" aria-label="Exosome session at Hollywood Clinic"><img src="/assets/images/exosomes-gallery/short-h7Lqf4hlqCY.jpg?v=2" alt="Exosome session at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="GsfsIeeJPao" data-full="../assets/images/growthfactor-gallery/short-GsfsIeeJPao.jpg?v=2" aria-label="Derma pen for hair growth at Hollywood Clinic"><img src="/assets/images/growthfactor-gallery/short-GsfsIeeJPao.jpg?v=2" alt="Derma pen for hair growth at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/exosomes-gallery/exo-diagram-1.jpg?v=2" aria-label="Exosome scalp injection for hair restoration at Hollywood Clinic"><img src="/assets/images/exosomes-gallery/exo-diagram-1.jpg?v=2" alt="Exosome scalp injection for hair restoration at Hollywood Clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/exosomes-gallery/exo-diagram-2.jpg?v=2" aria-label="Exosome therapy for hairline and density"><img src="/assets/images/exosomes-gallery/exo-diagram-2.jpg?v=2" alt="Exosome therapy for hairline and density" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/exosomes-gallery/exo-diagram-3.jpg?v=2" aria-label="Exosome treatment on the crown for thicker hair"><img src="/assets/images/exosomes-gallery/exo-diagram-3.jpg?v=2" alt="Exosome treatment on the crown for thicker hair" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/growthfactor-gallery/gf-diagram-1.jpg?v=2" aria-label="Growth factor microneedling on the scalp at Hollywood Clinic"><img src="/assets/images/growthfactor-gallery/gf-diagram-1.jpg?v=2" alt="Growth factor microneedling on the scalp at Hollywood Clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/growthfactor-gallery/gf-diagram-2.jpg?v=2" aria-label="Growth factor hair restoration treatment"><img src="/assets/images/growthfactor-gallery/gf-diagram-2.jpg?v=2" alt="Growth factor hair restoration treatment" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-01.jpg?v=2" aria-label="Private treatment room with the backlit Hollywood Clinic lotus emblem"><img src="/assets/images/blog/clinic-tour/clinic-01.jpg?v=2" alt="Private treatment room with the backlit Hollywood Clinic lotus emblem" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-02.jpg?v=2" aria-label="Hollywood Clinic marble reception desk"><img src="/assets/images/blog/clinic-tour/clinic-02.jpg?v=2" alt="Hollywood Clinic marble reception desk" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-03.jpg?v=2" aria-label="Treatment room with massage bed and branded towels"><img src="/assets/images/blog/clinic-tour/clinic-03.jpg?v=2" alt="Treatment room with massage bed and branded towels" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-04.jpg?v=2" aria-label="Body-contouring treatment room with Clatuu Alpha device"><img src="/assets/images/blog/clinic-tour/clinic-04.jpg?v=2" alt="Body-contouring treatment room with Clatuu Alpha device" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-05.jpg?v=2" aria-label="Specialist consultation office with crystal chandelier"><img src="/assets/images/blog/clinic-tour/clinic-05.jpg?v=2" alt="Specialist consultation office with crystal chandelier" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-06.jpg?v=2" aria-label="Patient lounge with gold velvet sofas"><img src="/assets/images/blog/clinic-tour/clinic-06.jpg?v=2" alt="Patient lounge with gold velvet sofas" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-07.jpg?v=2" aria-label="HydraFacial treatment room"><img src="/assets/images/blog/clinic-tour/clinic-07.jpg?v=2" alt="HydraFacial treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-08.jpg?v=2" aria-label="Front reception and waiting area"><img src="/assets/images/blog/clinic-tour/clinic-08.jpg?v=2" alt="Front reception and waiting area" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-09.jpg?v=2" aria-label="Lounge beneath cascading crystal chandeliers"><img src="/assets/images/blog/clinic-tour/clinic-09.jpg?v=2" alt="Lounge beneath cascading crystal chandeliers" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-10.jpg?v=2" aria-label="Alpha body-sculpting device in a treatment room"><img src="/assets/images/blog/clinic-tour/clinic-10.jpg?v=2" alt="Alpha body-sculpting device in a treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-11.jpg?v=2" aria-label="Waiting lounge with teal and gold seating"><img src="/assets/images/blog/clinic-tour/clinic-11.jpg?v=2" alt="Waiting lounge with teal and gold seating" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-12.jpg?v=2" aria-label="Spacious lounge with designer lighting"><img src="/assets/images/blog/clinic-tour/clinic-12.jpg?v=2" alt="Spacious lounge with designer lighting" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-20.jpg?v=2" aria-label="Treatment room with Ulfit body-contouring device and LED arc lamp"><img src="/assets/images/blog/clinic-tour/clinic-20.jpg?v=2" alt="Treatment room with Ulfit body-contouring device and LED arc lamp" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-21.jpg?v=2" aria-label="HydraFacial treatment room with full-length mirror and artwork"><img src="/assets/images/blog/clinic-tour/clinic-21.jpg?v=2" alt="HydraFacial treatment room with full-length mirror and artwork" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-22.jpg?v=2" aria-label="Laser treatment room with body-contouring device"><img src="/assets/images/blog/clinic-tour/clinic-22.jpg?v=2" alt="Laser treatment room with body-contouring device" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-23.jpg?v=2" aria-label="EMTONE and InMode treatment room"><img src="/assets/images/blog/clinic-tour/clinic-23.jpg?v=2" alt="EMTONE and InMode treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-24.jpg?v=2" aria-label="Morpheus8 and InMode treatment room with LED arc lamp"><img src="/assets/images/blog/clinic-tour/clinic-24.jpg?v=2" alt="Morpheus8 and InMode treatment room with LED arc lamp" loading="lazy"></button>
  </div>
  <div class="bts-gallery-more-wrap">
  <button type="button" class="bts-gallery-more" aria-expanded="false">

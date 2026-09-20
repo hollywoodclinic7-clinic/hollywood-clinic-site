@@ -30,9 +30,9 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <style>
     /* ─── Service hero (home-style image header, no buttons) ─── */
-    .svc-hero{position:relative;min-height:clamp(380px,62vh,560px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg');background-position:center left}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg');background-position:center center;text-align:center}}
+    .svc-hero{position:relative;min-height:clamp(380px,62vh,560px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg?v=2');background-size:cover;background-position:center right;background-repeat:no-repeat}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg?v=2');background-position:center left}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg?v=2');background-position:center center;text-align:center}}
     .svc-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent)}
     .svc-hero .container{position:relative;z-index:2;width:100%}
     .svc-hero-inner{max-width:36rem}
@@ -175,9 +175,9 @@
     /* card-hero override — the banner artwork already carries the treatment name,
        so the page heading is hidden visually (kept in the DOM for SEO/screen readers)
        and the navy wash is lightened so the gold lettering reads. */
-    .svc-hero{background-image:linear-gradient(90deg,rgba(11,29,58,0.55) 0%,rgba(11,29,58,0.34) 34%,rgba(11,29,58,0.16) 62%,rgba(11,29,58,0.06) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg')}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.55) 0%,rgba(11,29,58,0.34) 34%,rgba(11,29,58,0.16) 62%,rgba(11,29,58,0.06) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg')}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.42) 0%,rgba(11,29,58,0.28) 45%,rgba(11,29,58,0.55) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg')}}
+    .svc-hero{background-image:linear-gradient(90deg,rgba(11,29,58,0.55) 0%,rgba(11,29,58,0.34) 34%,rgba(11,29,58,0.16) 62%,rgba(11,29,58,0.06) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg?v=2')}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.55) 0%,rgba(11,29,58,0.34) 34%,rgba(11,29,58,0.16) 62%,rgba(11,29,58,0.06) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg?v=2')}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.42) 0%,rgba(11,29,58,0.28) 45%,rgba(11,29,58,0.55) 100%),url('/assets/images/sub-treatments/body-filler-hero.jpg?v=2')}}
     /* the artwork's baked-in title is English only, so hide the heading in English
        but keep it visible in Arabic — otherwise Arabic visitors get no Arabic title. */
     body:not([dir="rtl"]) .svc-hero h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -186,7 +186,7 @@
   <script src="/assets/js/analytics.js" defer=""></script>
   <style>
     /* phone banner — uses the taller crop so the subject isn't cut off */
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.55) 0%,rgba(11,29,58,0.32) 45%,rgba(11,29,58,0.55) 100%),url('/assets/images/sub-treatments/body-filler-hero-mobile.jpg');background-position:center center;text-align:center}}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.55) 0%,rgba(11,29,58,0.32) 45%,rgba(11,29,58,0.55) 100%),url('/assets/images/sub-treatments/body-filler-hero-mobile.jpg?v=2');background-position:center center;text-align:center}}
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل فيلر الجسم بديل حقيقي للـ BBL؟","acceptedAnswer":{"@type":"Answer","text":"أيوة — للنحت المتوسط. فيلر الجسم بيضيف حجم ويحسّن شكل المؤخرة والأرداف من غير جراحة ولا نقل دهون ولا زرعات. وهو مثالي لملء غمازات الأرداف وإضافة رفع طبيعي. لإعادة التشكيل بحجم كبير جدًا، ممكن تحتاجي عملية BBL، وإحنا هنقولك بصراحة الأنسب ليكي إيه."}},{"@type":"Question","name":"فيلر الجسم بيدوم قد إيه؟","acceptedAnswer":{"@type":"Answer","text":"فيلر body filler عادةً بيدوم من 12 لـ 18 شهر، حسب المنطقة والحجم المستخدم ومعدل الأيض بتاعك. النتيجة بتخف تدريجيًا، وجلسات التجديد بتحافظ عليها."}},{"@type":"Question","name":"الجلسة بتاخد قد إيه وفيه وقت راحة؟","acceptedAnswer":{"@type":"Answer","text":"الجلسة بتاخد من 45 لـ 90 دقيقة حسب المنطقة والحجم. ووقت الراحة بسيط — ممكن يحصل تورم أو ألم خفيف أو كدمات لكام يوم. وفي حالة المؤخرة بننصح بتجنب الضغط المباشر المطوّل (القعدة الطويلة) لفترة قصيرة، وبنشرحلك ده في تعليمات العناية."}},{"@type":"Question","name":"هل بيوجع؟","acceptedAnswer":{"@type":"Answer","text":"بنستخدم مخدر موضعي، ولو محتاجين مخدر لوكال، وكانيولا بدل الإبرة الحادة، فمعظم السيدات بتلاقيه محتمل جدًا. ممكن تحسي بضغط وقت ما الفيلر بيتحط."}},{"@type":"Question","name":"هل هو آمن؟ وينفع يتشال؟","acceptedAnswer":{"@type":"Answer","text":"لما بيتعمل على إيد طبيب مدرّب وبفيلر HA أصلي، هو آمن جدًا. ولأنه حمض فيلر جسم، ينفع يتذاب بالهيالورونيداز لو احتجنا — وده أمان أساسي مقارنةً بالخيارات الدائمة والفيلرات المجهولة."}},{"@type":"Question","name":"فيلر الجسم بيتكلّف كام؟","acceptedAnswer":{"@type":"Answer","text":"فيلر الجسم بيتسعّر بالملي، ومناطق الجسم الكبيرة بتحتاج حجم أكبر من فيلر الوش، فالإجمالي بيعتمد على المنطقة وقد إيه شكل عايزاه. بنديكي عرض سعر واضح ومفصّل في الاستشارة — وبـ body filler أصلي بس."}},{"@type":"Question","name":"هل هيبان ويحس طبيعي؟","acceptedAnswer":{"@type":"Answer","text":"أيوة. body filler متصمم إنه يندمج مع أنسجتك، فالنتيجة بتحس طبيعية في الملمس وبتتحرك طبيعي. وأطباؤنا بيشكّلوا الفيلر عشان شكل أملس ومتناسق."}},{"@type":"Question","name":"هل فيلر الجسم بيجدّد اليدين؟","acceptedAnswer":{"@type":"Answer","text":"أيوة. اليدين بتفقد حجمها مع السن، وده بيخلي العروق والأوتار تبان أكتر. كمية صغيرة من body filler بترجّع ظهر اليد أملس وأصغر سنًا — وده واحد من أكتر علاجات فيلر الجسم طبيعية وإرضاءً."}}],"@id":"https://www.hollywoodclinics.net/ar/treatments/skin-rejuvenation/body-filler#faq"}</script></head>
 <body dir="rtl">
@@ -231,7 +231,7 @@
  </div>
  <div class="tf-video fade-up" id="tfVideo">
  <button class="tf-video-frame" type="button" data-yt="ipk3GeGu0aI" aria-label="Play video">
- <img src="/assets/images/sub-treatments/body-filler-hero.jpg" alt="Dermal filler treatment at Hollywood Clinic">
+ <img src="/assets/images/sub-treatments/body-filler-hero.jpg?v=2" alt="Dermal filler treatment at Hollywood Clinic">
  <span class="tf-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span>
  </button>
  </div>
@@ -247,8 +247,8 @@
  <p style="margin-top:1.25rem" data-i18n="sub.bodyfiller.about.short">فيلر الجسم عبارة عن حقن متصممة للأحجام الكبيرة في الجسم مش الوش. في هوليوود كلينك بنستخدم Previllge 10ml body filler و jealifill 20ml body filler عشان نضيف حجم وشكل للمؤخرة والأرداف والسمانة واليدين — بديل غير جراحي للـ BBL، من غير عملية ووقت راحته بسيط.</p>
  <div class="tf-about-ba">
  <div class="ba-slider" style="aspect-ratio:500/667">
- <div class="ba-after"><img src="/assets/images/results/hip-filler-1-after.jpg" alt="After"></div>
- <div class="ba-before"><img src="/assets/images/results/hip-filler-1-before.jpg" alt="Before"></div>
+ <div class="ba-after"><img src="/assets/images/results/hip-filler-1-after.jpg?v=2" alt="After"></div>
+ <div class="ba-before"><img src="/assets/images/results/hip-filler-1-before.jpg?v=2" alt="Before"></div>
  <div class="ba-label before" data-i18n="sub.bodyfiller.ba.label.before">قبل</div>
  <div class="ba-label after" data-i18n="sub.bodyfiller.ba.label.after">بعد</div>
  <div class="ba-handle"></div>
@@ -392,8 +392,8 @@
  <div class="tf-scroll fade-up">
  <div class="tf-baitem">
  <div class="ba-slider" style="aspect-ratio:1000/698">
- <div class="ba-after"><img src="/assets/images/results/buttock-filler-1-after.jpg" alt="After"></div>
- <div class="ba-before"><img src="/assets/images/results/buttock-filler-1-before.jpg" alt="Before"></div>
+ <div class="ba-after"><img src="/assets/images/results/buttock-filler-1-after.jpg?v=2" alt="After"></div>
+ <div class="ba-before"><img src="/assets/images/results/buttock-filler-1-before.jpg?v=2" alt="Before"></div>
  <div class="ba-label before" data-i18n="sub.bodyfiller.ba.label.before">قبل</div>
  <div class="ba-label after" data-i18n="sub.bodyfiller.ba.label.after">بعد</div>
  <div class="ba-handle"></div>
@@ -616,19 +616,19 @@
  </div>
  <div class="tf-docs">
  <a class="tf-doc fade-up" href="/ar/doctors/dr-marwa-magdy">
- <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-marwa-magdy.jpg" alt="Dr. Marwa Magdy" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-marwa-magdy.jpg?v=2" alt="Dr. Marwa Magdy" loading="lazy"></div>
  <h3 data-i18n="sub.bodyfiller.rdoc.1.name">د. مروة مجدي</h3>
  <span class="tf-doc-role" data-i18n="sub.bodyfiller.rdoc.1.role">أخصائي جلدية وتجميل</span>
  <span class="tf-doc-link" data-i18n="sub.bodyfiller.doc.view">شوفي الملف</span>
  </a>
  <a class="tf-doc fade-up" href="/ar/doctors/dr-rana-safwat">
- <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-rana-safwat.jpg" alt="Dr. Rana Safwat" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-rana-safwat.jpg?v=2" alt="Dr. Rana Safwat" loading="lazy"></div>
  <h3 data-i18n="sub.bodyfiller.rdoc.2.name">د. رنا صفوت</h3>
  <span class="tf-doc-role" data-i18n="sub.bodyfiller.rdoc.2.role">أخصائي جلدية وليزر</span>
  <span class="tf-doc-link" data-i18n="sub.bodyfiller.doc.view">شوفي الملف</span>
  </a>
  <a class="tf-doc fade-up" href="/ar/doctors/dr-nesma-samir">
- <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-nesma-samir.jpg" alt="Dr. Nesma Samir" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="/assets/images/doctors/dr-nesma-samir.jpg?v=2" alt="Dr. Nesma Samir" loading="lazy"></div>
  <h3 data-i18n="sub.bodyfiller.rdoc.3.name">د. نسمة سمير</h3>
  <span class="tf-doc-role" data-i18n="sub.bodyfiller.rdoc.3.role">استشاري جلدية وليزر وتجميل</span>
  <span class="tf-doc-link" data-i18n="sub.bodyfiller.doc.view">شوفي الملف</span>
@@ -646,26 +646,26 @@
  <p class="section-subtitle" data-i18n="sub.bodyfiller.gallery.sub">نظرة أقرب على نحت المؤخرة والأرداف والسمانة واليدين بفيلر الجسم.</p>
  </div>
  <div class="bts-gallery bts-bento is-collapsed fade-up">
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/bodyfiller-gallery/bf-diagram-1.jpg" aria-label="Body contouring result illustration at Hollywood Clinic"><img src="/assets/images/bodyfiller-gallery/bf-diagram-1.jpg" alt="Body contouring result illustration at Hollywood Clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/bodyfiller-gallery/bf-diagram-2.jpg" aria-label="Body filler injection for shaping at Hollywood Clinic"><img src="/assets/images/bodyfiller-gallery/bf-diagram-2.jpg" alt="Body filler injection for shaping at Hollywood Clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/bodyfiller-gallery/bf-diagram-3.jpg" aria-label="Body sculpting and contouring treatment areas"><img src="/assets/images/bodyfiller-gallery/bf-diagram-3.jpg" alt="Body sculpting and contouring treatment areas" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-01.jpg" aria-label="Private treatment room with the backlit Hollywood Clinic lotus emblem"><img src="/assets/images/blog/clinic-tour/clinic-01.jpg" alt="Private treatment room with the backlit Hollywood Clinic lotus emblem" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-02.jpg" aria-label="Hollywood Clinic marble reception desk"><img src="/assets/images/blog/clinic-tour/clinic-02.jpg" alt="Hollywood Clinic marble reception desk" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-03.jpg" aria-label="Treatment room with massage bed and branded towels"><img src="/assets/images/blog/clinic-tour/clinic-03.jpg" alt="Treatment room with massage bed and branded towels" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-04.jpg" aria-label="Body-contouring treatment room with Clatuu Alpha device"><img src="/assets/images/blog/clinic-tour/clinic-04.jpg" alt="Body-contouring treatment room with Clatuu Alpha device" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-05.jpg" aria-label="Specialist consultation office with crystal chandelier"><img src="/assets/images/blog/clinic-tour/clinic-05.jpg" alt="Specialist consultation office with crystal chandelier" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-06.jpg" aria-label="Patient lounge with gold velvet sofas"><img src="/assets/images/blog/clinic-tour/clinic-06.jpg" alt="Patient lounge with gold velvet sofas" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-07.jpg" aria-label="HydraFacial treatment room"><img src="/assets/images/blog/clinic-tour/clinic-07.jpg" alt="HydraFacial treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-08.jpg" aria-label="Front reception and waiting area"><img src="/assets/images/blog/clinic-tour/clinic-08.jpg" alt="Front reception and waiting area" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-09.jpg" aria-label="Lounge beneath cascading crystal chandeliers"><img src="/assets/images/blog/clinic-tour/clinic-09.jpg" alt="Lounge beneath cascading crystal chandeliers" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-10.jpg" aria-label="Alpha body-sculpting device in a treatment room"><img src="/assets/images/blog/clinic-tour/clinic-10.jpg" alt="Alpha body-sculpting device in a treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-11.jpg" aria-label="Waiting lounge with teal and gold seating"><img src="/assets/images/blog/clinic-tour/clinic-11.jpg" alt="Waiting lounge with teal and gold seating" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-12.jpg" aria-label="Spacious lounge with designer lighting"><img src="/assets/images/blog/clinic-tour/clinic-12.jpg" alt="Spacious lounge with designer lighting" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-20.jpg" aria-label="Treatment room with Ulfit body-contouring device and LED arc lamp"><img src="/assets/images/blog/clinic-tour/clinic-20.jpg" alt="Treatment room with Ulfit body-contouring device and LED arc lamp" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-21.jpg" aria-label="HydraFacial treatment room with full-length mirror and artwork"><img src="/assets/images/blog/clinic-tour/clinic-21.jpg" alt="HydraFacial treatment room with full-length mirror and artwork" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-22.jpg" aria-label="Laser treatment room with body-contouring device"><img src="/assets/images/blog/clinic-tour/clinic-22.jpg" alt="Laser treatment room with body-contouring device" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-23.jpg" aria-label="EMTONE and InMode treatment room"><img src="/assets/images/blog/clinic-tour/clinic-23.jpg" alt="EMTONE and InMode treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-24.jpg" aria-label="Morpheus8 and InMode treatment room with LED arc lamp"><img src="/assets/images/blog/clinic-tour/clinic-24.jpg" alt="Morpheus8 and InMode treatment room with LED arc lamp" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/bodyfiller-gallery/bf-diagram-1.jpg?v=2" aria-label="Body contouring result illustration at Hollywood Clinic"><img src="/assets/images/bodyfiller-gallery/bf-diagram-1.jpg?v=2" alt="Body contouring result illustration at Hollywood Clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/bodyfiller-gallery/bf-diagram-2.jpg?v=2" aria-label="Body filler injection for shaping at Hollywood Clinic"><img src="/assets/images/bodyfiller-gallery/bf-diagram-2.jpg?v=2" alt="Body filler injection for shaping at Hollywood Clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/bodyfiller-gallery/bf-diagram-3.jpg?v=2" aria-label="Body sculpting and contouring treatment areas"><img src="/assets/images/bodyfiller-gallery/bf-diagram-3.jpg?v=2" alt="Body sculpting and contouring treatment areas" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-01.jpg?v=2" aria-label="Private treatment room with the backlit Hollywood Clinic lotus emblem"><img src="/assets/images/blog/clinic-tour/clinic-01.jpg?v=2" alt="Private treatment room with the backlit Hollywood Clinic lotus emblem" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-02.jpg?v=2" aria-label="Hollywood Clinic marble reception desk"><img src="/assets/images/blog/clinic-tour/clinic-02.jpg?v=2" alt="Hollywood Clinic marble reception desk" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-03.jpg?v=2" aria-label="Treatment room with massage bed and branded towels"><img src="/assets/images/blog/clinic-tour/clinic-03.jpg?v=2" alt="Treatment room with massage bed and branded towels" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-04.jpg?v=2" aria-label="Body-contouring treatment room with Clatuu Alpha device"><img src="/assets/images/blog/clinic-tour/clinic-04.jpg?v=2" alt="Body-contouring treatment room with Clatuu Alpha device" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-05.jpg?v=2" aria-label="Specialist consultation office with crystal chandelier"><img src="/assets/images/blog/clinic-tour/clinic-05.jpg?v=2" alt="Specialist consultation office with crystal chandelier" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-06.jpg?v=2" aria-label="Patient lounge with gold velvet sofas"><img src="/assets/images/blog/clinic-tour/clinic-06.jpg?v=2" alt="Patient lounge with gold velvet sofas" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-07.jpg?v=2" aria-label="HydraFacial treatment room"><img src="/assets/images/blog/clinic-tour/clinic-07.jpg?v=2" alt="HydraFacial treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-08.jpg?v=2" aria-label="Front reception and waiting area"><img src="/assets/images/blog/clinic-tour/clinic-08.jpg?v=2" alt="Front reception and waiting area" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-09.jpg?v=2" aria-label="Lounge beneath cascading crystal chandeliers"><img src="/assets/images/blog/clinic-tour/clinic-09.jpg?v=2" alt="Lounge beneath cascading crystal chandeliers" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-10.jpg?v=2" aria-label="Alpha body-sculpting device in a treatment room"><img src="/assets/images/blog/clinic-tour/clinic-10.jpg?v=2" alt="Alpha body-sculpting device in a treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-11.jpg?v=2" aria-label="Waiting lounge with teal and gold seating"><img src="/assets/images/blog/clinic-tour/clinic-11.jpg?v=2" alt="Waiting lounge with teal and gold seating" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-12.jpg?v=2" aria-label="Spacious lounge with designer lighting"><img src="/assets/images/blog/clinic-tour/clinic-12.jpg?v=2" alt="Spacious lounge with designer lighting" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-20.jpg?v=2" aria-label="Treatment room with Ulfit body-contouring device and LED arc lamp"><img src="/assets/images/blog/clinic-tour/clinic-20.jpg?v=2" alt="Treatment room with Ulfit body-contouring device and LED arc lamp" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-21.jpg?v=2" aria-label="HydraFacial treatment room with full-length mirror and artwork"><img src="/assets/images/blog/clinic-tour/clinic-21.jpg?v=2" alt="HydraFacial treatment room with full-length mirror and artwork" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-22.jpg?v=2" aria-label="Laser treatment room with body-contouring device"><img src="/assets/images/blog/clinic-tour/clinic-22.jpg?v=2" alt="Laser treatment room with body-contouring device" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-23.jpg?v=2" aria-label="EMTONE and InMode treatment room"><img src="/assets/images/blog/clinic-tour/clinic-23.jpg?v=2" alt="EMTONE and InMode treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../../assets/images/blog/clinic-tour/clinic-24.jpg?v=2" aria-label="Morpheus8 and InMode treatment room with LED arc lamp"><img src="/assets/images/blog/clinic-tour/clinic-24.jpg?v=2" alt="Morpheus8 and InMode treatment room with LED arc lamp" loading="lazy"></button>
  </div>
  <div class="bts-gallery-more-wrap">
  <button type="button" class="bts-gallery-more" aria-expanded="false">

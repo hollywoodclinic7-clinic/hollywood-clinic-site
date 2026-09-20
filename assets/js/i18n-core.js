@@ -31,7 +31,7 @@
  '<span></span><span></span><span></span>' +
  '</button>' +
  '<a href="' + HOME + '" class="brand">' +
- '<img src="/assets/images/logo.png" alt="Hollywood Clinic" class="brand-logo">' +
+ '<img src="/assets/images/logo.png?v=2" alt="Hollywood Clinic" class="brand-logo">' +
  '<div class="brand-text">' +
  '<span class="brand-name">Hollywood</span>' +
  '<span class="brand-sub">Clinic</span>' +

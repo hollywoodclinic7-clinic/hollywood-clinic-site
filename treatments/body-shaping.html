@@ -34,9 +34,9 @@
   <link rel="stylesheet" href="../assets/css/main.css">
   <style>
     /* ─── HERO (home-style full-bleed image + header text, no buttons) ─── */
-    .svc-hero{position:relative;min-height:clamp(300px,52vh,460px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../assets/images/body-shaping-hero.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../assets/images/body-shaping-hero.jpg');background-position:center left}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('../assets/images/body-shaping-hero.jpg');background-position:center center;text-align:center}}
+    .svc-hero{position:relative;min-height:clamp(300px,52vh,460px);display:flex;align-items:center;overflow:hidden;background-color:var(--navy);background-image:linear-gradient(90deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../assets/images/body-shaping-hero.jpg?v=2');background-size:cover;background-position:center right;background-repeat:no-repeat}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(11,29,58,0.92) 0%,rgba(11,29,58,0.78) 34%,rgba(11,29,58,0.42) 62%,rgba(11,29,58,0.18) 100%),url('../assets/images/body-shaping-hero.jpg?v=2');background-position:center left}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(11,29,58,0.72) 0%,rgba(11,29,58,0.60) 45%,rgba(11,29,58,0.86) 100%),url('../assets/images/body-shaping-hero.jpg?v=2');background-position:center center;text-align:center}}
     .svc-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent)}
     .svc-hero .container{position:relative;z-index:2;width:100%}
     .svc-hero-inner{max-width:38rem}
@@ -49,9 +49,9 @@
     /* home-style hero animation hooks (this page) */
     .svc-hero{align-items:stretch;min-height:clamp(330px,42vh,440px);padding-top:clamp(4.6rem,8vh,5.8rem);padding-bottom:clamp(1rem,2.4vh,1.6rem)}
     .svc-hero .container{display:flex;flex-direction:column;justify-content:space-between;gap:1rem}
-    .svc-hero{background-color:#0a1830;background-image:linear-gradient(90deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('../assets/images/body-shaping-hero.jpg');background-position:center 12%}
-    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('../assets/images/body-shaping-hero.jpg');background-position:center 12%}
-    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(8,18,38,0.64) 0%,rgba(8,18,38,0.46) 42%,rgba(8,18,38,0.88) 100%),url('../assets/images/body-shaping-hero.jpg');background-position:center 8%}}
+    .svc-hero{background-color:#0a1830;background-image:linear-gradient(90deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('../assets/images/body-shaping-hero.jpg?v=2');background-position:center 12%}
+    body[dir="rtl"] .svc-hero{background-image:linear-gradient(270deg,rgba(8,18,38,0.94) 0%,rgba(8,18,38,0.72) 30%,rgba(8,18,38,0.30) 58%,rgba(8,18,38,0.08) 100%),url('../assets/images/body-shaping-hero.jpg?v=2');background-position:center 12%}
+    @media (max-width:767px){.svc-hero{background-image:linear-gradient(180deg,rgba(8,18,38,0.64) 0%,rgba(8,18,38,0.46) 42%,rgba(8,18,38,0.88) 100%),url('../assets/images/body-shaping-hero.jpg?v=2');background-position:center 8%}}
     .svc-hero:hover .hero-cursor-glow{opacity:1}
     .svc-hero .hero-stats{margin-top:0;margin-bottom:0}
     @media (max-width:767px){.svc-hero .hero-stats{margin-left:auto;margin-right:auto}}
@@ -235,8 +235,8 @@
  </div>
  <div class="tf-about-ba fade-up">
  <div class="ba-slider">
- <div class="ba-after"><img src="../assets/images/results/body-shaping-1-after.jpg" alt="After"></div>
- <div class="ba-before"><img src="../assets/images/results/body-shaping-1-before.jpg" alt="Before"></div>
+ <div class="ba-after"><img src="../assets/images/results/body-shaping-1-after.jpg?v=2" alt="After"></div>
+ <div class="ba-before"><img src="../assets/images/results/body-shaping-1-before.jpg?v=2" alt="Before"></div>
  <div class="ba-label before" data-i18n="bs.tesla.ba.label.before">Before</div>
  <div class="ba-label after" data-i18n="bs.tesla.ba.label.after">After</div>
  <div class="ba-handle"></div>
@@ -258,7 +258,7 @@
  <div class="dept-services-grid">
 
  <a href="body-shaping/tesla-former" class="sub-card fade-up">
- <div class="sub-card-image"><img src="../assets/images/sub-treatments/tesla-former.jpg" alt="Tesla Former" loading="lazy"></div>
+ <div class="sub-card-image"><img src="../assets/images/sub-treatments/tesla-former.jpg?v=2" alt="Tesla Former" loading="lazy"></div>
  <div class="sub-card-body">
  <h3 data-i18n="bs.tesla.name">Tesla Former</h3>
  <p data-i18n="bs.tesla.short">Builds muscle and burns fat with high-intensity focused electromagnetic technology — equivalent to thousands of crunches in one session.</p>
@@ -267,7 +267,7 @@
  </a>
 
  <a href="body-shaping/emtone" class="sub-card fade-up d1">
- <div class="sub-card-image"><img src="../assets/images/sub-treatments/emtone.jpg" alt="EMTONE" loading="lazy"></div>
+ <div class="sub-card-image"><img src="../assets/images/sub-treatments/emtone.jpg?v=2" alt="EMTONE" loading="lazy"></div>
  <div class="sub-card-body">
  <h3 data-i18n="bs.emtone.name">EMTONE</h3>
  <p data-i18n="bs.emtone.short">The first device to simultaneously treat all major cellulite causes — using radiofrequency and targeted pressure.</p>
@@ -276,7 +276,7 @@
  </a>
 
  <a href="body-shaping/body-fx" class="sub-card fade-up d2">
- <div class="sub-card-image"><img src="../assets/images/sub-treatments/body-fx.jpg" alt="Body FX" loading="lazy"></div>
+ <div class="sub-card-image"><img src="../assets/images/sub-treatments/body-fx.jpg?v=2" alt="Body FX" loading="lazy"></div>
  <div class="sub-card-body">
  <h3 data-i18n="bs.bodyfx.name">Body FX</h3>
  <p data-i18n="bs.bodyfx.short">Non-invasive radiofrequency body contouring that reduces fat, tightens skin, and smooths cellulite — all in one device.</p>
@@ -285,7 +285,7 @@
  </a>
 
  <a href="body-shaping/clatuu-alpha" class="sub-card fade-up">
- <div class="sub-card-image"><img src="../assets/images/sub-treatments/clatuu-alpha.jpg" alt="Clatuu Alpha" loading="lazy"></div>
+ <div class="sub-card-image"><img src="../assets/images/sub-treatments/clatuu-alpha.jpg?v=2" alt="Clatuu Alpha" loading="lazy"></div>
  <div class="sub-card-body">
  <h3 data-i18n="bs.clatuu.name">Clatuu Alpha</h3>
  <p data-i18n="bs.clatuu.short">Advanced fat freezing (cryolipolysis) — 360° applicators target stubborn fat that diet and exercise can't remove.</p>
@@ -294,7 +294,7 @@
  </a>
 
  <a href="body-shaping/hifu-body" class="sub-card fade-up d1">
- <div class="sub-card-image"><img src="../assets/images/sub-treatments/hifu-body.jpg" alt="HIFU Body" loading="lazy"></div>
+ <div class="sub-card-image"><img src="../assets/images/sub-treatments/hifu-body.jpg?v=2" alt="HIFU Body" loading="lazy"></div>
  <div class="sub-card-body">
  <h3 data-i18n="bs.hifubody.name">HIFU Body</h3>
  <p data-i18n="bs.hifubody.short">Non-surgical body lifting and tightening with high-intensity focused ultrasound — for arms, abdomen, thighs, and more.</p>
@@ -303,7 +303,7 @@
  </a>
 
  <a href="body-shaping/morpheus8-body" class="sub-card fade-up d2">
- <div class="sub-card-image"><img src="../assets/images/sub-treatments/morpheus8-body.jpg" alt="Morpheus8 Body" loading="lazy"></div>
+ <div class="sub-card-image"><img src="../assets/images/sub-treatments/morpheus8-body.jpg?v=2" alt="Morpheus8 Body" loading="lazy"></div>
  <div class="sub-card-body">
  <h3 data-i18n="bs.morpheus8body.name">Morpheus8 Body</h3>
  <p data-i18n="bs.morpheus8body.short">Microneedling + radiofrequency for deep skin remodeling on the body — stretch marks, laxity, and texture.</p>
@@ -362,8 +362,8 @@
  <div class="tf-scroll fade-up">
  <div class="tf-baitem">
  <div class="ba-slider" style="aspect-ratio:346/318">
- <div class="ba-after"><img src="../assets/images/results/body-shaping-2-after.jpg" alt="After"></div>
- <div class="ba-before"><img src="../assets/images/results/body-shaping-2-before.jpg" alt="Before"></div>
+ <div class="ba-after"><img src="../assets/images/results/body-shaping-2-after.jpg?v=2" alt="After"></div>
+ <div class="ba-before"><img src="../assets/images/results/body-shaping-2-before.jpg?v=2" alt="Before"></div>
  <div class="ba-label before" data-i18n="bs.tesla.ba.label.before">Before</div>
  <div class="ba-label after" data-i18n="bs.tesla.ba.label.after">After</div>
  <div class="ba-handle"></div>
@@ -481,19 +481,19 @@
  </div>
  <div class="tf-docs">
  <a class="tf-doc fade-up" href="../doctors/dr-sara-abdelhameed">
- <div class="tf-doc-photo"><img src="../assets/images/doctors/dr-sara-abdelhameed.jpg" alt="Dr. Sara Abdelhameed" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="../assets/images/doctors/dr-sara-abdelhameed.jpg?v=2" alt="Dr. Sara Abdelhameed" loading="lazy"></div>
  <h3 data-i18n="bs.tesla.doc.sara.name">Dr. Sara Abdelhameed</h3>
  <span class="tf-doc-role" data-i18n="bs.tesla.doc.sara.role">Body Contouring Consultant</span>
  <span class="tf-doc-link" data-i18n="bs.tesla.doc.view">View Profile</span>
  </a>
  <a class="tf-doc fade-up" href="../doctors/dr-rana-ibrahim-sultan">
- <div class="tf-doc-photo"><img src="../assets/images/doctors/dr-rana-ibrahim-sultan.jpg" alt="Dr. Rana Ibrahim Sultan" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="../assets/images/doctors/dr-rana-ibrahim-sultan.jpg?v=2" alt="Dr. Rana Ibrahim Sultan" loading="lazy"></div>
  <h3 data-i18n="bs.tesla.doc.rana.name">Dr. Rana Ibrahim Sultan</h3>
  <span class="tf-doc-role" data-i18n="bs.tesla.doc.rana.role">Clinical Nutrition Specialist &amp; Body Sculpting Expert</span>
  <span class="tf-doc-link" data-i18n="bs.tesla.doc.view">View Profile</span>
  </a>
  <a class="tf-doc fade-up" href="../doctors/dr-ehssan-rabie">
- <div class="tf-doc-photo"><img src="../assets/images/doctors/dr-ehssan-rabie.jpg" alt="Dr. Ehssan Rabie" loading="lazy"></div>
+ <div class="tf-doc-photo"><img src="../assets/images/doctors/dr-ehssan-rabie.jpg?v=2" alt="Dr. Ehssan Rabie" loading="lazy"></div>
  <h3 data-i18n="bs.tesla.doc.ehssan.name">Dr. Ehssan Rabie</h3>
  <span class="tf-doc-role" data-i18n="bs.tesla.doc.ehssan.role">Clinical Nutrition &amp; Body Reshaping Specialist</span>
  <span class="tf-doc-link" data-i18n="bs.tesla.doc.view">View Profile</span>
@@ -512,68 +512,68 @@
  <p class="section-subtitle" data-i18n="bs.dept.gallery.sub">A closer look at the advanced body-shaping devices we use at Hollywood Clinic.</p>
  </div>
  <div class="bts-gallery bts-bento is-collapsed fade-up">
- <button type="button" class="bts-gallery-item" data-yt="Xwy4UhdezUo" aria-label="Body FX — how the treatment works"><img src="../assets/images/bodyfx/bodyfx-vid-1.jpg" alt="Body FX — how the treatment works" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="ny1XSrgnbOc" aria-label="Body FX — inside a real session"><img src="../assets/images/bodyfx/bodyfx-vid-3.jpg" alt="Body FX — inside a real session" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="n6X_JUG1ryw" aria-label="Body FX — cellulite solution"><img src="../assets/images/bodyfx/bodyfx-vid-4.jpg" alt="Body FX — cellulite solution" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="bNTMa4Fd-No" aria-label="Body FX — cellulite treatment at Hollywood Clinic"><img src="../assets/images/bodyfx/bodyfx-vid-5.jpg" alt="Body FX — cellulite treatment at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="-B-X2sW9M7s" aria-label="Clatuu Alpha — the technique explained"><img src="../assets/images/clatuu/clatuu-vid-4.jpg" alt="Clatuu Alpha — the technique explained" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="pLPnzJH8NGI" aria-label="Clatuu Alpha — what to expect from your treatment"><img src="../assets/images/clatuu/clatuu-vid-3.jpg" alt="Clatuu Alpha — what to expect from your treatment" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="fxzFR5viHi0" aria-label="Clatuu Alpha — how cryolipolysis works"><img src="../assets/images/clatuu/clatuu-vid-2.jpg" alt="Clatuu Alpha — how cryolipolysis works" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="wa0UpRlwg5U" aria-label="EMTONE by BTL at Hollywood Clinic"><img src="../assets/images/emtone/emtone-vid-8.jpg" alt="EMTONE by BTL at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="1PxmDs1A-uA" aria-label="EMTONE — how the technology works"><img src="../assets/images/emtone/emtone-vid-9.jpg" alt="EMTONE — how the technology works" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="DwHMYw6FWxY" aria-label="EMTONE — inside a real session"><img src="../assets/images/emtone/emtone-vid-10.jpg" alt="EMTONE — inside a real session" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="wyk2rhnabwM" aria-label="EMTONE — the procedure step by step"><img src="../assets/images/emtone/emtone-vid-11.jpg" alt="EMTONE — the procedure step by step" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="5hwtLVi1cGM" aria-label="EMTONE — cellulite reduction at Hollywood Clinic"><img src="../assets/images/emtone/emtone-vid-12.jpg" alt="EMTONE — cellulite reduction at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="X-4sDYYe0G4" aria-label="EMTONE — results and treatment plan"><img src="../assets/images/emtone/emtone-vid-7.jpg" alt="EMTONE — results and treatment plan" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="m3pCJ75PYh4" aria-label="HIFU Body — body contouring session"><img src="../assets/images/hifu-body/hifub-vid-4.jpg" alt="HIFU Body — body contouring session" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="v0GjQQ12gpk" aria-label="HIFU Body — what to expect from your treatment"><img src="../assets/images/hifu-body/hifub-vid-3.jpg" alt="HIFU Body — what to expect from your treatment" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="FMWKtdKdV-U" aria-label="Morpheus8 Body — treatment on the arms"><img src="../assets/images/morpheus8-body/m8b-vid-4.jpg" alt="Morpheus8 Body — treatment on the arms" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="TZHcM4vqivA" aria-label="Morpheus8 Body — what to expect from your treatment"><img src="../assets/images/morpheus8-body/m8b-vid-3.jpg" alt="Morpheus8 Body — what to expect from your treatment" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="8kumo85kUAM" aria-label="Tesla Former — shape your body"><img src="../assets/images/tesla/tesla-vid-5.jpg" alt="Tesla Former — shape your body" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-yt="GwaZpn35Efo" aria-label="Tesla Former and Hydrafacial at Hollywood Clinic"><img src="../assets/images/tesla/tesla-vid-6.jpg" alt="Tesla Former and Hydrafacial at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/bodyfx/bodyfx-01.jpg" aria-label="Our Body FX (InMode) unit in the Heliopolis clinic"><img src="../assets/images/bodyfx/bodyfx-01.jpg" alt="Our Body FX (InMode) unit in the Heliopolis clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/bodyfx/bodyfx-02.jpg" aria-label="Body FX applicator treating the abdomen"><img src="../assets/images/bodyfx/bodyfx-02.jpg" alt="Body FX applicator treating the abdomen" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/bodyfx/bodyfx-03.jpg" aria-label="Body FX treatment areas — abdomen, flanks and thighs"><img src="../assets/images/bodyfx/bodyfx-03.jpg" alt="Body FX treatment areas — abdomen, flanks and thighs" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/bodyfx/bodyfx-04.jpg" aria-label="Smooth, contoured abdomen after body shaping"><img src="../assets/images/bodyfx/bodyfx-04.jpg" alt="Smooth, contoured abdomen after body shaping" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-01.jpg" aria-label="Our Clatuu Alpha unit in the Heliopolis clinic"><img src="../assets/images/clatuu/clatuu-01.jpg" alt="Our Clatuu Alpha unit in the Heliopolis clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-02.jpg" aria-label="Clatuu Alpha applicator treating the abdomen"><img src="../assets/images/clatuu/clatuu-02.jpg" alt="Clatuu Alpha applicator treating the abdomen" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-03.jpg" aria-label="Clatuu Alpha session in progress"><img src="../assets/images/clatuu/clatuu-03.jpg" alt="Clatuu Alpha session in progress" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-04.jpg" aria-label="Dual Clatuu Alpha applicators treating the abdomen"><img src="../assets/images/clatuu/clatuu-04.jpg" alt="Dual Clatuu Alpha applicators treating the abdomen" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-05.jpg" aria-label="Relaxed Clatuu Alpha fat-freezing session"><img src="../assets/images/clatuu/clatuu-05.jpg" alt="Relaxed Clatuu Alpha fat-freezing session" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-01.jpg" aria-label="The EMTONE unit in our clinic"><img src="../assets/images/emtone/emtone-01.jpg" alt="The EMTONE unit in our clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-02.jpg" aria-label="EMTONE applicator treating the thigh"><img src="../assets/images/emtone/emtone-02.jpg" alt="EMTONE applicator treating the thigh" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-03.jpg" aria-label="EMTONE session in progress"><img src="../assets/images/emtone/emtone-03.jpg" alt="EMTONE session in progress" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-04.jpg" aria-label="EMTONE handpiece and console"><img src="../assets/images/emtone/emtone-04.jpg" alt="EMTONE handpiece and console" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-05.jpg" aria-label="EMTONE treatment of the leg"><img src="../assets/images/emtone/emtone-05.jpg" alt="EMTONE treatment of the leg" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/hifu-body/hifub-02.jpg" aria-label="HIFU Body applicator treating the abdomen"><img src="../assets/images/hifu-body/hifub-02.jpg" alt="HIFU Body applicator treating the abdomen" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/hifu-body/hifub-03.jpg" aria-label="HIFU Body treatment areas — arms, abdomen and buttocks"><img src="../assets/images/hifu-body/hifub-03.jpg" alt="HIFU Body treatment areas — arms, abdomen and buttocks" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/morpheus8-body/m8b-01.jpg" aria-label="Our Morpheus8 Body unit in the Heliopolis clinic"><img src="../assets/images/morpheus8-body/m8b-01.jpg" alt="Our Morpheus8 Body unit in the Heliopolis clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/morpheus8-body/m8b-02.jpg" aria-label="Morpheus8 Body applicator treating the abdomen"><img src="../assets/images/morpheus8-body/m8b-02.jpg" alt="Morpheus8 Body applicator treating the abdomen" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/morpheus8-body/m8b-03.jpg" aria-label="Morpheus8 Body microneedling applicator in use"><img src="../assets/images/morpheus8-body/m8b-03.jpg" alt="Morpheus8 Body microneedling applicator in use" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-01.jpg" aria-label="Tesla Former by Iskra Medical — the FMS body-sculpting system"><img src="../assets/images/tesla/tesla-01.jpg" alt="Tesla Former by Iskra Medical — the FMS body-sculpting system" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-02.jpg" aria-label="The Tesla Former unit in our clinic"><img src="../assets/images/tesla/tesla-02.jpg" alt="The Tesla Former unit in our clinic" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-03.jpg" aria-label="Tesla Former applicator shaping the abdomen"><img src="../assets/images/tesla/tesla-03.jpg" alt="Tesla Former applicator shaping the abdomen" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-04.jpg" aria-label="Seated Tesla Former session"><img src="../assets/images/tesla/tesla-04.jpg" alt="Seated Tesla Former session" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-05.jpg" aria-label="Dual Tesla Former applicators treating abdomen and thigh"><img src="../assets/images/tesla/tesla-05.jpg" alt="Dual Tesla Former applicators treating abdomen and thigh" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-06.jpg" aria-label="Tesla Former session targeting the glutes and thighs"><img src="../assets/images/tesla/tesla-06.jpg" alt="Tesla Former session targeting the glutes and thighs" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-07.jpg" aria-label="Tesla Former console with applicator stand"><img src="../assets/images/tesla/tesla-07.jpg" alt="Tesla Former console with applicator stand" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-01.jpg" aria-label="Private treatment room with the backlit Hollywood Clinic lotus emblem"><img src="../assets/images/blog/clinic-tour/clinic-01.jpg" alt="Private treatment room with the backlit Hollywood Clinic lotus emblem" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-02.jpg" aria-label="Hollywood Clinic marble reception desk"><img src="../assets/images/blog/clinic-tour/clinic-02.jpg" alt="Hollywood Clinic marble reception desk" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-03.jpg" aria-label="Treatment room with massage bed and branded towels"><img src="../assets/images/blog/clinic-tour/clinic-03.jpg" alt="Treatment room with massage bed and branded towels" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-04.jpg" aria-label="Body-contouring treatment room with Clatuu Alpha device"><img src="../assets/images/blog/clinic-tour/clinic-04.jpg" alt="Body-contouring treatment room with Clatuu Alpha device" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-05.jpg" aria-label="Specialist consultation office with crystal chandelier"><img src="../assets/images/blog/clinic-tour/clinic-05.jpg" alt="Specialist consultation office with crystal chandelier" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-06.jpg" aria-label="Patient lounge with gold velvet sofas"><img src="../assets/images/blog/clinic-tour/clinic-06.jpg" alt="Patient lounge with gold velvet sofas" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-07.jpg" aria-label="HydraFacial treatment room"><img src="../assets/images/blog/clinic-tour/clinic-07.jpg" alt="HydraFacial treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-08.jpg" aria-label="Front reception and waiting area"><img src="../assets/images/blog/clinic-tour/clinic-08.jpg" alt="Front reception and waiting area" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-09.jpg" aria-label="Lounge beneath cascading crystal chandeliers"><img src="../assets/images/blog/clinic-tour/clinic-09.jpg" alt="Lounge beneath cascading crystal chandeliers" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-10.jpg" aria-label="Alpha body-sculpting device in a treatment room"><img src="../assets/images/blog/clinic-tour/clinic-10.jpg" alt="Alpha body-sculpting device in a treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-11.jpg" aria-label="Waiting lounge with teal and gold seating"><img src="../assets/images/blog/clinic-tour/clinic-11.jpg" alt="Waiting lounge with teal and gold seating" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-12.jpg" aria-label="Spacious lounge with designer lighting"><img src="../assets/images/blog/clinic-tour/clinic-12.jpg" alt="Spacious lounge with designer lighting" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-20.jpg" aria-label="Treatment room with Ulfit body-contouring device and LED arc lamp"><img src="../assets/images/blog/clinic-tour/clinic-20.jpg" alt="Treatment room with Ulfit body-contouring device and LED arc lamp" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-21.jpg" aria-label="HydraFacial treatment room with full-length mirror and artwork"><img src="../assets/images/blog/clinic-tour/clinic-21.jpg" alt="HydraFacial treatment room with full-length mirror and artwork" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-22.jpg" aria-label="Laser treatment room with body-contouring device"><img src="../assets/images/blog/clinic-tour/clinic-22.jpg" alt="Laser treatment room with body-contouring device" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-23.jpg" aria-label="EMTONE and InMode treatment room"><img src="../assets/images/blog/clinic-tour/clinic-23.jpg" alt="EMTONE and InMode treatment room" loading="lazy"></button>
- <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-24.jpg" aria-label="Morpheus8 and InMode treatment room with LED arc lamp"><img src="../assets/images/blog/clinic-tour/clinic-24.jpg" alt="Morpheus8 and InMode treatment room with LED arc lamp" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-yt="Xwy4UhdezUo" aria-label="Body FX — how the treatment works"><img src="../assets/images/bodyfx/bodyfx-vid-1.jpg?v=2" alt="Body FX — how the treatment works" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="ny1XSrgnbOc" aria-label="Body FX — inside a real session"><img src="../assets/images/bodyfx/bodyfx-vid-3.jpg?v=2" alt="Body FX — inside a real session" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="n6X_JUG1ryw" aria-label="Body FX — cellulite solution"><img src="../assets/images/bodyfx/bodyfx-vid-4.jpg?v=2" alt="Body FX — cellulite solution" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="bNTMa4Fd-No" aria-label="Body FX — cellulite treatment at Hollywood Clinic"><img src="../assets/images/bodyfx/bodyfx-vid-5.jpg?v=2" alt="Body FX — cellulite treatment at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="-B-X2sW9M7s" aria-label="Clatuu Alpha — the technique explained"><img src="../assets/images/clatuu/clatuu-vid-4.jpg?v=2" alt="Clatuu Alpha — the technique explained" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="pLPnzJH8NGI" aria-label="Clatuu Alpha — what to expect from your treatment"><img src="../assets/images/clatuu/clatuu-vid-3.jpg?v=2" alt="Clatuu Alpha — what to expect from your treatment" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="fxzFR5viHi0" aria-label="Clatuu Alpha — how cryolipolysis works"><img src="../assets/images/clatuu/clatuu-vid-2.jpg?v=2" alt="Clatuu Alpha — how cryolipolysis works" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="wa0UpRlwg5U" aria-label="EMTONE by BTL at Hollywood Clinic"><img src="../assets/images/emtone/emtone-vid-8.jpg?v=2" alt="EMTONE by BTL at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="1PxmDs1A-uA" aria-label="EMTONE — how the technology works"><img src="../assets/images/emtone/emtone-vid-9.jpg?v=2" alt="EMTONE — how the technology works" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="DwHMYw6FWxY" aria-label="EMTONE — inside a real session"><img src="../assets/images/emtone/emtone-vid-10.jpg?v=2" alt="EMTONE — inside a real session" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="wyk2rhnabwM" aria-label="EMTONE — the procedure step by step"><img src="../assets/images/emtone/emtone-vid-11.jpg?v=2" alt="EMTONE — the procedure step by step" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="5hwtLVi1cGM" aria-label="EMTONE — cellulite reduction at Hollywood Clinic"><img src="../assets/images/emtone/emtone-vid-12.jpg?v=2" alt="EMTONE — cellulite reduction at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="X-4sDYYe0G4" aria-label="EMTONE — results and treatment plan"><img src="../assets/images/emtone/emtone-vid-7.jpg?v=2" alt="EMTONE — results and treatment plan" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="m3pCJ75PYh4" aria-label="HIFU Body — body contouring session"><img src="../assets/images/hifu-body/hifub-vid-4.jpg?v=2" alt="HIFU Body — body contouring session" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="v0GjQQ12gpk" aria-label="HIFU Body — what to expect from your treatment"><img src="../assets/images/hifu-body/hifub-vid-3.jpg?v=2" alt="HIFU Body — what to expect from your treatment" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="FMWKtdKdV-U" aria-label="Morpheus8 Body — treatment on the arms"><img src="../assets/images/morpheus8-body/m8b-vid-4.jpg?v=2" alt="Morpheus8 Body — treatment on the arms" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="TZHcM4vqivA" aria-label="Morpheus8 Body — what to expect from your treatment"><img src="../assets/images/morpheus8-body/m8b-vid-3.jpg?v=2" alt="Morpheus8 Body — what to expect from your treatment" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="8kumo85kUAM" aria-label="Tesla Former — shape your body"><img src="../assets/images/tesla/tesla-vid-5.jpg?v=2" alt="Tesla Former — shape your body" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-yt="GwaZpn35Efo" aria-label="Tesla Former and Hydrafacial at Hollywood Clinic"><img src="../assets/images/tesla/tesla-vid-6.jpg?v=2" alt="Tesla Former and Hydrafacial at Hollywood Clinic" loading="lazy"><span class="bts-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/bodyfx/bodyfx-01.jpg?v=2" aria-label="Our Body FX (InMode) unit in the Heliopolis clinic"><img src="../assets/images/bodyfx/bodyfx-01.jpg?v=2" alt="Our Body FX (InMode) unit in the Heliopolis clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/bodyfx/bodyfx-02.jpg?v=2" aria-label="Body FX applicator treating the abdomen"><img src="../assets/images/bodyfx/bodyfx-02.jpg?v=2" alt="Body FX applicator treating the abdomen" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/bodyfx/bodyfx-03.jpg?v=2" aria-label="Body FX treatment areas — abdomen, flanks and thighs"><img src="../assets/images/bodyfx/bodyfx-03.jpg?v=2" alt="Body FX treatment areas — abdomen, flanks and thighs" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/bodyfx/bodyfx-04.jpg?v=2" aria-label="Smooth, contoured abdomen after body shaping"><img src="../assets/images/bodyfx/bodyfx-04.jpg?v=2" alt="Smooth, contoured abdomen after body shaping" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-01.jpg?v=2" aria-label="Our Clatuu Alpha unit in the Heliopolis clinic"><img src="../assets/images/clatuu/clatuu-01.jpg?v=2" alt="Our Clatuu Alpha unit in the Heliopolis clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-02.jpg?v=2" aria-label="Clatuu Alpha applicator treating the abdomen"><img src="../assets/images/clatuu/clatuu-02.jpg?v=2" alt="Clatuu Alpha applicator treating the abdomen" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-03.jpg?v=2" aria-label="Clatuu Alpha session in progress"><img src="../assets/images/clatuu/clatuu-03.jpg?v=2" alt="Clatuu Alpha session in progress" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-04.jpg?v=2" aria-label="Dual Clatuu Alpha applicators treating the abdomen"><img src="../assets/images/clatuu/clatuu-04.jpg?v=2" alt="Dual Clatuu Alpha applicators treating the abdomen" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/clatuu/clatuu-05.jpg?v=2" aria-label="Relaxed Clatuu Alpha fat-freezing session"><img src="../assets/images/clatuu/clatuu-05.jpg?v=2" alt="Relaxed Clatuu Alpha fat-freezing session" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-01.jpg?v=2" aria-label="The EMTONE unit in our clinic"><img src="../assets/images/emtone/emtone-01.jpg?v=2" alt="The EMTONE unit in our clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-02.jpg?v=2" aria-label="EMTONE applicator treating the thigh"><img src="../assets/images/emtone/emtone-02.jpg?v=2" alt="EMTONE applicator treating the thigh" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-03.jpg?v=2" aria-label="EMTONE session in progress"><img src="../assets/images/emtone/emtone-03.jpg?v=2" alt="EMTONE session in progress" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-04.jpg?v=2" aria-label="EMTONE handpiece and console"><img src="../assets/images/emtone/emtone-04.jpg?v=2" alt="EMTONE handpiece and console" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/emtone/emtone-05.jpg?v=2" aria-label="EMTONE treatment of the leg"><img src="../assets/images/emtone/emtone-05.jpg?v=2" alt="EMTONE treatment of the leg" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/hifu-body/hifub-02.jpg?v=2" aria-label="HIFU Body applicator treating the abdomen"><img src="../assets/images/hifu-body/hifub-02.jpg?v=2" alt="HIFU Body applicator treating the abdomen" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/hifu-body/hifub-03.jpg?v=2" aria-label="HIFU Body treatment areas — arms, abdomen and buttocks"><img src="../assets/images/hifu-body/hifub-03.jpg?v=2" alt="HIFU Body treatment areas — arms, abdomen and buttocks" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/morpheus8-body/m8b-01.jpg?v=2" aria-label="Our Morpheus8 Body unit in the Heliopolis clinic"><img src="../assets/images/morpheus8-body/m8b-01.jpg?v=2" alt="Our Morpheus8 Body unit in the Heliopolis clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/morpheus8-body/m8b-02.jpg?v=2" aria-label="Morpheus8 Body applicator treating the abdomen"><img src="../assets/images/morpheus8-body/m8b-02.jpg?v=2" alt="Morpheus8 Body applicator treating the abdomen" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/morpheus8-body/m8b-03.jpg?v=2" aria-label="Morpheus8 Body microneedling applicator in use"><img src="../assets/images/morpheus8-body/m8b-03.jpg?v=2" alt="Morpheus8 Body microneedling applicator in use" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-01.jpg?v=2" aria-label="Tesla Former by Iskra Medical — the FMS body-sculpting system"><img src="../assets/images/tesla/tesla-01.jpg?v=2" alt="Tesla Former by Iskra Medical — the FMS body-sculpting system" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-02.jpg?v=2" aria-label="The Tesla Former unit in our clinic"><img src="../assets/images/tesla/tesla-02.jpg?v=2" alt="The Tesla Former unit in our clinic" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-03.jpg?v=2" aria-label="Tesla Former applicator shaping the abdomen"><img src="../assets/images/tesla/tesla-03.jpg?v=2" alt="Tesla Former applicator shaping the abdomen" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-04.jpg?v=2" aria-label="Seated Tesla Former session"><img src="../assets/images/tesla/tesla-04.jpg?v=2" alt="Seated Tesla Former session" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-05.jpg?v=2" aria-label="Dual Tesla Former applicators treating abdomen and thigh"><img src="../assets/images/tesla/tesla-05.jpg?v=2" alt="Dual Tesla Former applicators treating abdomen and thigh" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-06.jpg?v=2" aria-label="Tesla Former session targeting the glutes and thighs"><img src="../assets/images/tesla/tesla-06.jpg?v=2" alt="Tesla Former session targeting the glutes and thighs" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/tesla/tesla-07.jpg?v=2" aria-label="Tesla Former console with applicator stand"><img src="../assets/images/tesla/tesla-07.jpg?v=2" alt="Tesla Former console with applicator stand" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-01.jpg?v=2" aria-label="Private treatment room with the backlit Hollywood Clinic lotus emblem"><img src="../assets/images/blog/clinic-tour/clinic-01.jpg?v=2" alt="Private treatment room with the backlit Hollywood Clinic lotus emblem" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-02.jpg?v=2" aria-label="Hollywood Clinic marble reception desk"><img src="../assets/images/blog/clinic-tour/clinic-02.jpg?v=2" alt="Hollywood Clinic marble reception desk" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-03.jpg?v=2" aria-label="Treatment room with massage bed and branded towels"><img src="../assets/images/blog/clinic-tour/clinic-03.jpg?v=2" alt="Treatment room with massage bed and branded towels" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-04.jpg?v=2" aria-label="Body-contouring treatment room with Clatuu Alpha device"><img src="../assets/images/blog/clinic-tour/clinic-04.jpg?v=2" alt="Body-contouring treatment room with Clatuu Alpha device" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-05.jpg?v=2" aria-label="Specialist consultation office with crystal chandelier"><img src="../assets/images/blog/clinic-tour/clinic-05.jpg?v=2" alt="Specialist consultation office with crystal chandelier" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-06.jpg?v=2" aria-label="Patient lounge with gold velvet sofas"><img src="../assets/images/blog/clinic-tour/clinic-06.jpg?v=2" alt="Patient lounge with gold velvet sofas" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-07.jpg?v=2" aria-label="HydraFacial treatment room"><img src="../assets/images/blog/clinic-tour/clinic-07.jpg?v=2" alt="HydraFacial treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-08.jpg?v=2" aria-label="Front reception and waiting area"><img src="../assets/images/blog/clinic-tour/clinic-08.jpg?v=2" alt="Front reception and waiting area" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-09.jpg?v=2" aria-label="Lounge beneath cascading crystal chandeliers"><img src="../assets/images/blog/clinic-tour/clinic-09.jpg?v=2" alt="Lounge beneath cascading crystal chandeliers" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-10.jpg?v=2" aria-label="Alpha body-sculpting device in a treatment room"><img src="../assets/images/blog/clinic-tour/clinic-10.jpg?v=2" alt="Alpha body-sculpting device in a treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-11.jpg?v=2" aria-label="Waiting lounge with teal and gold seating"><img src="../assets/images/blog/clinic-tour/clinic-11.jpg?v=2" alt="Waiting lounge with teal and gold seating" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-12.jpg?v=2" aria-label="Spacious lounge with designer lighting"><img src="../assets/images/blog/clinic-tour/clinic-12.jpg?v=2" alt="Spacious lounge with designer lighting" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-20.jpg?v=2" aria-label="Treatment room with Ulfit body-contouring device and LED arc lamp"><img src="../assets/images/blog/clinic-tour/clinic-20.jpg?v=2" alt="Treatment room with Ulfit body-contouring device and LED arc lamp" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-21.jpg?v=2" aria-label="HydraFacial treatment room with full-length mirror and artwork"><img src="../assets/images/blog/clinic-tour/clinic-21.jpg?v=2" alt="HydraFacial treatment room with full-length mirror and artwork" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-22.jpg?v=2" aria-label="Laser treatment room with body-contouring device"><img src="../assets/images/blog/clinic-tour/clinic-22.jpg?v=2" alt="Laser treatment room with body-contouring device" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-23.jpg?v=2" aria-label="EMTONE and InMode treatment room"><img src="../assets/images/blog/clinic-tour/clinic-23.jpg?v=2" alt="EMTONE and InMode treatment room" loading="lazy"></button>
+ <button type="button" class="bts-gallery-item" data-full="../assets/images/blog/clinic-tour/clinic-24.jpg?v=2" aria-label="Morpheus8 and InMode treatment room with LED arc lamp"><img src="../assets/images/blog/clinic-tour/clinic-24.jpg?v=2" alt="Morpheus8 and InMode treatment room with LED arc lamp" loading="lazy"></button>
  </div>
  <div class="bts-gallery-more-wrap">
  <button type="button" class="bts-gallery-more" aria-expanded="false">
