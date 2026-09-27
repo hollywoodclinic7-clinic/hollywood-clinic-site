@@ -72,7 +72,10 @@
  <script>
     (async function() {
       const params = new URLSearchParams(window.location.search);
-      const slug = params.get('slug');
+      // Articles live at /ar/blog/<slug>; ?slug= is kept for links shared earlier.
+      const fromPath = (window.location.pathname.match(/\/blog\/([^/]+)\/?$/) || [])[1];
+      const slug = params.get('slug') ||
+        (fromPath && fromPath !== 'post' ? decodeURIComponent(fromPath) : null);
       const article = document.getElementById('article');
 
       if (!slug) {

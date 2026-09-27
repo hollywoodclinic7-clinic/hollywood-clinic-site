@@ -21,7 +21,9 @@ export default async function handler(req, res) {
     const rows = await r.json();
     const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const urls = (Array.isArray(rows) ? rows : []).map((p) => {
-      const loc = `${SITE}/blog/post?slug=${encodeURIComponent(p.slug)}`;
+      // Clean path, matching the canonical the article now declares. The old
+      // ?slug= form 301s here, so it must not be advertised as well.
+      const loc = `${SITE}/blog/${encodeURIComponent(p.slug)}`;
       const lastmod = String(p.updated_at || p.published_at || '').slice(0, 10);
       return `<url><loc>${esc(loc)}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}<changefreq>weekly</changefreq><priority>0.6</priority></url>`;
     }).join('');

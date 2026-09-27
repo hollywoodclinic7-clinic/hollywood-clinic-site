@@ -1,10 +1,32 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/blog/post",
+      "has": [{ "type": "query", "key": "slug", "value": "(?<slug>.+)" }],
+      "destination": "/blog/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/post",
+      "has": [{ "type": "query", "key": "slug", "value": "(?<slug>.+)" }],
+      "destination": "/ar/blog/:slug",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/blog-sitemap.xml",
       "destination": "/api/sitemap-blog"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/api/blog-post?slug=:slug&lang=en"
+    },
+    {
+      "source": "/ar/blog/:slug",
+      "destination": "/api/blog-post?slug=:slug&lang=ar"
     },
     {
       "source": "/c",
