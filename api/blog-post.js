@@ -122,6 +122,45 @@ async function loadTemplate(isArabic) {
   }
 }
 
+/** slug + title + date for every published post, for the related-links block. */
+async function fetchIndex() {
+  if (!KEY) return [];
+  const q = `${SUPABASE_URL}/rest/v1/blog_posts?select=slug,title_en,title_ar,published_at` +
+            `&is_published=eq.true&order=published_at.desc&limit=1000`;
+  const r = await fetch(q, { headers: { apikey: KEY, Authorization: `Bearer ${KEY}` } });
+  if (!r.ok) return [];
+  const rows = await r.json();
+  return Array.isArray(rows) ? rows : [];
+}
+
+/**
+ * Pick the posts to link to from this one.
+ *
+ * The date-ordered neighbours form a chain that reaches every article, so none
+ * is left without inbound links; the hash-spread picks add cross-links so the
+ * graph is not purely linear. Deterministic, so a given article always links to
+ * the same set and the edge cache stays coherent.
+ */
+function relatedFor(slug, index, count = 6) {
+  const at = index.findIndex((p) => p.slug === slug);
+  if (at < 0) return index.slice(0, count);
+
+  const picked = [];
+  const seen = new Set([slug]);
+  const take = (p) => { if (p && !seen.has(p.slug)) { seen.add(p.slug); picked.push(p); } };
+
+  take(index[at - 1]);
+  take(index[at + 1]);
+
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
+  const stride = Math.max(1, Math.floor(index.length / (count + 1)));
+  for (let i = 0; picked.length < count && i < index.length; i++) {
+    take(index[(h + i * stride) % index.length]);
+  }
+  return picked.slice(0, count);
+}
+
 async function fetchPost(slug) {
   if (!KEY) return null;
   const q = `${SUPABASE_URL}/rest/v1/blog_posts?select=*&slug=eq.${encodeURIComponent(slug)}` +
@@ -133,7 +172,28 @@ async function fetchPost(slug) {
 }
 
 /** Swap the shell's placeholder head tags for this post's real ones. */
-function applyMeta(html, post, isArabic, slug) {
+/**
+ * Links to other articles, placed in the "back to all posts" strip rather than
+ * inside #article — the client script rewrites #article on load, so anything
+ * put there would reach crawlers but vanish for readers. This block is served
+ * to both.
+ */
+function relatedBlock(related, isArabic) {
+  if (!related.length) return '';
+  const base = isArabic ? '/ar/blog' : '/blog';
+  const heading = isArabic ? 'مقالات ذات صلة' : 'Related articles';
+  const all = isArabic ? 'كل المقالات' : 'All articles';
+  const items = related.map((p) => {
+    const t = (isArabic ? p.title_ar : p.title_en) || p.title_en || p.title_ar || p.slug;
+    return `<li><a href="${base}/${encodeURIComponent(p.slug)}">${esc(t)}</a></li>`;
+  }).join('');
+  return `<nav class="related-posts" style="max-width:52rem;margin:0 auto 2rem;text-align:${isArabic ? 'right' : 'left'}">` +
+         `<h2 style="font-size:1.1rem;margin-bottom:.75rem">${heading}</h2>` +
+         `<ul style="list-style:none;padding:0;line-height:2">${items}</ul>` +
+         `<p><a href="${base}/all">${all} →</a></p></nav>`;
+}
+
+function applyMeta(html, post, isArabic, slug, related = []) {
   const title = (isArabic ? post.title_ar : post.title_en) || post.title_en || post.title_ar || '';
   const bodyMd = (isArabic ? post.body_ar : post.body_en) || post.body_en || post.body_ar || '';
   const rawExcerpt = (isArabic ? post.excerpt_ar : post.excerpt_en) || '';
@@ -215,6 +275,12 @@ function applyMeta(html, post, isArabic, slug) {
     (m, open, close) => `${open}\n${rendered}\n${close}`
   );
 
+  const block = relatedBlock(related, isArabic);
+  if (block) {
+    out = out.replace(/(<div class="container text-center">)(\s*<a href="\.\.\/blog")/,
+      (m, open, rest) => `${open}\n${block}\n${rest}`);
+  }
+
   return out;
 }
 
@@ -245,8 +311,9 @@ export default async function handler(req, res) {
       ));
       return;
     }
+    const index = await fetchIndex().catch(() => []);
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-    res.status(200).send(applyMeta(template, post, isArabic, slug));
+    res.status(200).send(applyMeta(template, post, isArabic, slug, relatedFor(slug, index)));
   } catch {
     res.setHeader('Cache-Control', 'public, s-maxage=60');
     res.status(200).send(template);

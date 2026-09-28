@@ -21,6 +21,14 @@
       "destination": "/api/sitemap-blog"
     },
     {
+      "source": "/blog/all",
+      "destination": "/api/blog-archive?lang=en"
+    },
+    {
+      "source": "/ar/blog/all",
+      "destination": "/api/blog-archive?lang=ar"
+    },
+    {
       "source": "/blog/:slug",
       "destination": "/api/blog-post?slug=:slug&lang=en"
     },
