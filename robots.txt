@@ -66,3 +66,4 @@ Allow: /
 Disallow: /admin/
 
 Sitemap: https://www.hollywoodclinics.net/sitemap.xml
+Sitemap: https://www.hollywoodclinics.net/blog-sitemap.xml
