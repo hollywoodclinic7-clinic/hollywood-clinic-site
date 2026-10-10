@@ -325,10 +325,17 @@ function writeSitemap(pages) {
     `    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n` +
     `    <priority>${priority(rel)}</priority>\n  </url>`;
 
+  /* Real pages with no HTML file to discover: /blog/all and its Arabic twin are
+     rendered by api/blog-archive.js. They are the crawl path to every article,
+     so a rebuild must not quietly drop them from the sitemap. */
+  const FUNCTION_PAGES = ['blog/all'];
+
   const listed = pages.filter((r) => !TEMPLATE_PAGES.has(r));
   const body = [
     ...listed.map((r) => entry(enUrl(r), r)),
     ...listed.map((r) => entry(arUrl(r), r)),
+    ...FUNCTION_PAGES.map((r) => entry(`${SITE}/${r}`, r)),
+    ...FUNCTION_PAGES.map((r) => entry(`${SITE}/ar/${r}`, r)),
   ].join('\n');
 
   const xml =
