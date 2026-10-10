@@ -12,6 +12,16 @@
   // Image URLs are cache-busted to match the ?v= token baked into the static
   // markup, so browsers holding a stale 404 for a bare path refetch instead.
   function bust(u){ return (u && u.indexOf('?') < 0) ? u + '?v=2' : u; }
+  // image_url is stored relative ("assets/images/..."), which resolves against
+  // the current directory — so it 404s on /ar/* and on the profile pages, where
+  // that is not the site root. Anchor it before busting. Absolute URLs (the
+  // dashboard uploads to Supabase storage) are left alone.
+  function imgUrl(u){
+    var s = String(u == null ? '' : u);
+    if (!s) return s;
+    if (!/^(?:[a-z]+:)?\/\//i.test(s) && s.charAt(0) !== '/') s = '/' + s.replace(/^\.?\//, '');
+    return bust(s);
+  }
   // Stored page_url values in Supabase still end in .html. cleanUrls means those
   // 308-redirect, so strip the extension when turning one into an href. The raw
   // value is untouched everywhere it is used for matching.
@@ -27,7 +37,7 @@
     var l = lang();
     var name = (l==='ar' && d.name_ar) ? d.name_ar : d.name_en;
     var role = (l==='ar' && d.specialty_ar) ? d.specialty_ar : (d.specialty_en || '');
-    var img  = bust((d.image_url || ('assets/images/doctors/'+d.slug+'.jpg')).replace(/\.(png|webp)$/i, '.jpg'));
+    var img  = imgUrl((d.image_url || ('assets/images/doctors/'+d.slug+'.jpg')).replace(/\.(png|webp)$/i, '.jpg'));
     var view = tr('doctors.viewprofile','View Profile');
     var href = ch(d.page_url) || ('doctors/profile?slug='+encodeURIComponent(d.slug));
     return '<a href="'+esc(href)+'" class="doctor-home-card">'+
@@ -56,6 +66,7 @@
     function docSlug(u){
       if(!u) return '';
       return String(u).replace(/^\.\.\//,'').replace(/^\.\//,'').replace(/^\//,'')
+        .replace(/^ar\//,'')          // Arabic twins live under /ar/
         .replace(/^doctors\//,'').replace(/[?#].*$/,'').replace(/\.html$/,'').toLowerCase();
     }
     function pageCard(d){
@@ -63,7 +74,7 @@
       var name=(l==='ar'&&d.name_ar)?d.name_ar:d.name_en;
       var role=(l==='ar'&&d.specialty_ar)?d.specialty_ar:(d.specialty_en||'');
       var bio =(l==='ar'&&d.tagline_ar)?d.tagline_ar:(d.tagline_en||'');
-      var img =bust((d.image_url||('assets/images/doctors/'+d.slug+'.jpg')).replace(/\.(png|webp)$/i,'.jpg'));
+      var img =imgUrl((d.image_url||('assets/images/doctors/'+d.slug+'.jpg')).replace(/\.(png|webp)$/i,'.jpg'));
       var href=ch(d.page_url)||('doctors/profile?slug='+encodeURIComponent(d.slug));
       var view=tr('doctors.viewprofile','View Full Profile');
       return '<a href="'+esc(href)+'" class="doctor-card fade-up visible" data-added-doc'+
@@ -274,7 +285,7 @@
       var l=lang();
       var name=(l==='ar'&&d.name_ar)?d.name_ar:d.name_en;
       var desc=(l==='ar'&&d.description_ar)?d.description_ar:(d.description_en||'');
-      var img=d.image_url||'';
+      var img=imgUrl(d.image_url||'');
       var href=ch(d.page_url)||('treatments/department?slug='+encodeURIComponent(d.slug));
       var rm=tr('services.readmore','Read More');
       return '<a href="'+esc(href)+'" class="sub-card fade-up visible" data-added-dept>'+
@@ -431,7 +442,7 @@
       var l=lang();
       var name=(l==='ar'&&d.name_ar)?d.name_ar:d.name_en;
       var role=(l==='ar'&&d.specialty_ar)?d.specialty_ar:(d.specialty_en||'');
-      var img=bust((d.image_url||('assets/images/doctors/'+d.slug+'.jpg')).replace(/\.(png|webp)$/i,'.jpg'));
+      var img=imgUrl((d.image_url||('assets/images/doctors/'+d.slug+'.jpg')).replace(/\.(png|webp)$/i,'.jpg'));
       if(!/^https?:|^\//.test(img)) img='../../'+img;
       var href=d.page_url?('../../'+ch(d.page_url)):('../../doctors/profile?slug='+encodeURIComponent(d.slug));
       var view=tr('bs.emtone.doc.view','View Profile');
